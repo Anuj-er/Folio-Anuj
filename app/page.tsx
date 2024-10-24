@@ -3,9 +3,14 @@
 import AnimatedGreetings from '@/components/Hello';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
+import TestimonialsSection from '@/components/TestimonialsSection';
+import VisualHighlights from '@/components/Gallery';
+import SkillsSection from '@/components/SkillsSection';
+import AllProjects from '@/components/AllProjects';
 import PreviousWork from '@/components/PreviousWork';
 import Goodbye from '@/components/Goodbye';
 import { ReactLenis } from '@studio-freight/react-lenis';
+import Gallery from '@/components/Gallery';
 
 const lenisOptions = {
   lerp: 0.05,
@@ -20,7 +25,11 @@ export default function Home() {
       <AnimatedGreetings />
       <Hero />
       <About />
+      <TestimonialsSection />
+      <SkillsSection />
       <PreviousWork />
+      <AllProjects /> 
+      <Gallery />
       <Goodbye />
     </ReactLenis>
   );
