@@ -62,7 +62,7 @@ const Gallery = () => {
   ];
 
   return (
-    <section className="relative w-full py-20 overflow-hidden">
+    <section id="gallery" className="relative w-full py-20 overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Header section matching testimonials style */}
         <div className="text-center mb-16">

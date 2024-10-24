@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { IoDocumentTextOutline } from 'react-icons/io5';
+import { FaCode, FaGithub } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const About = () => {
@@ -49,14 +50,25 @@ const About = () => {
                   </motion.p>
 
                   <motion.div {...fadeInUp} className="rounded-lg bg-[#1a1a1a] p-4">
-                    <h3 className="mb-2 font-semibold text-gray-200">Recent Experience</h3>
-                    <p className="text-gray-300">
-                      Events Executive at{' '}
-                      <span className="font-semibold text-blue-400">Coding Ninjas CUIET</span>
-                      <span className="ml-2 text-sm text-gray-400">
-                        (November 2023 - March 2024)
-                      </span>
-                    </p>
+                    <h3 className="mb-2 font-semibold text-gray-200">Current Focus</h3>
+                    <div className="space-y-3">
+                      <p className="flex items-center gap-2 text-gray-300">
+                        <FaCode className="h-4 w-4 text-blue-400" />
+                        Developing full-stack web development skills
+                      </p>
+                      <p className="flex items-center gap-2 text-gray-300">
+                        <FaCode className="h-4 w-4 text-blue-400" />
+                        Building practical projects and solutions
+                      </p>
+                      <Link 
+                        href="https://github.com/Anuj-er" 
+                        target="_blank"
+                        className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors"
+                      >
+                        <FaGithub className="h-4 w-4" />
+                        View my projects on GitHub
+                      </Link>
+                    </div>
                   </motion.div>
                 </div>
 

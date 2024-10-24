@@ -83,7 +83,7 @@ const SkillsSection = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black py-20">
+    <div id="journey" className="min-h-screen bg-black py-20">
       <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-20" />
 
       <div className="relative mx-auto max-w-7xl px-4">

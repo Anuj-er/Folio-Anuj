@@ -23,44 +23,45 @@ export default function AllProjects() {
           title: "ProTrack Dashboard",
           description: "A modern project management dashboard with real-time analytics and team collaboration features.",
           image: "/previous-work/Protrack.png",
-          githubLink: "https://github.com/yourusername/protrack",
-          liveLink: "https://protrack.demo",
-          tags: ["Next.js", "TypeScript", "Prisma", "tRPC"]
+          githubLink: "https://github.com/Jiya-Damara/ProTrack2",
+          liveLink: "https://jiya-damara.github.io/ProTrack2/",
+          tags: ["HTML5", "CSS3", "JavaScript", "Bootstrap" , "Dashboard"]
         },
         {
-          title: "Food Outlet App",
-          description: "Mobile-first food delivery platform with real-time order tracking and payment integration.",
-          image: "/previous-work/food_outlet.png",
-          githubLink: "https://github.com/yourusername/food-outlet",
-          liveLink: "https://food-outlet.demo",
-          tags: ["React Native", "Node.js", "MongoDB", "Stripe"]
+          title: "Ucampus-InfoSite",
+          description: "Ucampus-InfoSite is a website for showcasing the Ucampus app, designed to enhance the  experience for students.",
+          image: "/previous-work/og_image.png",
+          githubLink: "https://github.com/Anuj-er/Ucampus-InfoSite",
+          liveLink: "https://ucampus.vercel.app",
+          tags: [
+            "html5","reactjs" ,"food-app" ,"app-information"]
         },
         {
-          title: "Café Management",
-          description: "Complete café management solution with inventory tracking and POS integration.",
+          title: "By The Cook",
+          description: "A food recipe website with a collection of delicious recipes from around the world.",
           image: "/previous-work/Cafe.png",
-          githubLink: "https://github.com/yourusername/cafe-manager",
-          liveLink: "https://cafe-manager.demo",
-          tags: ["React", "Express", "PostgreSQL", "Redux"]
+          githubLink: "https://github.com/Anuj-er/Cafe-Website/",
+          liveLink: "https://anuj-er.github.io/Cafe-Website/",
+          tags: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Cafe"]
         },
         
         {
-          title: "Homepage Builder",
-          description: "Drag-and-drop website builder with custom template engine and responsive design.",
-          image: "/previous-work/homepage.png",
+          title: "Library-Management-System-Cpp",
+          description: "A console-based Library Management System developed in C++.",
+          image: "/previous-work/interface-c++.png",
           githubLink: "https://github.com/yourusername/homepage-builder",
           liveLink: "https://homepage-builder.demo",
-          tags: ["Vue.js", "Firebase", "Vuex", "TailwindCSS"]
+          tags: ["C++", "OOP", "CLI"]
         }
       ];
 
   return (
-    <section className="relative w-full py-20">
+    <section id="Projects" className="relative w-full py-20">
       <div className="container mx-auto px-4">
         {/* Section heading */}
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-6xl font-bold bg-gradient-to-r from-[#60a5fa] via-[#a78bfa] to-[#60a5fa] bg-clip-text text-transparent">
-            Featured Projects
+            Projects
           </h2>
           <p className="text-xl text-white/70">
             A collection of my recent work and experiments

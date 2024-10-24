@@ -5,41 +5,42 @@ import { cn } from "@/lib/utils";
 
 const testimonials = [
   {
-    name: "Sarah Chen",
-    role: "Senior Developer",
-    body: "Exceptional developer with outstanding problem-solving skills.",
-    img: "/Testamonials/4.jpg"
+    name: "Anushi Rajput",
+    role: "HackIndia National Finalist'24",
+    body: "Your smart play and teamwork truly made a difference in our success!🤝 ✨",
+    img: "/Testamonials/Anushi.jpeg"
   },
   {
-    name: "Mark Rodriguez",
-    role: "Tech Lead",
-    body: "Remarkable ability to architect scalable solutions.",
-    img: "/Testamonials/1.jpg"
+    name: "Stephen Simon",
+    role: "RD for C# Corner",
+    body: "This was always smiling and energetic. Good Luck for your future!🚀",
+    img: "/Testamonials/Stephen.jpeg"
+  },
+  
+  {
+    name: "Dr. Punit Soni",
+    role: "Associate Professor at Chitkara University",
+    body: "Well deserved! Keep up the good work.",
+    img: "/Testamonials/Dr_punit_sir.jpeg"
   },
   {
-    name: "Dr. Emily Watson",
-    role: "CTO",
-    body: "Brilliant engineer with deep technical expertise.",
-    img: "/Testamonials/5.jpg"
+    name: "Akanksha Mishra",
+    role: "Hackindia Finalist",
+    body: "Your support and contributions were a game-changer for the team.",
+    img: "/Testamonials/Akanksha.jpeg"
   },
   {
-    name: "James Kim",
-    role: "Engineering Manager",
-    body: "One of the most talented developers I've worked with.",
-    img: "/Testamonials/2.jpg"
+    name: "HTET NE OO",
+    role: "Wipro Certified Faculty",
+    body: "Keep it up Anuj! You're doing great work.",
+    img: "/Testamonials/HTETNEOOmam.jpeg"
   },
   {
-    name: "Lisa Patel",
-    role: "Product Lead",
-    body: "Incredible technical skills and great communication.",
-    img: "/Testamonials/6.jpg"
+    name: "Garvit Pahwa",
+    role: "CSE student",
+    body: "I would love the opportunity to work with you",
+    img: "/Testamonials/garvit.jpeg"
   },
-  {
-    name: "Michael Torres",
-    role: "Principal Engineer",
-    body: "Outstanding ability to tackle complex challenges.",
-    img: "/Testamonials/3.jpg"
-  }
 ];
 
 const TestimonialCard = ({ img, name, role, body }) => {
@@ -99,7 +100,7 @@ const TestimonialsSection = () => {
             What People Say
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto font-light">
-            Testimonials from colleagues and clients I've had the pleasure to work with.
+          Feedback and insights shared by mentors and classmates I’ve had the privilege to learn from.
           </p>
         </div>
 

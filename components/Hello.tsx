@@ -14,8 +14,8 @@ const greetings = [
   { text: 'Hallo', language: 'German' },
   { text: 'નમસ્તે', language: 'Gujarati' },
   { text: 'আদাব', language: 'Bengali' },
-  { text: 'राम राम', language: 'Haryanvi' },
   { text: 'ਸਤ ਸ੍ਰੀ ਅਕਾਲ', language: 'Punjabi' },
+  { text: 'राम राम', language: 'Haryanvi' },
 ];
 
 const AnimatedGreetings: React.FC = () => {

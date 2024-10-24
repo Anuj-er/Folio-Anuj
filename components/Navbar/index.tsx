@@ -8,8 +8,10 @@ const Navbar: React.FC = () => {
         <div className="flex flex-row items-center space-x-12 px-5 py-4">
           <Item href={'/'}>Home</Item>
           <Item href={'/#about'}>About</Item>
-          <Item href={'/#prev-work'}>Previous Work</Item>
-          <Item href={'/#projects'}>Projects</Item>
+          <Item href={'/#journey'}>Journey</Item>
+          <Item href={'/#Projects'}>Projects</Item>
+          <Item href={'/#gallery'}>Gallery</Item>
+
         </div>
       </div>
     </nav>
