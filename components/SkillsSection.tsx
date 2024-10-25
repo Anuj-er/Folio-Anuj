@@ -1,24 +1,10 @@
 import React from 'react';
 import Globe from "@/components/ui/globe";
 import IconCloud from "@/components/ui/icon-cloud";
-import OrbitingCircles from "@/components/ui/orbiting-circles";
-
-
-const SkillIcon = ({ children, radius, duration = 20, delay = 0, reverse = false }) => (
-  <OrbitingCircles
-    className="size-[40px] border-none bg-transparent"
-    radius={radius}
-    duration={duration}
-    delay={delay}
-    reverse={reverse}
-  >
-    {children}
-  </OrbitingCircles>
-);
 
 const skillIcons = {
   frontend: () => (
-    <svg viewBox="0 0 24 24" className="w-full h-full">
+    <svg viewBox="0 0 24 24" className="w-10 h-10">
       <path
         fill="currentColor"
         d="M12 18.178l-4.62-1.256-.328-3.544h2.27l.158 1.844 2.52.667 2.52-.667.26-2.866H6.96l-.635-6.678h11.35l-.227 2.21H8.822l.204 2.256h8.217l-.624 6.778L12 18.178z"
@@ -30,7 +16,7 @@ const skillIcons = {
     </svg>
   ),
   backend: () => (
-    <svg viewBox="0 0 24 24" className="w-full h-full">
+    <svg viewBox="0 0 24 24" className="w-10 h-10">
       <path
         fill="currentColor"
         d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
@@ -42,7 +28,7 @@ const skillIcons = {
     </svg>
   ),
   programming: () => (
-    <svg viewBox="0 0 24 24" className="w-full h-full">
+    <svg viewBox="0 0 24 24" className="w-10 h-10">
       <path
         fill="currentColor"
         d="M8 3a2 2 0 00-2 2v4a2 2 0 01-2 2H3v2h1a2 2 0 012 2v4a2 2 0 002 2h2v-2H8v-5a2 2 0 00-2-2 2 2 0 002-2V5h2V3H8zm8 0a2 2 0 012 2v4a2 2 0 002 2h1v2h-1a2 2 0 00-2 2v4a2 2 0 01-2 2h-2v-2h2v-5a2 2 0 012-2 2 2 0 01-2-2V5h-2V3h2z"
@@ -97,16 +83,18 @@ const SkillsSection = () => {
             Actively expanding my technical expertise
           </p>
           
-          {/* Adding orbiting icons around the title */}
-          <SkillIcon radius={160} duration={25} delay={0}>
-            <skillIcons.frontend />
-          </SkillIcon>
-          <SkillIcon radius={160} duration={25} delay={8} reverse>
-            <skillIcons.backend />
-          </SkillIcon>
-          <SkillIcon radius={160} duration={25} delay={16}>
-            <skillIcons.programming />
-          </SkillIcon>
+          {/* Static icons in a row instead of orbiting */}
+          <div className="flex justify-center gap-8 mt-8">
+            <div className="text-white/70 hover:text-white transition-colors">
+              <skillIcons.frontend />
+            </div>
+            <div className="text-white/70 hover:text-white transition-colors">
+              <skillIcons.backend />
+            </div>
+            <div className="text-white/70 hover:text-white transition-colors">
+              <skillIcons.programming />
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

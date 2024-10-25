@@ -3,7 +3,14 @@
 import React from 'react';
 import { cn } from "@/lib/utils";
 
-const testimonials = [
+interface Testimonial {
+  name: string;
+  role: string;
+  body: string;
+  img: string;
+}
+
+const testimonials: Testimonial[] = [
   {
     name: "Anushi Rajput",
     role: "HackIndia National Finalist'24",
@@ -16,7 +23,6 @@ const testimonials = [
     body: "This was always smiling and energetic. Good Luck for your future!🚀",
     img: "/Testamonials/Stephen.jpeg"
   },
-  
   {
     name: "Dr. Punit Soni",
     role: "Associate Professor at Chitkara University",
@@ -43,7 +49,9 @@ const testimonials = [
   },
 ];
 
-const TestimonialCard = ({ img, name, role, body }) => {
+interface TestimonialCardProps extends Testimonial {}
+
+const TestimonialCard: React.FC<TestimonialCardProps> = ({ img, name, role, body }) => {
   return (
     <figure className={cn(
       "relative w-[300px] cursor-default overflow-hidden rounded-xl border p-4 mx-3",
@@ -73,7 +81,13 @@ const TestimonialCard = ({ img, name, role, body }) => {
   );
 };
 
-const Marquee = ({ children, reverse, className }) => {
+interface MarqueeProps {
+  children: React.ReactNode;
+  reverse?: boolean;
+  className?: string;
+}
+
+const Marquee: React.FC<MarqueeProps> = ({ children, reverse = false, className }) => {
   return (
     <div 
       className={cn(
@@ -88,7 +102,7 @@ const Marquee = ({ children, reverse, className }) => {
   );
 };
 
-const TestimonialsSection = () => {
+const TestimonialsSection: React.FC = () => {
   const firstRow = testimonials.slice(0, testimonials.length / 2);
   const secondRow = testimonials.slice(testimonials.length / 2);
 
@@ -100,18 +114,18 @@ const TestimonialsSection = () => {
             What People Say
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto font-light">
-          Feedback and insights shared by mentors and classmates I’ve had the privilege to learn from.
+            Feedback and insights shared by mentors and classmates I've had the privilege to learn from.
           </p>
         </div>
 
         <div className="relative flex flex-col gap-8 overflow-hidden py-8">
-          <Marquee className="[--duration:35s]">
+          <Marquee className="[--duration:35s]" reverse={false}>
             {firstRow.map((testimonial) => (
               <TestimonialCard key={testimonial.name} {...testimonial} />
             ))}
           </Marquee>
           
-          <Marquee reverse className="[--duration:40s]">
+          <Marquee className="[--duration:40s]" reverse={true}>
             {secondRow.map((testimonial) => (
               <TestimonialCard key={testimonial.name} {...testimonial} />
             ))}

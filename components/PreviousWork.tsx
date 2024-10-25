@@ -17,13 +17,14 @@ export default function PreviousWork() {
             </Link>
           </p>
           <div className="grid grid-cols-1 gap-4">
-            <Image
-              src="/previous-work/hackindia.jpg"
-              alt="HackIndia 2024 Experience"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-full"
-            />
+            <div className="relative h-20 md:h-44 lg:h-[400px]">
+              <Image
+                src="/previous-work/hackindia.jpg"
+                alt="HackIndia 2024 Experience"
+                fill
+                className="rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+              />
+            </div>
           </div>
         </div>
       ),
@@ -40,34 +41,21 @@ export default function PreviousWork() {
             </Link>
           </p>
           <div className="grid grid-cols-2 gap-4">
-            <Image
-              src="/previous-work/og_image.png"
-              alt="startup template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <Image
-              src="/previous-work/homepage.png"
-              alt="startup template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <Image
-              src="/previous-work/explore.png"
-              alt="startup template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <Image
-              src="/previous-work/food_outlet.png"
-              alt="startup template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
+            {[
+              'og_image.png',
+              'homepage.png',
+              'explore.png',
+              'food_outlet.png'
+            ].map((image, index) => (
+              <div key={index} className="relative h-20 md:h-44 lg:h-60">
+                <Image
+                  src={`/previous-work/${image}`}
+                  alt={`UCampus screenshot ${index + 1}`}
+                  fill
+                  className="rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+                />
+              </div>
+            ))}
           </div>
         </div>
       ),
@@ -84,65 +72,53 @@ export default function PreviousWork() {
             </Link>
           </p>
           <div className="grid grid-cols-2 gap-4">
-            <Image
-              src="/previous-work/Protrack.png"
-              alt="hero template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <Image
-              src="/previous-work/Protrack-2.png"
-              alt="feature template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <Image
-              src="/previous-work/Protrack-3.png"
-              alt="bento template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
-            <Image
-              src="/previous-work/Protrack-4.png"
-              alt="cards template"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
+            {[
+              'Protrack.png',
+              'Protrack-2.png',
+              'Protrack-3.png',
+              'Protrack-4.png'
+            ].map((image, index) => (
+              <div key={index} className="relative h-20 md:h-44 lg:h-60">
+                <Image
+                  src={`/previous-work/${image}`}
+                  alt={`ProTrack screenshot ${index + 1}`}
+                  fill
+                  className="rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+                />
+              </div>
+            ))}
           </div>
         </div>
       ),
     },
-
     {
       title: 'Dean\'s List',
       content: (
         <div>
           <p className="mb-8 text-xs font-normal text-neutral-200 md:text-sm">
-          Excited to share that I’ve made the Dean’s List! 🎉 Check out my latest LinkedIn post to see the recognition and what it means to me.{' '}
+            Excited to share that I've made the Dean's List! 🎉 Check out my latest LinkedIn post to see the recognition and what it means to me.{' '}
             <Link href={'https://www.linkedin.com/posts/anuj-er_starprogrammer-codingcommunity-activity-7196424956539203586-jgHw?utm_source=share&utm_medium=member_desktop'} className="text-gray-300 no-underline" target="_blank"
               rel="noopener noreferrer">
               here
             </Link>
           </p>
           <div className="grid grid-cols-1 gap-4">
-            <Image
-              src="/previous-work/Dean-list.png"
-              alt="HackIndia 2024 Experience"
-              width={500}
-              height={500}
-              className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-full"
-            />
+            <div className="relative h-20 md:h-44 lg:h-[400px]">
+              <Image
+                src="/previous-work/Dean-list.png"
+                alt="Dean's List Recognition"
+                fill
+                className="rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+              />
+            </div>
           </div>
         </div>
       ),
     },
   ];
+
   return (
-    <div className="w-full bg-black" id="prev-work">
+    <div className="relative w-full bg-black" id="prev-work">
       <Timeline data={data} />
     </div>
   );
