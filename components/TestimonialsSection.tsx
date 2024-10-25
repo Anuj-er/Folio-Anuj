@@ -27,7 +27,7 @@ const testimonials: Testimonial[] = [
     name: "Dr. Punit Soni",
     role: "Associate Professor at Chitkara University",
     body: "Well deserved! Keep up the good work.",
-    img: "/Testamonials/Dr_punit_sir.jpeg"
+    img: "/Testamonials/Punit.jpeg"
   },
   {
     name: "Akanksha Mishra",
