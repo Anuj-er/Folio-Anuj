@@ -1246,9 +1246,6 @@ video {
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-.transform-gpu {
-  transform: translate3d(var(--tw-translate-x), var(--tw-translate-y), 0) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
 @keyframes bounce {
 
   0%, 100% {
@@ -1319,19 +1316,6 @@ video {
 }
 .animate-marquee-vertical {
   animation: marquee-vertical var(--duration) linear infinite;
-}
-@keyframes orbit {
-
-  0% {
-    transform: rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg);
-  }
-}
-.animate-orbit {
-  animation: orbit calc(var(--duration)*1s) linear infinite;
 }
 @keyframes shimmer {
 
@@ -1509,9 +1493,6 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
-.bg-black\/10 {
-  background-color: rgb(0 0 0 / 0.1);
-}
 .bg-black\/20 {
   background-color: rgb(0 0 0 / 0.2);
 }
@@ -1687,12 +1668,6 @@ video {
 .bg-clip-text {
   -webkit-background-clip: text;
           background-clip: text;
-}
-.stroke-black\/10 {
-  stroke: rgb(0 0 0 / 0.1);
-}
-.stroke-1 {
-  stroke-width: 1;
 }
 .object-cover {
   -o-object-fit: cover;
@@ -2090,9 +2065,6 @@ video {
 .\[-ms-overflow-style\:none\] {
   -ms-overflow-style: none;
 }
-.\[animation-delay\:calc\(var\(--delay\)\*1000ms\)\] {
-  animation-delay: calc(var(--delay) * 1000ms);
-}
 .\[animation-direction\:reverse\] {
   animation-direction: reverse;
 }
@@ -2376,18 +2348,10 @@ video {
   background-color: rgb(23 23 23 / var(--tw-bg-opacity));
 }
 
-.dark\:bg-white\/10:is(.dark *) {
-  background-color: rgb(255 255 255 / 0.1);
-}
-
 .dark\:from-black:is(.dark *) {
   --tw-gradient-from: #000 var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
-.dark\:stroke-white\/10:is(.dark *) {
-  stroke: rgb(255 255 255 / 0.1);
 }
 
 .dark\:text-white:is(.dark *) {
@@ -2518,10 +2482,6 @@ video {
 
   .lg\:h-60 {
     height: 15rem;
-  }
-
-  .lg\:h-full {
-    height: 100%;
   }
 
   .lg\:h-\[400px\] {
