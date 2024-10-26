@@ -120,7 +120,7 @@ export default function RootLayout({
             </div>
           </main>
           <footer className="w-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
-            {/* Add footer content if needed */}
+            {}
           </footer>
         </div>
         <Analytics />
