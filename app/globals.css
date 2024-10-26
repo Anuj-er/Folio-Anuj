@@ -59,67 +59,69 @@
   }
 }
 
-/* Rest of your CSS remains the same */
-.no-visible-scrollbar {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  -webkit-overflow-scrolling: touch;
+/* Consolidated scrollbar hiding utilities */
+@layer utilities {
+  /* Option 1: Hide scrollbar while maintaining functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Option 2: Custom scrollbar styling */
+  .scrollbar-custom {
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 10px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background-color: #1d1c1c;
+    border-radius: 30px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(44, 44, 44);
+  }
 }
 
-.no-visible-scrollbar::-webkit-scrollbar {
-  display: none;
-}
+/* Animation utilities */
+@layer utilities {
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
 
-::-webkit-scrollbar {
-  width: 12px;
-}
+  @keyframes marquee-reverse {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
 
-::-webkit-scrollbar-track {
-  /* background: #161616; */
-  background-color: transparent;
-  border-radius: 10px;
-}
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
 
-::-webkit-scrollbar-thumb {
-  background-color: #1d1c1c;
-  border-radius: 30px;
-  /* border-radius: 10px; */
-}
+  .animate-marquee {
+    animation: marquee var(--duration, 20s) linear infinite;
+  }
 
-::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(44, 44, 44);
-}
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
+  .animate-marquee-reverse {
+    animation: marquee-reverse var(--duration, 20s) linear infinite;
+  }
 
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-@keyframes marquee-reverse {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
-}
-
-.animate-marquee {
-  animation: marquee var(--duration, 20s) linear infinite;
-}
-
-.animate-marquee-reverse {
-  animation: marquee-reverse var(--duration, 20s) linear infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
 }
