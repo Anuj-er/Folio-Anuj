@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     default: 'Anuj Siwach | Full Stack Developer',
     template: '%s | Anuj Siwach'
   },
-  description: 'Full Stack Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.',
+  description: 'Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.',
   keywords: ['Anuj Siwach', 'Full Stack Developer', 'React Developer', 'Next.js Developer', 'TypeScript', 'Web Development'],
   authors: [{ name: 'Anuj Siwach' }],
   creator: 'Anuj Siwach',

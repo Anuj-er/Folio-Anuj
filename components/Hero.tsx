@@ -137,7 +137,7 @@ const Hero: React.FC = () => {
           </span>
         </p>
         <p className="mb-4 sm:mb-6 md:mb-8 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-white to-white/70 bg-clip-text text-transparent">
-          Software Engineer
+          Developer
         </p>
         <p className="mx-auto mb-6 sm:mb-8 max-w-[90%] sm:max-w-2xl text-lg sm:text-xl md:text-2xl text-white/80 font-light leading-relaxed">
           Passionate about learning and solving real-world problems through technology.
