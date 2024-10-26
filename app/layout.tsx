@@ -23,11 +23,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://siwach.vercel.app'),
   title: {
-    default: 'Anuj Siwach | Full Stack Developer',
+    default: 'Anuj Siwach | Developer',
     template: '%s | Anuj Siwach'
   },
   description: 'Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.',
-  keywords: ['Anuj Siwach', 'Full Stack Developer', 'React Developer', 'Next.js Developer', 'TypeScript', 'Web Development'],
+  keywords: ['Anuj Siwach', 'Developer', 'React Developer', 'Next.js Developer', 'TypeScript', 'Web Development'],
   authors: [{ name: 'Anuj Siwach' }],
   creator: 'Anuj Siwach',
   publisher: 'Anuj Siwach',
@@ -42,15 +42,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://siwach.vercel.app',
-    title: 'Anuj Siwach | Full Stack Developer',
-    description: 'Full Stack Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.',
+    title: 'Anuj Siwach | Developer',
+    description: 'Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.',
     siteName: 'Anuj Siwach Portfolio',
     images: [
       {
         url: '/og_image.png',
         width: 1200,
         height: 630,
-        alt: 'Anuj Siwach - Full Stack Developer',
+        alt: 'Anuj Siwach - Developer',
         type: 'image/png',
       },
     ],
@@ -59,8 +59,8 @@ export const metadata: Metadata = {
   // Twitter
   twitter: {
     card: 'summary_large_image',
-    title: 'Anuj Siwach | Full Stack Developer',
-    description: 'Full Stack Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.',
+    title: 'Anuj Siwach | Developer',
+    description: 'Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.',
     images: ['/og_image.png'],
     creator: '@5iwach',
     site: '@5iwach',
