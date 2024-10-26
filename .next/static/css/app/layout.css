@@ -1105,23 +1105,14 @@ video {
 .aspect-\[1\/1\] {
   aspect-ratio: 1/1;
 }
+.aspect-\[3\/5\] {
+  aspect-ratio: 3/5;
+}
 .aspect-\[4\/3\] {
   aspect-ratio: 4/3;
 }
-.aspect-\[9\/16\] {
-  aspect-ratio: 9/16;
-}
 .aspect-square {
   aspect-ratio: 1 / 1;
-}
-.aspect-\[3\/2\] {
-  aspect-ratio: 3/2;
-}
-.aspect-\[3\/4\] {
-  aspect-ratio: 3/4;
-}
-.aspect-\[3\/5\] {
-  aspect-ratio: 3/5;
 }
 .size-40 {
   width: 10rem;
@@ -1188,14 +1179,14 @@ video {
 .min-h-64 {
   min-height: 16rem;
 }
-.min-h-screen {
-  min-height: 100vh;
-}
 .min-h-\[200px\] {
   min-height: 200px;
 }
 .min-h-\[400px\] {
   min-height: 400px;
+}
+.min-h-screen {
+  min-height: 100vh;
 }
 .w-1\/4 {
   width: 25%;
@@ -1268,11 +1259,11 @@ video {
 .max-w-sm {
   max-width: 24rem;
 }
-.max-w-xs {
-  max-width: 20rem;
-}
 .max-w-xl {
   max-width: 36rem;
+}
+.max-w-xs {
+  max-width: 20rem;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -1407,9 +1398,6 @@ video {
 }
 .resize {
   resize: both;
-}
-.auto-rows-\[minmax\(200px\2c auto\)\] {
-  grid-auto-rows: minmax(200px,auto);
 }
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -1803,6 +1791,10 @@ video {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -1810,10 +1802,6 @@ video {
 .py-\[5rem\] {
   padding-top: 5rem;
   padding-bottom: 5rem;
-}
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
 }
 .pb-20 {
   padding-bottom: 5rem;
@@ -2380,18 +2368,6 @@ video {
     bottom: 2rem;
   }
 
-  .sm\:col-span-1 {
-    grid-column: span 1 / span 1;
-  }
-
-  .sm\:row-span-2 {
-    grid-row: span 2 / span 2;
-  }
-
-  .sm\:mb-12 {
-    margin-bottom: 3rem;
-  }
-
   .sm\:mb-16 {
     margin-bottom: 4rem;
   }
@@ -2586,14 +2562,14 @@ video {
     padding-right: 1.5rem;
   }
 
+  .sm\:py-10 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
   .sm\:py-12 {
     padding-top: 3rem;
     padding-bottom: 3rem;
-  }
-
-  .sm\:py-16 {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
   }
 
   .sm\:py-2 {
@@ -2619,11 +2595,6 @@ video {
   .sm\:py-6 {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-  }
-
-  .sm\:py-10 {
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
   }
 
   .sm\:pb-8 {
@@ -2718,20 +2689,16 @@ video {
     margin-right: 0px;
   }
 
-  .md\:mb-16 {
-    margin-bottom: 4rem;
-  }
-
-  .md\:mb-8 {
-    margin-bottom: 2rem;
-  }
-
   .md\:mb-12 {
     margin-bottom: 3rem;
   }
 
   .md\:mb-4 {
     margin-bottom: 1rem;
+  }
+
+  .md\:mb-8 {
+    margin-bottom: 2rem;
   }
 
   .md\:block {
@@ -2794,12 +2761,12 @@ video {
     gap: 2.5rem;
   }
 
-  .md\:gap-8 {
-    gap: 2rem;
-  }
-
   .md\:gap-5 {
     gap: 1.25rem;
+  }
+
+  .md\:gap-8 {
+    gap: 2rem;
   }
 
   .md\:space-x-12 > :not([hidden]) ~ :not([hidden]) {
@@ -2817,6 +2784,11 @@ video {
     padding-right: 2.5rem;
   }
 
+  .md\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
   .md\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -2825,16 +2797,6 @@ video {
   .md\:py-16 {
     padding-top: 4rem;
     padding-bottom: 4rem;
-  }
-
-  .md\:py-20 {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
-
-  .md\:px-6 {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
   }
 
   .md\:pl-20 {
@@ -2879,6 +2841,11 @@ video {
     line-height: 1.5rem;
   }
 
+  .md\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
   .md\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -2886,11 +2853,6 @@ video {
 
   .md\:text-xl {
     font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-
-  .md\:text-lg {
-    font-size: 1.125rem;
     line-height: 1.75rem;
   }
 }
@@ -2917,12 +2879,12 @@ video {
     margin-bottom: 3rem;
   }
 
-  .lg\:mb-4 {
-    margin-bottom: 1rem;
-  }
-
   .lg\:mb-16 {
     margin-bottom: 4rem;
+  }
+
+  .lg\:mb-4 {
+    margin-bottom: 1rem;
   }
 
   .lg\:h-12 {
@@ -3004,14 +2966,14 @@ video {
     padding-bottom: 4rem;
   }
 
-  .lg\:py-8 {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
-
   .lg\:py-20 {
     padding-top: 5rem;
     padding-bottom: 5rem;
+  }
+
+  .lg\:py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 
   .lg\:text-4xl {

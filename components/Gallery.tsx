@@ -57,7 +57,7 @@ const Gallery = () => {
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
-      src: "./Gallery/1.jpg",
+      src: "./Gallery/1.png",
       alt: "image",
       className: "col-span-1 md:col-span-1 row-span-2 aspect-[3/5] min-h-[400px] sm:min-h-[500px] lg:min-h-[600px]"
     },
