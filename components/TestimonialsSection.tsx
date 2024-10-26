@@ -45,7 +45,6 @@ const testimonials: Testimonial[] = [
     name: "Garvit Pahwa",
     role: "CSE student",
     body: "I would love the opportunity to work with you",
-    // Changed the File Name
     img: "/Testamonials/Pahwa.jpeg"
   },
 ];
@@ -55,29 +54,34 @@ interface TestimonialCardProps extends Testimonial {}
 const TestimonialCard: React.FC<TestimonialCardProps> = ({ img, name, role, body }) => {
   return (
     <figure className={cn(
-      "relative w-[300px] cursor-default overflow-hidden rounded-xl border p-4 mx-3",
-      "border-white/10 bg-white/5 backdrop-blur-sm",
-      "transform transition-all duration-300 hover:scale-[1.02] hover:bg-white/10",
-      "group"
+      "relative w-[180px] xs:w-[220px] sm:w-[260px] lg:w-[320px]", // Increased width for large screens
+      "h-[140px] xs:h-[150px] sm:h-[160px] lg:h-[180px]", // Increased height for large screens
+      "cursor-default rounded-xl border p-2.5 sm:p-4 lg:p-6", // Increased padding for large screens
+      "border-white/5 bg-black/10 backdrop-blur-sm",
+      "transform transition-all duration-300 hover:scale-[1.02] hover:bg-black/20",
+      "group flex flex-col justify-between"
     )}>
-      <div className="flex flex-row items-center gap-3">
-        <img 
-          className="rounded-full border border-white/10 group-hover:border-white/20 transition-colors" 
-          width="40" 
-          height="40" 
-          alt={`${name}'s profile picture`} 
-          src={img}
-        />
-        <div className="flex flex-col">
-          <figcaption className="text-sm font-semibold bg-gradient-to-r from-white via-white to-white/70 bg-clip-text text-transparent">
+      <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
+        <div className="shrink-0">
+          <img 
+            className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 rounded-full object-cover border border-white/5 group-hover:border-white/10 transition-all duration-300" 
+            alt={`${name}'s profile picture`} 
+            src={img}
+          />
+        </div>
+        <div className="flex flex-col min-w-0">
+          <figcaption className="text-xs sm:text-sm lg:text-base font-medium text-white/90 truncate">
             {name}
           </figcaption>
-          <p className="text-xs text-white/60">{role}</p>
+          <p className="text-[10px] sm:text-xs lg:text-sm text-white/50 truncate">
+            {role}
+          </p>
         </div>
       </div>
-      <blockquote className="mt-3 text-sm text-white/70 leading-relaxed">
+      <blockquote className="text-[11px] sm:text-xs lg:text-sm text-white/70 leading-relaxed italic line-clamp-3">
         "{body}"
       </blockquote>
+      <div className="absolute top-2 right-2 lg:top-3 lg:right-3 opacity-5 text-2xl sm:text-3xl lg:text-4xl font-serif">"</div>
     </figure>
   );
 };
@@ -92,7 +96,7 @@ const Marquee: React.FC<MarqueeProps> = ({ children, reverse = false, className 
   return (
     <div 
       className={cn(
-        "flex gap-4 animate-marquee",
+        "flex gap-3 sm:gap-4 lg:gap-6 animate-marquee", // Increased gap for large screens
         reverse && "animate-marquee-reverse",
         className
       )}
@@ -108,33 +112,38 @@ const TestimonialsSection: React.FC = () => {
   const secondRow = testimonials.slice(testimonials.length / 2);
 
   return (
-    <section className="relative w-full py-20 overflow-hidden">
+    <section className="relative w-full py-8 sm:py-12 lg:py-16 overflow-hidden"> {/* Increased padding for large screens */}
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-6xl font-bold mb-4 bg-gradient-to-r from-[#60a5fa] via-[#a78bfa] to-[#60a5fa] bg-clip-text text-transparent">
+        <div className="text-center mb-4 sm:mb-8 lg:mb-12"> {/* Increased margin for large screens */}
+          <h2 className="text-xl xs:text-2xl sm:text-3xl lg:text-5xl font-bold mb-2 sm:mb-3 lg:mb-4 bg-gradient-to-r from-[#60a5fa] via-[#a78bfa] to-[#60a5fa] bg-clip-text text-transparent">
             What People Say
           </h2>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto font-light">
+          <p className="text-xs sm:text-sm lg:text-base text-white/70 max-w-2xl mx-auto font-light">
             Feedback and insights shared by mentors and classmates I've had the privilege to learn from.
           </p>
         </div>
 
-        <div className="relative flex flex-col gap-8 overflow-hidden py-8">
-          <Marquee className="[--duration:35s]" reverse={false}>
+        <div className="relative flex flex-col gap-4 sm:gap-6 lg:gap-8 overflow-hidden py-4">
+          <Marquee 
+            className="[--duration:35s] sm:[--duration:40s] lg:[--duration:45s]" 
+            reverse={false}
+          >
             {firstRow.map((testimonial) => (
               <TestimonialCard key={testimonial.name} {...testimonial} />
             ))}
           </Marquee>
           
-          <Marquee className="[--duration:40s]" reverse={true}>
+          <Marquee 
+            className="[--duration:40s] sm:[--duration:45s] lg:[--duration:50s]" 
+            reverse={true}
+          >
             {secondRow.map((testimonial) => (
               <TestimonialCard key={testimonial.name} {...testimonial} />
             ))}
           </Marquee>
 
-          {/* Gradient overlays */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-black" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-black" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-black to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-black to-transparent" />
         </div>
       </div>
     </section>

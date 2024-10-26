@@ -19,26 +19,3 @@ export const HERO_LINKS = [
     src: '/resume',
   },
 ];
-
-export const PROJECTS = [
-  {
-    id: 1,
-    imageUrl: '/previous-work/crayo.png',
-    dribbleLink: 'https://dribbble.com/',
-  },
-  {
-    id: 1,
-    imageUrl: '/previous-work/og_image.png',
-    dribbleLink: 'https://dribbble.com/',
-  },
-  {
-    id: 1,
-    imageUrl: '/previous-work/liquid.png',
-    dribbleLink: 'https://dribbble.com/',
-  },
-  {
-    id: 1,
-    imageUrl: '/previous-work/amex.png',
-    dribbleLink: 'https://dribbble.com/',
-  },
-];

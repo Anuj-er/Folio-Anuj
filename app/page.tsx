@@ -27,8 +27,8 @@ export default function Home() {
       <About />
       <TestimonialsSection />
       <SkillsSection />
-      <PreviousWork />
-      <AllProjects /> 
+      <AllProjects />
+      <PreviousWork /> 
       <Gallery />
       <Goodbye />
     </ReactLenis>

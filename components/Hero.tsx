@@ -89,8 +89,9 @@ const AnimatedOrb = ({ className }: { className: string }) => (
 const AnimatedBackground = () => (
   <div className="absolute inset-0 overflow-hidden bg-black">
     <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(17,24,39,1),rgba(0,0,0,1))]" />
-    <AnimatedOrb className="h-96 w-96 bg-purple-700/30 left-1/4 top-1/4" />
-    <AnimatedOrb className="h-96 w-96 bg-blue-700/30 right-1/4 bottom-1/4" />
+    {/* Adjusted orb positions for better mobile display */}
+    <AnimatedOrb className="h-64 w-64 md:h-96 md:w-96 bg-purple-700/30 left-[10%] md:left-1/4 top-1/4" />
+    <AnimatedOrb className="h-64 w-64 md:h-96 md:w-96 bg-blue-700/30 right-[10%] md:right-1/4 bottom-1/4" />
     <div className="absolute inset-0 bg-grid opacity-20" />
     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
   </div>
@@ -126,41 +127,43 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" />
 
       <div
-        className="relative z-10 flex flex-col items-center text-center transition-transform duration-300 ease-out will-change-transform"
+        className="relative z-10 flex flex-col items-center text-center transition-transform duration-300 ease-out will-change-transform px-4 sm:px-6"
         style={{ transform: `scale(${scale})` }}
       >
-        <p className="mb-4 text-6xl text-white">
+        <p className="mb-2 sm:mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white">
           Hey, I&apos;m{' '}
-          <span className="text-7xl font-bold bg-gradient-to-r from-[#60a5fa] via-[#a78bfa] to-[#60a5fa] bg-clip-text text-transparent animate-shimmer bg-shimmer">
+          <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-[#60a5fa] via-[#a78bfa] to-[#60a5fa] bg-clip-text text-transparent animate-shimmer bg-shimmer">
             Anuj Kumar
           </span>
         </p>
-        <p className="mb-8 text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-white to-white/70 bg-clip-text text-transparent">
+        <p className="mb-4 sm:mb-6 md:mb-8 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-white to-white/70 bg-clip-text text-transparent">
           Software Engineer
         </p>
-        <p className="mx-auto mb-8 max-w-2xl text-2xl text-white/80 font-light">
+        <p className="mx-auto mb-6 sm:mb-8 max-w-[90%] sm:max-w-2xl text-lg sm:text-xl md:text-2xl text-white/80 font-light leading-relaxed">
           Passionate about learning and solving real-world problems through technology.
         </p>
 
-        <div className="flex space-x-4">
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
           {HERO_LINKS.map((link, index) => (
             <Link
               key={index}
               href={link.src}
               target="_blank"
-              className="group relative rounded-xl border border-white/20 bg-white/10 p-3 text-white transition-all duration-300 hover:scale-110 hover:bg-white/20 backdrop-blur-sm overflow-hidden"
+              className="group relative rounded-xl border border-white/20 bg-white/10 p-2 sm:p-3 text-white transition-all duration-300 hover:scale-110 hover:bg-white/20 backdrop-blur-sm overflow-hidden"
             >
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
               </div>
-              {link.icon}
+              <div className="text-xl sm:text-2xl">
+                {link.icon}
+              </div>
             </Link>
           ))}
         </div>
       </div>
 
-      <div className="absolute bottom-8 z-10 flex flex-col items-center">
-        <FaCaretDown className="animate-bounce text-4xl text-white duration-2000" />
+      <div className="absolute bottom-4 sm:bottom-8 z-10 flex flex-col items-center">
+        <FaCaretDown className="animate-bounce text-2xl sm:text-4xl text-white duration-2000" />
       </div>
     </div>
   );
