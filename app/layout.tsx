@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Hanken_Grotesk } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
@@ -10,16 +10,89 @@ const hankenGrotesk = Hanken_Grotesk({
   variable: '--font-hanken-grotesk',
 });
 
-export const metadata: Metadata = {
-  title: 'Anuj Siwach',
-  description: 'Welcome to my portfolio website :)',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-  },
+// Separate viewport configuration
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
   themeColor: '#000000',
+  colorScheme: 'dark',
+};
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://siwach.vercel.app'),
+  title: {
+    default: 'Anuj Siwach | Full Stack Developer',
+    template: '%s | Anuj Siwach'
+  },
+  description: 'Full Stack Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.',
+  keywords: ['Anuj Siwach', 'Full Stack Developer', 'React Developer', 'Next.js Developer', 'TypeScript', 'Web Development'],
+  authors: [{ name: 'Anuj Siwach' }],
+  creator: 'Anuj Siwach',
+  publisher: 'Anuj Siwach',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  
+  // Open Graph
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://siwach.vercel.app',
+    title: 'Anuj Siwach | Full Stack Developer',
+    description: 'Full Stack Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.',
+    siteName: 'Anuj Siwach Portfolio',
+    images: [
+      {
+        url: '/og_image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Anuj Siwach - Full Stack Developer',
+        type: 'image/png',
+      },
+    ],
+  },
+
+  // Twitter
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Anuj Siwach | Full Stack Developer',
+    description: 'Full Stack Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.',
+    images: ['/og_image.png'],
+    creator: '@5iwach',
+    site: '@5iwach',
+  },
+
+  // Icons
+  icons: {
+    icon: [
+      { url: '/favicon_io/favicon.ico' },
+      { url: '/favicon_io/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon_io/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/favicon_io/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+
+  // Web Manifest
+  manifest: '/site.webmanifest',
+
+  // Robots
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({
