@@ -1,66 +1,107 @@
+<div align="center">
+  <h1>Anuj Kumar Portfolio</h1>
 
-# 🌐 Anuj Siwach's Portfolio
+  <p><strong>Welcome to my portfolio repository!</strong> This project is my personal website, where I showcase my skills, projects, and professional journey through an interactive and visually engaging interface. Feel free to explore, and don't hesitate to star the repo if you like it!</p>
 
-**Welcome to my portfolio repository!** This project is my personal website, where I showcase my skills, projects, and professional journey through an interactive and visually engaging interface. Feel free to explore, and don’t hesitate to star the repo if you like it!
+  <p>
+    <a href="https://choosealicense.com/licenses/mit/">
+      <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="MIT License">
+    </a>
+  </p>
+</div>
 
+<h2>Demo Link</h2>
+  <p><a href="https://siwach.vercel.app">Visit my portfolio</a></p>
+  <hr>
+<h2>🌟 Features at a Glance</h2>
+<ul>
+  <li><strong>Dynamic Home Page</strong> - A unique, welcoming landing experience.</li>
+  <li><strong>Interactive About Section</strong> - Get to know me and my story in tech.</li>
+  <li><strong>Projects Showcase</strong> - A dedicated space highlighting my best work.</li>
+  <li><strong>Skills Visualized</strong> - Clear and organized display of my skills.</li>
+  <li><strong>Testimonials</strong> - Feedback from mentors and colleagues.</li>
+  <li><strong>Image Gallery</strong> - Photos from my journey and milestones.</li>
+  <li><strong>Fluid Animations</strong> - Smooth transitions and animations and Framer Motion.</li>
+</ul>
 
+<h2>📋 Table of Contents</h2>
+<ol>
+  <li><a href="#-tech-stack">Tech Stack</a></li>
+  <li><a href="#-screenshots">Screenshots</a></li>
+  <li><a href="#-folder-structure">Folder Structure</a></li>
+  <li><a href="#-setup--installation">Setup & Installation</a></li>
+  <li><a href="#-detailed-documentation">Detailed Documentation</a></li>
+  <li><a href="#️-contributing">Contributing</a></li>
+  <li><a href="#-faqs">FAQs</a></li>
+  <li><a href="#-show-your-support">Show Your Support</a></li>
+</ol>
 
+<hr>
 
+<h2>🛠️ Tech Stack</h2>
+<table>
+  <tr>
+    <th>Technology</th>
+    <th>Purpose</th>
+  </tr>
+  <tr>
+    <td><strong>Next.js</strong></td>
+    <td>Framework for server-rendered React</td>
+  </tr>
+  <tr>
+    <td><strong>Tailwind CSS</strong></td>
+    <td>Responsive, utility-first styling</td>
+  </tr>
+  <tr>
+    <td><strong>TypeScript</strong></td>
+    <td>Type safety and enhanced readability</td>
+  </tr>
+  <tr>
+    <td><strong>GSAP</strong></td>
+    <td>Advanced animations and effects</td>
+  </tr>
+  <tr>
+    <td><strong>Framer Motion</strong></td>
+    <td>Smooth transitions between elements</td>
+  </tr>
+</table>
 
+<h2>🖼️ Screenshots</h2>
+<table>
+  <tr>
+    <th>Section</th>
+    <th>Image</th>
+  </tr>
+  <tr>
+    <td><strong>Home Page</strong></td>
+    <td><img src="public/Projects/portfolio.png" width="1000" alt="Home"></td>
+  </tr>
+  <tr>
+    <td><strong>About</strong></td>
+    <td><img src="public/screenshots/about.png" width="1000" alt="About"></td>
+  </tr>
+  <tr>
+    <td><strong>Projects</strong></td>
+    <td><img src="public/screenshots/projects.png" width="1000" alt="Projects"></td>
+  </tr>
+  <tr>
+    <td><strong>Journey</strong></td>
+    <td><img src="public/screenshots/journey.png" width="1000" alt="Journey"></td>
+  </tr>
+  <tr>
+    <td><strong>Gallery</strong></td>
+    <td><img src="public/screenshots/galley.png" width="1000" alt="Gallery"></td>
+  </tr>
+  <tr>
+    <td><strong>Testimonials</strong></td>
+    <td><img src="public/screenshots/testamonials.png" width="1000" alt="Testimonials"></td>
+  </tr>
+</table>
 
+<h2>📁 Folder Structure</h2>
+<p>This project follows a clear, organized structure for maintainability and ease of navigation:</p>
 
-
-
-
-
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-
-
-
-## Demo Link
-[Visit my portfolio](https://siwach.vercel.app)
-## 🌟 Features at a Glance
-- **Dynamic Home Page** - A unique, welcoming landing experience.
-- **Interactive About Section** - Get to know me and my story in tech.
-- **Projects Showcase** - A dedicated space highlighting my best work.
-- **Skills Visualized** - Clear and organized display of my skills.
-- **Testimonials** - Feedback from mentors and colleagues.
-- **Image Gallery** - Photos from my journey and milestones.
-- **Fluid Animations** - Smooth transitions and animations and Framer Motion.
-
-## 📋 Table of Contents
-1. [Tech Stack](#-tech-stack)
-2. [Screenshots](#-screenshots)
-3. [Folder Structure](#-folder-structure)
-4. [Setup & Installation](#-setup--installation)
-5. [Detailed Documentation](#-detailed-documentation)
-6. [Contributing](#️-contributing)
-7. [FAQs](#-faqs)
-8. [Show Your Support](#-show-your-support)
-
----
-## 🛠️ Tech Stack
-| Technology       | Purpose                             |
-|------------------|-------------------------------------|
-| **Next.js**      | Framework for server-rendered React |
-| **Tailwind CSS** | Responsive, utility-first styling   |
-| **TypeScript**   | Type safety and enhanced readability|
-| **GSAP**         | Advanced animations and effects     |
-| **Framer Motion**| Smooth transitions between elements |
-
----
-## 🖼️ Screenshots
-| Section            | Image                               |
-|--------------------|-------------------------------------|
-| **Home Page**      | ![Home](public/screenshots/homepage.png) |
-| **Projects**       | ![Projects](public/screenshots/portfolio.png) |
-| **Gallery**        | ![Gallery](public/screenshots/Gallery.JPG)    |
-| **Testimonials**   | ![Testimonials](public/screenshots/Tesimonial.jpeg) |
-
-📁 Folder Structure
-This project follows a clear, organized structure for maintainability and ease of navigation:
-
-```plaintext
+<pre>
 .
 ├── .next                 # Next.js build files
 ├── app                   # Main app files
@@ -77,47 +118,43 @@ This project follows a clear, organized structure for maintainability and ease o
 ├── next.config.mjs       # Next.js configuration file
 ├── tsconfig.json         # TypeScript configuration
 └── package.json          # Dependencies and scripts
-```
-🛠 Setup & Installation
+</pre>
 
-To get this project running locally, follow these steps:
+<h2>🛠 Setup & Installation</h2>
+<p>To get this project running locally, follow these steps:</p>
 
-•	Installation
+<h3>Installation</h3>
 
-1. Clone the repository:
-```
-git clone https://github.com/Anuj-er/Portfolio.git
-```
+<ol>
+  <li>Clone the repository:
+    <pre><code>git clone https://github.com/Anuj-er/Portfolio.git</code></pre>
+  </li>
+  <li>Navigate to the project directory:
+    <pre><code>cd Portfolio</code></pre>
+  </li>
+  <li>Install dependencies:
+    <pre><code>npm install</code></pre>
+  </li>
+  <li>Start the development server:
+    <pre><code>npm run dev</code></pre>
+  </li>
+</ol>
 
-2. Navigate to the project directory:
-```
-cd Portfolio
-```
+<h2>❓ FAQs</h2>
+<details>
+  <summary><strong>Can I use this project as a template for my portfolio?</strong></summary>
+  <p>Absolutely! Just make sure to give credit by linking back to this repo or leaving a ⭐️.</p>
+</details>
 
-3.	Install dependencies:
-```
-npm install
-```
+<details>
+  <summary><strong>What should I do if I encounter issues while setting up?</strong></summary>
+  <p>Open an issue in the GitHub repo, and I'll be glad to help.</p>
+</details>
 
-4.	Start the development server:
-```
-npm run dev
-```
+<details>
+  <summary><strong>How do I add my own projects to the portfolio?</strong></summary>
+  <p>Modify the AllProjects.tsx component by adding your project details (title, description, images).</p>
+</details>
 
-
-❓ FAQs
-```
-Can I use this project as a template for my portfolio?
-•	Absolutely! Just make sure to give credit by linking back to this repo or leaving a ⭐️.
-
-What should I do if I encounter issues while setting up?
-•	Open an issue in the GitHub repo, and I’ll be glad to help.
-
-How do I add my own projects to the portfolio?
-
-•	Modify the AllProjects.tsx component by adding your project details (title, description, images).
-```
-
-❤️ Show Your Support
-
-If you enjoyed exploring my portfolio or found inspiration in this project, please consider leaving a star on GitHub. It helps others discover this work and encourages me to keep improving and creating!
+<h2>❤️ Show Your Support</h2>
+<p>If you enjoyed exploring my portfolio or found inspiration in this project, please consider leaving a star on GitHub. It helps others discover this work and encourages me to keep improving and creating!</p>
