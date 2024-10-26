@@ -41,17 +41,17 @@ const Gallery = () => {
     },
     {
       src: "./Gallery/4.jpg",
-      alt: "Workspace",
+      alt: "image",
       className: "col-span-1 sm:row-span-1"
     },
     {
       src: "./Gallery/5.jpg",
-      alt: "Underwater",
+      alt: "image",
       className: "col-span-1 sm:row-span-2"
     },
     {
       src: "./Gallery/6.jpg",
-      alt: "Night lights",
+      alt: "image",
       className: "col-span-1 sm:row-span-1"
     }
   ];

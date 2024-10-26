@@ -47,6 +47,19 @@ const testimonials: Testimonial[] = [
     body: "I would love the opportunity to work with you",
     img: "/Testamonials/Pahwa.jpeg"
   },
+  {
+    name: "Miko Matsumura",
+    role: "Yale Neuroscience, Managing Partner gCC Venture Capital",
+    body: "keep up the good work ser",
+    img: "/Testamonials/miko.jpeg"
+  },
+  {
+    name: "Deepshika Gulati",
+    role: "CSE student",
+    body: "Well deserved! Keep up the good work.",
+    img: "/Testamonials/Deepshika.jpeg"
+  },
+
 ];
 
 interface TestimonialCardProps extends Testimonial {}

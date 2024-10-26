@@ -17,41 +17,49 @@ interface Project {
 }
 
 export default function AllProjects() {
-    const projects: Project[] = [
-        {
-          title: "ProTrack Dashboard",
-          description: "A modern project management dashboard with real-time analytics and team collaboration features.",
-          image: "/previous-work/Protrack.png",
-          githubLink: "https://github.com/Jiya-Damara/ProTrack2",
-          liveLink: "https://jiya-damara.github.io/ProTrack2/",
-          tags: ["HTML5", "CSS3", "JavaScript", "Bootstrap" , "Dashboard"]
-        },
-        {
-          title: "Ucampus-InfoSite",
-          description: "Ucampus-InfoSite is a website for showcasing the Ucampus app, designed to enhance the  experience for students.",
-          image: "/previous-work/og_image.png",
-          githubLink: "https://github.com/Anuj-er/Ucampus-InfoSite",
-          liveLink: "https://ucampus.vercel.app",
-          tags: [
-            "html5","reactjs" ,"food-app" ,"app-information"]
-        },
-        {
-          title: "By The Cook",
-          description: "A food recipe website with a collection of delicious recipes from around the world.",
-          image: "/previous-work/Cafe.png",
-          githubLink: "https://github.com/Anuj-er/Cafe-Website/",
-          liveLink: "https://anuj-er.github.io/Cafe-Website/",
-          tags: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Cafe"]
-        },
-        {
-          title: "Library-Management-System-Cpp",
-          description: "A console-based Library Management System developed in C++.",
-          image: "/previous-work/interface-c++.png",
-          githubLink: "https://github.com/yourusername/homepage-builder",
-          liveLink: "https://homepage-builder.demo",
-          tags: ["C++", "OOP", "CLI"]
-        }
-    ];
+  const projects: Project[] = [
+    {
+      title: "Folio-Anuj",
+      description: "This project is a showcase of my skills, projects, and accomplishments as a developer. It’s a Next.js-based site 🧑‍💻 designed to highlight my journey, experiences, and tech stack while integrating features like an interactive gallery 📸, recent updates section 📰, and real-time feedback display 📝.",
+      image: "/Projects/portfolio.png",
+      githubLink: "https://github.com/Anuj-er/Folio-Anuj",
+      liveLink: "https://siwach.vercel.app",
+      tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Portfolio"]
+    },
+    {
+      title: "ProTrack Dashboard",
+      description: "A modern project management dashboard with real-time analytics and team collaboration features.",
+      image: "/previous-work/Protrack.png",
+      githubLink: "https://github.com/Jiya-Damara/ProTrack2",
+      liveLink: "https://jiya-damara.github.io/ProTrack2/",
+      tags: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Dashboard"]
+    },
+    {
+      title: "Ucampus-InfoSite",
+      description: "Ucampus-InfoSite is a website for showcasing the Ucampus app, designed to enhance the  experience for students.",
+      image: "/previous-work/og_image.png",
+      githubLink: "https://github.com/Anuj-er/Ucampus-InfoSite",
+      liveLink: "https://ucampus.vercel.app",
+      tags: [
+        "html5", "reactjs", "food-app", "app-information"]
+    },
+    {
+      title: "By The Cook",
+      description: "A food recipe website with a collection of delicious recipes from around the world.",
+      image: "/previous-work/Cafe.png",
+      githubLink: "https://github.com/Anuj-er/Cafe-Website/",
+      liveLink: "https://anuj-er.github.io/Cafe-Website/",
+      tags: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Cafe"]
+    },
+    {
+      title: "Library-Management-System-Cpp",
+      description: "A console-based Library Management System developed in C++.",
+      image: "/previous-work/interface-c++.png",
+      githubLink: "https://github.com/yourusername/homepage-builder",
+      liveLink: "https://homepage-builder.demo",
+      tags: ["C++", "OOP", "CLI"]
+    }
+  ];
 
   return (
     <section id="Projects" className="relative w-full py-10 sm:py-20">
@@ -65,7 +73,7 @@ export default function AllProjects() {
             A collection of my recent work and experiments
           </p>
         </div>
-        
+
         {/* Projects scroll container */}
         <div className="relative">
           {/* Projects wrapper */}
@@ -96,7 +104,7 @@ export default function AllProjects() {
                       bg-gradient-to-r from-[#60a5fa] to-[#a78bfa] bg-clip-text group-hover:text-transparent">
                       {project.title}
                     </h3>
-                    
+
                     <p className="text-sm sm:text-base text-white/70 mb-4 sm:mb-6 line-clamp-3 group-hover:text-white/90 transition-colors duration-300">
                       {project.description}
                     </p>
@@ -145,7 +153,7 @@ export default function AllProjects() {
               </div>
             ))}
           </div>
-          
+
           {/* Scroll fade indicators */}
           <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-16 md:w-20 bg-gradient-to-r from-black to-transparent pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-16 md:w-20 bg-gradient-to-l from-black to-transparent pointer-events-none" />
