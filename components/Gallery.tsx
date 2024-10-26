@@ -13,17 +13,19 @@ const PhotoCard = ({
   className?: string;
 }) => (
   <div className={cn(
-    "group relative overflow-hidden rounded-xl sm:rounded-2xl",
+    "group relative w-full h-full",
     "transition-all duration-300 ease-out hover:scale-[1.02]",
-    "cursor-pointer",
+    "cursor-pointer rounded-xl sm:rounded-2xl overflow-hidden",
     className
   )}>
-    <div className="absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-    <img 
-      src={src} 
-      alt={alt}
-      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-    />
+    <div className="aspect-[4/3] w-full h-full">
+      <div className="absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10" />
+      <img 
+        src={src} 
+        alt={alt}
+        className="w-full h-full object-cover"
+      />
+    </div>
   </div>
 );
 
@@ -32,27 +34,27 @@ const Gallery = () => {
     {
       src: "./Gallery/second.jpg",
       alt: "with Stephen Simon",
-      className: "col-span-1 sm:row-span-2"
+      className: "col-span-1 sm:col-span-1 lg:col-span-1 sm:row-span-2 aspect-[9/16]"
     },
     {
       src: "./Gallery/3.jpg",
       alt: "image",
-      className: "col-span-1 sm:row-span-1"
+      className: "col-span-1 aspect-[4/3]"
     },
     {
       src: "./Gallery/4.jpg",
       alt: "image",
-      className: "col-span-1 sm:row-span-1"
+      className: "col-span-1 aspect-[4/3]"
     },
     {
       src: "./Gallery/5.jpg",
       alt: "image",
-      className: "col-span-1 sm:row-span-2"
+      className: "col-span-1 sm:col-span-1 lg:col-span-1 sm:row-span-2 aspect-[4/3]"
     },
     {
       src: "./Gallery/6.jpg",
       alt: "image",
-      className: "col-span-1 sm:row-span-1"
+      className: "col-span-1 aspect-[4/3]"
     }
   ];
 
@@ -70,30 +72,24 @@ const Gallery = () => {
         </div>
 
         {/* Gallery grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 [&>*]:min-h-[200px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {photos.map((photo, index) => (
             <div
               key={index}
               className={cn(
-                "relative overflow-hidden",
-                // Responsive height classes
-                index === 0 || index === 3 ? "h-[300px] sm:h-[400px] md:h-[500px]" : "h-[200px] sm:h-[250px] md:h-[300px]",
+                "relative w-full",
                 photo.className
               )}
             >
               <PhotoCard
                 src={photo.src}
                 alt={photo.alt}
-                className="absolute inset-0"
               />
             </div>
           ))}
         </div>
-
-        {/* Gradient overlays - visible only on larger screens */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-16 md:w-1/4 bg-gradient-to-r from-black opacity-0 lg:opacity-100" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-16 md:w-1/4 bg-gradient-to-l from-black opacity-0 lg:opacity-100" />
       </div>
+
     </section>
   );
 };
