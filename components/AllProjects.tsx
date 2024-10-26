@@ -29,7 +29,7 @@ export default function AllProjects() {
     {
       title: "ProTrack Dashboard",
       description: "A modern project management dashboard with real-time analytics and team collaboration features.",
-      image: "/previous-work/Protrack.png",
+      image: "/Projects/Protrack.png",
       githubLink: "https://github.com/Jiya-Damara/ProTrack2",
       liveLink: "https://jiya-damara.github.io/ProTrack2/",
       tags: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Dashboard"]
@@ -37,7 +37,7 @@ export default function AllProjects() {
     {
       title: "Ucampus-InfoSite",
       description: "Ucampus-InfoSite is a website for showcasing the Ucampus app, designed to enhance the  experience for students.",
-      image: "/previous-work/og_image.png",
+      image: "/Projects/ucampus.png",
       githubLink: "https://github.com/Anuj-er/Ucampus-InfoSite",
       liveLink: "https://ucampus.vercel.app",
       tags: [
@@ -46,7 +46,7 @@ export default function AllProjects() {
     {
       title: "By The Cook",
       description: "A food recipe website with a collection of delicious recipes from around the world.",
-      image: "/previous-work/Cafe.png",
+      image: "/Projects/bythecook.png",
       githubLink: "https://github.com/Anuj-er/Cafe-Website/",
       liveLink: "https://anuj-er.github.io/Cafe-Website/",
       tags: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Cafe"]
@@ -54,7 +54,7 @@ export default function AllProjects() {
     {
       title: "Library-Management-System-Cpp",
       description: "A console-based Library Management System developed in C++.",
-      image: "/previous-work/interface-c++.png",
+      image: "/Projects/interface-c++.png",
       githubLink: "https://github.com/yourusername/homepage-builder",
       liveLink: "https://homepage-builder.demo",
       tags: ["C++", "OOP", "CLI"]
