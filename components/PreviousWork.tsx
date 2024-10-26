@@ -26,7 +26,7 @@ export default function PreviousWork() {
       ),
     },
     {
-      title: 'HackIndia Hackathon Experience! 🌟',
+      title: 'HackIndia Hackathon Experience!',
       content: (
         <div>
           <p className="mb-8 text-xs font-normal text-neutral-200 md:text-sm">

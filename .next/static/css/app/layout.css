@@ -1200,6 +1200,9 @@ video {
 .min-h-screen {
   min-height: 100vh;
 }
+.min-h-\[200px\] {
+  min-height: 200px;
+}
 .w-1\/4 {
   width: 25%;
 }
@@ -1983,6 +1986,10 @@ video {
 }
 .text-white\/90 {
   color: rgb(255 255 255 / 0.9);
+}
+.text-gray-600 {
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
 }
 .no-underline {
   text-decoration-line: none;
@@ -2880,6 +2887,11 @@ video {
     font-size: 1.25rem;
     line-height: 1.75rem;
   }
+
+  .md\:text-8xl {
+    font-size: 6rem;
+    line-height: 1;
+  }
 }
 @media (min-width: 1024px) {
 
@@ -3035,6 +3047,11 @@ video {
 
   .xl\:text-6xl {
     font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  .xl\:text-8xl {
+    font-size: 6rem;
     line-height: 1;
   }
 }

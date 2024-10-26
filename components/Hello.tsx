@@ -61,7 +61,7 @@ const AnimatedGreetings: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
-              className="text-8xl"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
             >
               {greetings[currentIndex]?.text || ''}
             </motion.div>
