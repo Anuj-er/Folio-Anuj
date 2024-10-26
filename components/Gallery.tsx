@@ -35,7 +35,8 @@ const Gallery = () => {
     //   className: "col-span-1 row-span-1"
     // },
     {
-      src: "./Gallery/2.jpg",
+      // Correct Image Name
+      src: "./Gallery/second.jpg",
       alt: "with Stephen Simon",
       className: "col-span-1 row-span-2"
     },

@@ -45,7 +45,8 @@ const testimonials: Testimonial[] = [
     name: "Garvit Pahwa",
     role: "CSE student",
     body: "I would love the opportunity to work with you",
-    img: "/Testamonials/garvit.jpeg"
+    // Changed the File Name
+    img: "/Testamonials/Pahwa.jpeg"
   },
 ];
 

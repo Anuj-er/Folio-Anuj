@@ -89,7 +89,8 @@ const About = () => {
             className="relative aspect-square overflow-hidden rounded-2xl border border-[#292929]"
           >
             <Image
-              src="/anuj.png"
+            // Correct the File Name
+              src="/Anuj.png"
               alt="Anuj Kumar"
               fill
               className="object-cover transition-transform duration-500 hover:scale-105"
