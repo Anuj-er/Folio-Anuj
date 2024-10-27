@@ -1,1 +1,1 @@
-self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/Users/anujsiwach/Desktop/Folio-Anuj/app/layout\":[\"static/media/f5005305030a3d81-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"
+self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/Users/anujsiwach/Downloads/Folio-Anuj/app/layout\":[\"static/media/f5005305030a3d81-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"

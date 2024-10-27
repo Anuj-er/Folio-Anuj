@@ -23,6 +23,9 @@ const Navbar: React.FC = () => {
             <Item href={'/#gallery'}>
               <span className="text-sm sm:text-base">Gallery</span>
             </Item>
+            <Item href={'/#contact'}>
+              <span className="text-sm sm:text-base">Contact</span>
+            </Item>
           </div>
         </div>
       </div>
