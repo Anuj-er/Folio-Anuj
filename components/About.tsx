@@ -17,7 +17,7 @@ const About = () => {
   return (
     <section id="about" className="relative min-h-screen w-full py-8 sm:py-12 md:py-16 px-4">
       <div className="mx-auto max-w-6xl">
-        <motion.div 
+        <motion.div
           className="grid gap-4 sm:gap-6 md:gap-8 grid-cols-1 md:grid-cols-[2fr,1fr]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -43,12 +43,12 @@ const About = () => {
                 {/* Description Section */}
                 <div className="space-y-3 sm:space-y-4 text-gray-300">
                   <motion.p {...fadeInUp} className="text-sm sm:text-base leading-relaxed">
-                    Based in Chandigarh, India, I'm a second-year Computer Science Engineering student at Chitkara University, 
+                    Based in Chandigarh, India, I'm a second-year Computer Science Engineering student at Chitkara University,
                     with a deep passion for learning and solving real-world problems through technology.
                   </motion.p>
-                  
+
                   <motion.p {...fadeInUp} className="text-sm sm:text-base leading-relaxed">
-                    From exploring diverse programming languages to working on cutting-edge projects, I am driven by my curiosity 
+                    From exploring diverse programming languages to working on cutting-edge projects, I am driven by my curiosity
                     and the desire to make an impact in the tech space.
                   </motion.p>
 
@@ -64,8 +64,8 @@ const About = () => {
                         <FaCode className="h-3 w-3 sm:h-4 sm:w-4 text-blue-400 flex-shrink-0" />
                         Building practical projects and solutions
                       </p>
-                      <Link 
-                        href="https://github.com/Anuj-er" 
+                      <Link
+                        href="https://github.com/Anuj-er"
                         target="_blank"
                         className="flex items-center gap-2 text-sm sm:text-base text-gray-300 hover:text-blue-400 transition-colors"
                       >
@@ -77,20 +77,22 @@ const About = () => {
                 </div>
 
                 {/* Resume Button */}
-                <motion.div {...fadeInUp} className="pt-2 sm:pt-4">
-                  <button 
-                    className="group flex items-center gap-2 rounded-lg border border-[#292929] bg-[#1a1a1a] px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base text-white transition-all hover:bg-[#292929]"
-                  >
-                    <IoDocumentTextOutline className="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:scale-110" />
-                    <span>View Resume</span>
-                  </button>
-                </motion.div>
+                {/* <motion.div {...fadeInUp} className="pt-2 sm:pt-4">
+                  <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                    <button
+                      className="group flex items-center gap-2 rounded-lg border border-[#292929] bg-[#1a1a1a] px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base text-white transition-all hover:bg-[#292929]"
+                    >
+                      <IoDocumentTextOutline className="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:scale-110" />
+                      <span>View Resume</span>
+                    </button>
+                  </a>
+                </motion.div> */}
               </motion.div>
             </div>
           </div>
 
           {/* Image Section */}
-          <motion.div 
+          <motion.div
             {...fadeInUp}
             className="relative aspect-square w-full max-w-[400px] mx-auto md:mx-0 overflow-hidden rounded-xl sm:rounded-2xl border border-[#292929]"
           >
