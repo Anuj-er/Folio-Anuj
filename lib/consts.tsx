@@ -16,6 +16,6 @@ export const HERO_LINKS = [
   },
   {
     icon: <IoDocumentTextOutline size={24} />,
-    src: '/resume/resume.pdf',
+    src: 'https://siwach.vercel.app/resume/resume.pdf',
   },
 ];
