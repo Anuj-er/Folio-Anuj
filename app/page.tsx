@@ -19,18 +19,17 @@ const lenisOptions = {
   smoothTouch: false,
   smooth: true,
 };
-
 export default function Home() {
   return (
     <ReactLenis root options={lenisOptions}>
       <AnimatedGreetings />
       <Hero />
       <About />
-      <TestimonialsSection />
       <SkillsSection />
       <AllProjects />
-      <PreviousWork /> 
+      <PreviousWork />
       <Gallery />
+      <TestimonialsSection />
       <ContactForm />
       <Goodbye />
     </ReactLenis>
