@@ -6,6 +6,30 @@ import Link from 'next/link';
 export default function PreviousWork() {
   const data = [
     {
+      title: 'TestPad Solution!',
+      content: (
+        <div>
+          <p className="mb-8 text-xs font-normal text-neutral-200 md:text-sm">
+            Back at it with a brand-new repo - this one's bigger, better, and Built with an incredible crew 📣💪
+          </p>
+          <p className="text-xs font-normal text-gray-300">
+            GitHub Repository: <Link href={'https://2ly.link/20s9O'} className="text-gray-300 no-underline" target="_blank" rel="noopener noreferrer">TestPad Solution</Link><br />
+            Profile link: <Link href={'https://github.com/Anuj-er'} className="text-gray-300 no-underline" target="_blank" rel="noopener noreferrer">Anuj's GitHub</Link>
+          </p>
+          <div className="grid grid-cols-1 gap-4 mt-4">
+            <div className="relative h-20 md:h-44 lg:h-[400px]">
+              <Image
+                src="/previous-work/TestPad.png"
+                alt="TestPad Solution Repository Overview"
+                fill
+                className="rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+              />
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
       title: "Creating Portfolio Website",
       content: (
         <div>

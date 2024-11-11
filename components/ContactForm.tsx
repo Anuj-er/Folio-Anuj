@@ -46,23 +46,23 @@ const ContactForm = () => {
     try {
       await emailjs.send(
         'service_9tapsij',
-        'template_icajano',
-        {
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          date: new Date().toLocaleString()
-        },
-        'otWehLKvXkO54rSNd'
-      );
-      await emailjs.send(
-        'service_9tapsij',
         'template_r207juj',
         {
           to_name: formData.name,
           message: formData.message,
           reply_to: formData.email,
           Date: new Date().toLocaleString()
+        },
+        'otWehLKvXkO54rSNd'
+      );
+      await emailjs.send(
+        'service_9tapsij',
+        'template_icajano',
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          date: new Date().toLocaleString()
         },
         'otWehLKvXkO54rSNd'
       );

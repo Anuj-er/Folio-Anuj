@@ -19,6 +19,14 @@ interface Project {
 export default function AllProjects() {
   const projects: Project[] = [
     {
+      title: "Testpad-Solutions",
+      description: "University Course Solutions - TestPad This repository contains comprehensive solutions for all courses provided by the university",
+      image: "/Projects/Testpad.png",
+      githubLink: "https://github.com/Anuj-er/Testpad-Solutions",
+      liveLink: "",
+      tags: [ "mysql", "html5", "frontend", "backend", "cpp"]
+    },
+    {
       title: "Folio-Anuj",
       description: "This project is a showcase of my skills, projects, and accomplishments as a developer. It’s a Next.js-based site 🧑‍💻 designed to highlight my journey, experiences, and tech stack while integrating features like an interactive gallery 📸, recent updates section 📰, and real-time feedback display 📝.",
       image: "/Projects/portfolio.png",
@@ -55,8 +63,8 @@ export default function AllProjects() {
       title: "Library-Management-System-Cpp",
       description: "A console-based Library Management System developed in C++.",
       image: "/Projects/interface-c++.png",
-      githubLink: "https://github.com/yourusername/homepage-builder",
-      liveLink: "https://homepage-builder.demo",
+      githubLink: "https://github.com/Anuj-er/Library-Management-System-Cpp",
+      liveLink: "",
       tags: ["C++", "OOP", "CLI"]
     }
   ];
@@ -134,16 +142,18 @@ export default function AllProjects() {
                         <FaGithub className="text-lg sm:text-xl" />
                         <span>Source Code</span>
                       </Link>
-                      <Link
-                        href={project.liveLink}
-                        target="_blank"
-                        className="flex items-center justify-center flex-1 gap-1.5 sm:gap-2 rounded-xl 
-                          bg-gradient-to-r from-[#60a5fa] to-[#a78bfa] py-2.5 sm:py-3 text-sm sm:text-base text-white
-                          transition-all duration-300 hover:opacity-90 hover:translate-y-[-2px]"
-                      >
-                        <FaExternalLinkAlt className="text-base sm:text-lg" />
-                        <span>Live Preview</span>
-                      </Link>
+                      {project.liveLink && (
+                        <Link
+                          href={project.liveLink}
+                          target="_blank"
+                          className="flex items-center justify-center flex-1 gap-1.5 sm:gap-2 rounded-xl 
+                            bg-gradient-to-r from-[#60a5fa] to-[#a78bfa] py-2.5 sm:py-3 text-sm sm:text-base text-white
+                            transition-all duration-300 hover:opacity-90 hover:translate-y-[-2px]"
+                        >
+                          <FaExternalLinkAlt className="text-base sm:text-lg" />
+                          <span>Live Preview</span>
+                        </Link>
+                      )}
                     </div>
                   </div>
 
