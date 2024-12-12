@@ -19,12 +19,28 @@ interface Project {
 export default function AllProjects() {
   const projects: Project[] = [
     {
-      title: "Testpad-Solutions",
+      title: "Digital-Clock-App",
+      description: "Eclipse Clock is a sleek, customizable digital clock app built with React and Tailwind CSS. Featuring a responsive design and cross-browser compatibility, it’s optimized for mobile and desktop. The app includes social media meta tags for seamless sharing and visibility.",
+      image: "/Projects/digitalclock.png",
+      githubLink: "https://github.com/Anuj-er/Digital-Clock-App/",
+      liveLink: "https://eclipse-clock.vercel.app/",
+      tags: ["reactjs", "clock", "weather-api", "tailwind-css"]
+    },
+    {
+      title: "Simple-Calculator-App",
+      description: "QuickCalc - A fast and responsive calculator app with a clean, modern interface, built using React and Tailwind CSS. Ideal for quick calculations and easily customizable for personal use.",
+      image: "/Projects/quickCalc.png",
+      githubLink: "https://github.com/Anuj-er/Simple-Calculator-App/",
+      liveLink: "https://quickcalculator.vercel.app/",
+      tags: ["calculator", "reactjs", "tailwindcss", "quickcalc"]
+    },
+    {
+      title: "Testpad-Solutions", 
       description: "University Course Solutions - TestPad This repository contains comprehensive solutions for all courses provided by the university",
       image: "/Projects/Testpad.png",
       githubLink: "https://github.com/Anuj-er/Testpad-Solutions",
       liveLink: "",
-      tags: [ "mysql", "html5", "frontend", "backend", "cpp"]
+      tags: [ "mysql", "html5", "frontend", "backend", "cpp"],
     },
     {
       title: "Folio-Anuj",
