@@ -13,6 +13,7 @@
     "@emailjs/browser": "^4.4.1",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-slot": "^1.1.0",
+    "@react-three/drei": "^9.121.5",
     "@splinetool/react-spline": "^4.0.0",
     "@studio-freight/react-lenis": "^0.0.47",
     "@vercel/analytics": "^1.3.1",
@@ -29,15 +30,19 @@
     "react-dom": "^18",
     "react-icon-cloud": "^4.1.4",
     "react-icons": "^5.2.1",
+    "react-lottie": "^1.2.10",
     "react-spring": "^9.7.4",
-    "tailwind-merge": "^2.5.4"
+    "tailwind-merge": "^2.5.4",
+    "three-globe": "^2.41.12"
   },
   "devDependencies": {
     "@shadcn/ui": "^0.0.4",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-lottie": "^1.2.10",
     "@types/tailwindcss": "^3.0.11",
+    "@types/three": "^0.173.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^8",
     "eslint-config-next": "14.2.4",

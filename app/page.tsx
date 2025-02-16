@@ -8,6 +8,7 @@ import VisualHighlights from '@/components/Gallery';
 import SkillsSection from '@/components/SkillsSection';
 import AllProjects from '@/components/AllProjects';
 import PreviousWork from '@/components/PreviousWork';
+import Approach from "@/components/Approach";
 import ContactForm from '@/components/ContactForm';
 import Goodbye from '@/components/Goodbye';
 import { ReactLenis } from '@studio-freight/react-lenis';
@@ -26,6 +27,7 @@ export default function Home() {
       <Hero />
       <About />
       <SkillsSection />
+      <Approach />
       <AllProjects />
       <PreviousWork />
       <Gallery />
@@ -34,4 +36,4 @@ export default function Home() {
       <Goodbye />
     </ReactLenis>
   );
-}
+}``
