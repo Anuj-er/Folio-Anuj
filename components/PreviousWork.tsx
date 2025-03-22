@@ -6,6 +6,46 @@ import Link from 'next/link';
 export default function PreviousWork() {
   const data = [
     {
+      title: 'FusionFest Hackathon',
+      content: (
+        <div>
+          <p className="mb-8 text-xs font-normal text-neutral-200 md:text-sm">
+          Last month, I had the privilege of participating in the 36-hour Web3 & MERN 'Fusion Fest' hackathon organized by the Design Thinking Club, in collaboration with HackwithIndia, Unstop.
+          </p>
+          <div className="grid grid-cols-1 gap-4 mt-4">
+            <div className="relative h-20 md:h-44 lg:h-[400px]">
+              <Image
+                src="/previous-work/fusionFest.jpeg"
+                alt="FusionFest Hackathon"
+                fill
+                className="rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+              />
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: 'Somnium Victory',
+      content: (
+        <div>
+          <p className="mb-8 text-xs font-normal text-neutral-200 md:text-sm">
+          I am thrilled to share that our team, "404 Coders", secured 1st place at the 𝘚𝘖𝘔𝘕𝘐𝘜𝘔 hackathon.
+          </p>
+          <div className="grid grid-cols-1 gap-4 mt-4">
+            <div className="relative h-20 md:h-44 lg:h-[400px]">
+              <Image
+                src="/previous-work/Somnium.jpeg"
+                alt="Somnium Victory"
+                fill
+                className="rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+              />
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
       title: 'TestPad Solution!',
       content: (
         <div>
