@@ -15,7 +15,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="relative min-h-screen w-full py-8 sm:py-12 md:py-16 px-4">
+    <section id="about" className="relative min-h-screen w-full py-4 sm:py-6 md:py-8 px-4">
       <div className="mx-auto max-w-6xl">
         <motion.div
           className="grid gap-4 sm:gap-6 md:gap-8 grid-cols-1 md:grid-cols-[2fr,1fr]"
@@ -94,7 +94,7 @@ const About = () => {
           {/* Image Section */}
           <motion.div
             {...fadeInUp}
-            className="relative aspect-square w-full max-w-[400px] mx-auto md:mx-0 overflow-hidden rounded-xl sm:rounded-2xl border border-[#292929]"
+            className="relative h-full w-full max-w-[400px] mx-auto md:mx-0 overflow-hidden rounded-xl sm:rounded-2xl border border-[#292929]"
           >
             <Image
               src="/Anuj.png"

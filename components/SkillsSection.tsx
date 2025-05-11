@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { memo } from 'react';
+import { motion } from 'framer-motion';
 
 const skillIcons = {
   frontend: () => (
@@ -35,29 +36,119 @@ const skillIcons = {
   )
 };
 
+// Memoize the skill icons to prevent unnecessary re-renders
+const SkillIcon = memo(({ Icon }: { Icon: React.FC }) => (
+  <motion.div
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.95 }}
+    className="text-white/70 hover:text-white transition-colors"
+  >
+    <Icon />
+  </motion.div>
+));
+
+SkillIcon.displayName = 'SkillIcon';
+
+// Memoize the stat card component
+const StatCard = memo(({ stat }: { stat: { label: string; value: string; icon: string } }) => (
+  <motion.div
+    whileHover={{ scale: 1.05 }}
+    className="text-center p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300"
+  >
+    <div className="text-2xl mb-2">{stat.icon}</div>
+    <div className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+      {stat.value}
+    </div>
+    <div className="text-xs sm:text-sm text-white/70 mt-1">{stat.label}</div>
+  </motion.div>
+));
+
+StatCard.displayName = 'StatCard';
+
+// Memoize the skill category card
+const SkillCategoryCard = memo(({ category, index }: { category: any; index: number }) => (
+  <motion.div
+    key={category.title}
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay: index * 0.1 }}
+    whileHover={{ scale: 1.02 }}
+    className="p-4 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300"
+  >
+    <div className="flex items-center gap-2 mb-2">
+      <h3 className="text-lg sm:text-xl font-semibold text-white">{category.title}</h3>
+      {category.learning && (
+        <span className="px-2 py-0.5 rounded-full text-xs bg-blue-500/20 text-blue-300 border border-blue-500/30">
+          Learning
+        </span>
+      )}
+    </div>
+    <p className="text-xs sm:text-sm text-white/70 mb-4">{category.subtitle}</p>
+    <div className="space-y-4">
+      <div className="flex flex-wrap gap-2">
+        {category.skills.map((skill: string) => (
+          <motion.span
+            key={skill}
+            whileHover={{ scale: 1.05 }}
+            className="px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm bg-white/10 text-white/70 hover:bg-white/20 hover:text-white transition-all"
+          >
+            {skill}
+          </motion.span>
+        ))}
+      </div>
+      {category.subSkills && (
+        <div className="flex flex-wrap gap-2">
+          {category.subSkills.map((skill: string) => (
+            <motion.span
+              key={skill}
+              whileHover={{ scale: 1.05 }}
+              className="px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm bg-purple-500/20 text-purple-300 border border-purple-500/30"
+            >
+              {skill}
+            </motion.span>
+          ))}
+        </div>
+      )}
+      <div className="relative h-1.5 w-full rounded-full bg-white/10 overflow-hidden">
+        <motion.div
+          initial={{ width: 0 }}
+          animate={{ width: `${category.progress}%` }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className={`absolute inset-y-0 left-0 bg-gradient-to-r ${category.color} rounded-full`}
+        />
+      </div>
+    </div>
+  </motion.div>
+));
+
+SkillCategoryCard.displayName = 'SkillCategoryCard';
+
 const SkillsSection = () => {
   const skillCategories = [
     {
       title: "Frontend Development",
       subtitle: "Currently enhancing my skills in modern web technologies",
       skills: ["React", "HTML5", "TypeScript", "TailwindCSS", "CSS3"],
-      progress: 65,
-      learning: true
+      progress: 75,
+      learning: true,
+      color: "from-blue-400 to-cyan-400"
     },
     {
       title: "Backend Development",
       subtitle: "Learning server-side development fundamentals",
-      skills: ["Node.js", "MongoDB"],
-      progress: 55,
-      learning: true
+      skills: ["Node.js", "MongoDB", "Express.js", "REST APIs"],
+      progress: 65,
+      learning: true,
+      color: "from-purple-400 to-pink-400"
     },
     {
       title: "Programming Languages & Core Concepts",
       subtitle: "Building strong foundations in programming",
-      skills: ["C++", "Python"],
+      skills: ["C++", "Python", "JavaScript"],
       subSkills: ["Operating Systems", "Object-Oriented Programming", "Source Code Management"],
-      progress: 60,
-      learning: true
+      progress: 80,
+      learning: true,
+      color: "from-green-400 to-emerald-400"
     }
   ];
 
@@ -68,10 +159,13 @@ const SkillsSection = () => {
 
   return (
     <div id="journey" className="min-h-screen bg-black py-12 sm:py-20">
-      <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-20" />
-
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-20 relative">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12 sm:mb-20 relative"
+        >
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400">
               Learning Journey
@@ -82,90 +176,40 @@ const SkillsSection = () => {
           </p>
           
           <div className="flex justify-center gap-4 sm:gap-8 mt-6 sm:mt-8">
-            <div className="text-white/70 hover:text-white transition-colors">
-              <skillIcons.frontend />
-            </div>
-            <div className="text-white/70 hover:text-white transition-colors">
-              <skillIcons.backend />
-            </div>
-            <div className="text-white/70 hover:text-white transition-colors">
-              <skillIcons.programming />
-            </div>
-          </div>
-        </div>
-
-        {/* Stats moved to top */}
-        <div className="mb-8 sm:mb-12 p-4 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-            {[
-              { label: "Technologies Learning", value: "10+" },
-              { label: "Study Hours/Week", value: "30+" },
-              { label: "Projects Building", value: "5+" },
-              { label: "Learning Progress", value: "60%" }
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-                  {stat.value}
-                </div>
-                <div className="text-xs sm:text-sm text-white/70 mt-1">{stat.label}</div>
-              </div>
+            {Object.entries(skillIcons).map(([key, Icon]) => (
+              <SkillIcon key={key} Icon={Icon} />
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        {/* Skills categories in horizontal layout */}
+        {/* Stats with hover effects */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mb-8 sm:mb-12 p-4 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300"
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+            {[
+              { label: "Technologies Learning", value: "10+", icon: "🚀" },
+              { label: "Study Hours/Week", value: "30+", icon: "⏰" },
+              { label: "Projects Building", value: "11+", icon: "💻" },
+              { label: "Learning Progress", value: "60%", icon: "📈" }
+            ].map((stat) => (
+              <StatCard key={stat.label} stat={stat} />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Skills categories with enhanced animations */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-8 sm:mb-12">
-          {skillCategories.map((category) => (
-            <div 
-              key={category.title}
-              className="p-4 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all"
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <h3 className="text-lg sm:text-xl font-semibold text-white">{category.title}</h3>
-                {category.learning && (
-                  <span className="px-2 py-0.5 rounded-full text-xs bg-blue-500/20 text-blue-300 border border-blue-500/30">
-                    Learning
-                  </span>
-                )}
-              </div>
-              <p className="text-xs sm:text-sm text-white/70 mb-4">{category.subtitle}</p>
-              <div className="space-y-4">
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm bg-white/10 text-white/70 hover:bg-white/20 hover:text-white transition-all"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-                {category.subSkills && (
-                  <div className="flex flex-wrap gap-2">
-                    {category.subSkills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm bg-purple-500/20 text-purple-300 border border-purple-500/30"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                )}
-                <div className="relative h-1.5 w-full rounded-full bg-white/10 overflow-hidden">
-                  <div
-                    className="absolute inset-y-0 left-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full transition-all duration-1000"
-                    style={{ width: `${category.progress}%` }}
-                  />
-                </div>
-              </div>
-            </div>
+          {skillCategories.map((category, index) => (
+            <SkillCategoryCard key={category.title} category={category} index={index} />
           ))}
         </div>
-   
       </div>
     </div>
   );
 };
 
-export default SkillsSection;
+export default memo(SkillsSection);

@@ -19,8 +19,32 @@ interface Project {
 export default function AllProjects() {
   const projects: Project[] = [
     {
+      title: "AutoStash Linux",
+      description: "A secure, GUI-based Linux backup system with encryption, incremental backups, GitHub integration, and real-time system monitoring.",
+      image: "/Projects/autostash.png",
+      githubLink: "https://github.com/Anuj-er/autostash-linux",
+      liveLink: "",
+      tags: ["linux", "python3", "tkinter-gui"]
+    },
+    {
+      title: "Pharmacy Management System",
+      description: "A comprehensive Java application for pharmacy management with inventory control, customer management, and sales processing using custom data structures.",
+      image: "/Projects/pharmacy.png",
+      githubLink: "https://github.com/Anuj-er/PharmacyManagementSystem-Java-DSA",
+      liveLink: "",
+      tags: ["java", "linkedlist", "mergesort-algorithm", "dsa"]
+    },
+    {
+      title: "RaitaLeaks",
+      description: "A secure social media platform for information sharing with real-time notifications, user authentication, and media support.",
+      image: "/Projects/raitaleaks.png",
+      githubLink: "https://github.com/Anuj-er/RaitaLeaks",
+      liveLink: "https://raita-leaks.vercel.app",
+      tags: ["react", "nodejs", "mongodb", "websockets", "cloudinary", "jwt-authentication", "mern-stack"]
+    },
+    {
       title: "Digital-Clock-App",
-      description: "Eclipse Clock is a sleek, customizable digital clock app built with React and Tailwind CSS. Featuring a responsive design and cross-browser compatibility, it’s optimized for mobile and desktop. The app includes social media meta tags for seamless sharing and visibility.",
+      description: "A sleek, customizable digital clock app with responsive design and cross-browser compatibility.",
       image: "/Projects/digitalclock.png",
       githubLink: "https://github.com/Anuj-er/Digital-Clock-App/",
       liveLink: "https://eclipse-clock.vercel.app/",
@@ -28,7 +52,7 @@ export default function AllProjects() {
     },
     {
       title: "Simple-Calculator-App",
-      description: "QuickCalc - A fast and responsive calculator app with a clean, modern interface, built using React and Tailwind CSS. Ideal for quick calculations and easily customizable for personal use.",
+      description: "A fast and responsive calculator app with a clean, modern interface built using React and Tailwind CSS.",
       image: "/Projects/quickCalc.png",
       githubLink: "https://github.com/Anuj-er/Simple-Calculator-App/",
       liveLink: "https://quickcalculator.vercel.app/",
@@ -36,7 +60,7 @@ export default function AllProjects() {
     },
     {
       title: "Testpad-Solutions", 
-      description: "University Course Solutions - TestPad This repository contains comprehensive solutions for all courses provided by the university",
+      description: "A comprehensive repository containing solutions for university courses and assignments.",
       image: "/Projects/Testpad.png",
       githubLink: "https://github.com/Anuj-er/Testpad-Solutions",
       liveLink: "",
@@ -44,7 +68,7 @@ export default function AllProjects() {
     },
     {
       title: "Folio-Anuj",
-      description: "This project is a showcase of my skills, projects, and accomplishments as a developer. It’s a Next.js-based site 🧑‍💻 designed to highlight my journey, experiences, and tech stack while integrating features like an interactive gallery 📸, recent updates section 📰, and real-time feedback display 📝.",
+      description: "A Next.js-based portfolio showcasing my skills, projects, and experiences with interactive features.",
       image: "/Projects/portfolio.png",
       githubLink: "https://github.com/Anuj-er/Folio-Anuj",
       liveLink: "https://siwach.vercel.app",
@@ -60,16 +84,15 @@ export default function AllProjects() {
     },
     {
       title: "Ucampus-InfoSite",
-      description: "Ucampus-InfoSite is a website for showcasing the Ucampus app, designed to enhance the  experience for students.",
+      description: "A website showcasing the Ucampus app designed to enhance the student experience.",
       image: "/Projects/ucampus.png",
       githubLink: "https://github.com/Anuj-er/Ucampus-InfoSite",
       liveLink: "https://ucampus.vercel.app",
-      tags: [
-        "html5", "reactjs", "food-app", "app-information"]
+      tags: ["html5", "reactjs", "food-app", "app-information"]
     },
     {
       title: "By The Cook",
-      description: "A food recipe website with a collection of delicious recipes from around the world.",
+      description: "A food recipe website featuring delicious recipes from around the world.",
       image: "/Projects/bythecook.png",
       githubLink: "https://github.com/Anuj-er/Cafe-Website/",
       liveLink: "https://anuj-er.github.io/Cafe-Website/",
@@ -108,22 +131,22 @@ export default function AllProjects() {
                 className="group relative flex-none w-[280px] sm:w-[320px] md:w-[360px] lg:w-[400px]"
               >
                 {/* Card container */}
-                <div className="relative h-[500px] sm:h-[550px] md:h-[600px] rounded-2xl sm:rounded-3xl border border-white/10 overflow-hidden backdrop-blur-sm bg-white/5">
+                <div className="relative h-[550px] sm:h-[600px] md:h-[650px] rounded-2xl sm:rounded-3xl border border-white/10 overflow-hidden backdrop-blur-sm bg-white/5">
                   {/* Image section */}
-                  <div className="relative h-[180px] sm:h-[200px] md:h-[250px]">
+                  <div className="relative h-[200px] sm:h-[220px] md:h-[250px]">
                     <Image
                       src={project.image}
                       alt={project.title}
                       width={400}
                       height={250}
-                      className="object-cover w-full h-full"
+                      className="object-contain w-full h-full bg-black/20"
                     />
                     {/* Soft gradient overlay for image */}
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0e0e0e]/80" />
                   </div>
 
                   {/* Content section */}
-                  <div className="relative p-4 sm:p-6 md:p-8 h-[320px] sm:h-[350px] flex flex-col">
+                  <div className="relative p-4 sm:p-6 md:p-8 h-[350px] sm:h-[380px] flex flex-col">
                     <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 transition-all duration-300
                       bg-gradient-to-r from-[#60a5fa] to-[#a78bfa] bg-clip-text group-hover:text-transparent">
                       {project.title}

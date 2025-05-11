@@ -6,6 +6,55 @@ import Link from 'next/link';
 export default function PreviousWork() {
   const data = [
     {
+      title: 'HackFest25',
+      content: (
+        <div>
+          <p className="mb-8 text-xs font-normal text-neutral-200 md:text-sm">
+            Our team had the incredible opportunity to present our innovative idea to experienced mentors. The feedback and insights we received were invaluable, helping us refine our concept and approach.
+            <br /><br />
+            Can't wait to implement the suggestions and take our project to the next level! 💡
+          </p>
+          <div className="grid grid-cols-1 gap-4 mt-4">
+            <div className="relative h-20 md:h-44 lg:h-[400px]">
+              <Image
+                src="/previous-work/hackfest25.jpg"
+                alt="HackFest25 Experience"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority
+                loading="eager"
+                className="rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+              />
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: 'HackIndia\'25 Mentoring Experience',
+      content: (
+        <div>
+          <p className="mb-8 text-xs font-normal text-neutral-200 md:text-sm">
+            Mentoring at HackIndia'25, Spark 7 was an incredible journey! 🔥
+            <br /><br />
+            From being '404 Name Not Found' (Anushi, Akanksha, Parnika, and I) last year to returning as mentors alongside our seniors - Teena Goyal, TANYA BATRA, Swastik Verma and Khushdeep Sharma. The experience of sharing insights and receiving a 𝗟𝗲𝘁𝘁𝗲𝗿 𝗼𝗳 𝗔𝗽𝗽𝗿𝗲𝗰𝗶𝗮𝘁𝗶𝗼𝗻 made it all worthwhile.
+            <br /><br />
+            What started as a learning experience last year transformed into an opportunity to give back. From debugging code to guiding teams, every moment was a chance to share knowledge and grow together. Huge thanks to Stephen SIMON and Evolve AI for making Spark 7 a memorable event. From learning to mentoring, it's been a truly fulfilling experience! 🙌
+          </p>
+          <div className="grid grid-cols-1 gap-4 mt-4">
+            <div className="relative h-20 md:h-44 lg:h-[400px]">
+              <Image
+                src="/previous-work/hack_gallery.png"
+                alt="HackIndia'25 Mentoring Experience"
+                fill
+                className="rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+              />
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
       title: 'FusionFest Hackathon',
       content: (
         <div>
@@ -74,7 +123,7 @@ export default function PreviousWork() {
       content: (
         <div>
           <p className="mb-8 text-xs font-normal text-neutral-200 md:text-sm">
-            This project is a showcase of my skills, projects, and accomplishments as a developer. It’s a Next.js-based site 🧑‍💻 designed to highlight my journey, experiences, and tech stack while integrating features like an interactive gallery 📸, recent updates section 📰.
+            This project is a showcase of my skills, projects, and accomplishments as a developer. It's a Next.js-based site 🧑‍💻 designed to highlight my journey, experiences, and tech stack while integrating features like an interactive gallery 📸, recent updates section 📰.
           </p>
           <div className="grid grid-cols-1 gap-4">
             <div className="relative h-20 md:h-44 lg:h-[400px]">
