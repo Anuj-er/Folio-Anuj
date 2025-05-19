@@ -242,9 +242,7 @@ const config = {
     require("tailwindcss-animate"),
     addVariablesForColors,
     function ({ addBase, addUtilities }: PluginAPI) {
-      addBase({
-        // Add any base styles here
-      });
+      addBase({});
 
       addUtilities({
         ".bg-grid": {

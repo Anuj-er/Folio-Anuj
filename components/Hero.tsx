@@ -101,11 +101,20 @@ const Hero: React.FC = () => {
   const [scale, setScale] = useState(1);
 
   useEffect(() => {
+    let ticking = false;
+    let lastScrollY = window.scrollY;
+
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const maxScroll = window.innerHeight;
-      const newScale = 1 + (scrollPosition / maxScroll) * 0.2;
-      setScale(newScale > 1.2 ? 1.2 : newScale);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollPosition = window.scrollY;
+          const maxScroll = window.innerHeight;
+          const newScale = 1 + (scrollPosition / maxScroll) * 0.2;
+          setScale(newScale > 1.2 ? 1.2 : newScale);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });

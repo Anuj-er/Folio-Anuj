@@ -15,10 +15,16 @@ import { ReactLenis } from '@studio-freight/react-lenis';
 import Gallery from '@/components/Gallery';
 
 const lenisOptions = {
-  lerp: 0.05,
+  lerp: 0.1,
   duration: 1.2,
   smoothTouch: false,
   smooth: true,
+  wheelMultiplier: 0.7,
+  touchMultiplier: 1.5,
+  infinite: false,
+  orientation: 'vertical' as const,
+  gestureOrientation: 'vertical' as const,
+  normalizeWheel: true,
 };
 export default function Home() {
   return (
@@ -36,4 +42,4 @@ export default function Home() {
       <Goodbye />
     </ReactLenis>
   );
-}``
+}

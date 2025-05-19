@@ -75,18 +75,6 @@ const About = () => {
                     </div>
                   </motion.div>
                 </div>
-
-                {/* Resume Button */}
-                {/* <motion.div {...fadeInUp} className="pt-2 sm:pt-4">
-                  <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                    <button
-                      className="group flex items-center gap-2 rounded-lg border border-[#292929] bg-[#1a1a1a] px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base text-white transition-all hover:bg-[#292929]"
-                    >
-                      <IoDocumentTextOutline className="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:scale-110" />
-                      <span>View Resume</span>
-                    </button>
-                  </a>
-                </motion.div> */}
               </motion.div>
             </div>
           </div>
@@ -94,7 +82,7 @@ const About = () => {
           {/* Image Section */}
           <motion.div
             {...fadeInUp}
-            className="relative h-full w-full max-w-[400px] mx-auto md:mx-0 overflow-hidden rounded-xl sm:rounded-2xl border border-[#292929]"
+            className="relative h-[300px] sm:h-[400px] md:h-full w-full max-w-[400px] mx-auto md:mx-0 overflow-hidden rounded-xl sm:rounded-2xl border border-[#292929]"
           >
             <Image
               src="/Anuj.png"
