@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useSpring } from "motion/react";
+import { motion, useSpring, useMotionValue } from "framer-motion";
 import { FC, JSX, useEffect, useRef, useState } from "react";
 
 interface Position {
@@ -96,17 +96,24 @@ export function SmoothCursor({
   const previousAngle = useRef(0);
   const accumulatedRotation = useRef(0);
 
-  const cursorX = useSpring(0, springConfig);
-  const cursorY = useSpring(0, springConfig);
-  const rotation = useSpring(0, {
-    ...springConfig,
+  const cursorXValue = useMotionValue(0);
+  const cursorYValue = useMotionValue(0);
+  const rotationValue = useMotionValue(0);
+  const scaleValue = useMotionValue(1);
+  
+  const cursorX = useSpring(cursorXValue, springConfig);
+  const cursorY = useSpring(cursorYValue, springConfig);
+  const rotation = useSpring(rotationValue, {
     damping: 60,
     stiffness: 300,
+    mass: springConfig.mass,
+    restDelta: springConfig.restDelta,
   });
-  const scale = useSpring(1, {
-    ...springConfig,
-    stiffness: 500,
+  const scale = useSpring(scaleValue, {
     damping: 35,
+    stiffness: 500,
+    mass: springConfig.mass,
+    restDelta: springConfig.restDelta,
   });
 
   useEffect(() => {
@@ -133,8 +140,8 @@ export function SmoothCursor({
         Math.pow(velocity.current.x, 2) + Math.pow(velocity.current.y, 2),
       );
 
-      cursorX.set(currentPos.x);
-      cursorY.set(currentPos.y);
+      cursorXValue.set(currentPos.x);
+      cursorYValue.set(currentPos.y);
 
       if (speed > 0.1) {
         const currentAngle =
@@ -145,14 +152,14 @@ export function SmoothCursor({
         if (angleDiff > 180) angleDiff -= 360;
         if (angleDiff < -180) angleDiff += 360;
         accumulatedRotation.current += angleDiff;
-        rotation.set(accumulatedRotation.current);
+        rotationValue.set(accumulatedRotation.current);
         previousAngle.current = currentAngle;
 
-        scale.set(0.95);
+        scaleValue.set(0.95);
         setIsMoving(true);
 
         const timeout = setTimeout(() => {
-          scale.set(1);
+          scaleValue.set(1);
           setIsMoving(false);
         }, 150);
 
@@ -178,7 +185,7 @@ export function SmoothCursor({
       document.body.style.cursor = "auto";
       if (rafId) cancelAnimationFrame(rafId);
     };
-  }, [cursorX, cursorY, rotation, scale]);
+  }, [cursorXValue, cursorYValue, rotationValue, scaleValue]);
 
   return (
     <motion.div
