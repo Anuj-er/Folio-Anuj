@@ -18,50 +18,92 @@ interface Repository {
   language: string;
 }
 
+// Static repository data to avoid API calls during build
+const staticRepos: Repository[] = [
+  {
+    name: "Folio-Anuj",
+    description: "A Next.js-based portfolio showcasing my skills, projects, and experiences with interactive features.",
+    url: "https://github.com/Anuj-er/Folio-Anuj",
+    stars: 2,
+    forks: 0,
+    language: "TypeScript"
+  },
+  {
+    name: "cargo-tracker-webapp",
+    description: "A React application for cargo shipment tracking featuring interactive maps, comprehensive dashboard, and Docker support.",
+    url: "https://github.com/Anuj-er/cargo-tracker-webapp",
+    stars: 1,
+    forks: 0,
+    language: "JavaScript"
+  },
+  {
+    name: "autostash-linux",
+    description: "A secure, GUI-based Linux backup system with encryption, incremental backups, GitHub integration, and real-time system monitoring.",
+    url: "https://github.com/Anuj-er/autostash-linux",
+    stars: 1,
+    forks: 0,
+    language: "Python"
+  },
+  {
+    name: "RaitaLeaks",
+    description: "A secure social media platform for information sharing with real-time notifications, user authentication, and media support.",
+    url: "https://github.com/Anuj-er/RaitaLeaks",
+    stars: 1,
+    forks: 0,
+    language: "JavaScript"
+  },
+  {
+    name: "PharmacyManagementSystem-Java-DSA",
+    description: "A comprehensive Java application for pharmacy management with inventory control, customer management, and sales processing using custom data structures.",
+    url: "https://github.com/Anuj-er/PharmacyManagementSystem-Java-DSA",
+    stars: 0,
+    forks: 0,
+    language: "Java"
+  }
+];
+
 const GitHubActivity = () => {
   const [contributions, setContributions] = useState<Contribution[]>([]);
-  const [repos, setRepos] = useState<Repository[]>([]);
+  const [repos, setRepos] = useState<Repository[]>(staticRepos);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
   const [username] = useState('anuj-er'); // Your GitHub username
 
   useEffect(() => {
-    const fetchGitHubData = async () => {
-      setIsLoading(true);
+    // Only generate mock contributions on client-side
+    const mockContributions = generateMockContributions();
+    setContributions(mockContributions);
+    setIsLoading(false);
+    
+    // Optional: Try to fetch real data if we're on the client side
+    const fetchRealData = async () => {
       try {
-        // Fetch recent repositories
         const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=5`);
         
-        if (!reposResponse.ok) {
-          throw new Error('Failed to fetch GitHub repositories');
+        if (reposResponse.ok) {
+          const reposData = await reposResponse.json();
+          
+          const formattedRepos: Repository[] = reposData.map((repo: any) => ({
+            name: repo.name,
+            description: repo.description || 'No description available',
+            url: repo.html_url,
+            stars: repo.stargazers_count,
+            forks: repo.forks_count,
+            language: repo.language || 'Not specified'
+          }));
+          
+          setRepos(formattedRepos);
         }
-        
-        const reposData = await reposResponse.json();
-        
-        const formattedRepos: Repository[] = reposData.map((repo: any) => ({
-          name: repo.name,
-          description: repo.description || 'No description available',
-          url: repo.html_url,
-          stars: repo.stargazers_count,
-          forks: repo.forks_count,
-          language: repo.language || 'Not specified'
-        }));
-        
-        setRepos(formattedRepos);
-        
-        // For contributions, we'll use mock data as GitHub doesn't provide this directly via the public API
-        // In a production app, you might want to use a backend service to fetch this data
-        const mockContributions: Contribution[] = generateMockContributions();
-        setContributions(mockContributions);
       } catch (err) {
+        // Silently fail - we'll use the static data
         console.error('Error fetching GitHub data:', err);
-        setError('Failed to load GitHub activity. Please try again later.');
-      } finally {
-        setIsLoading(false);
       }
     };
     
-    fetchGitHubData();
+    // Only run in browser environment
+    if (typeof window !== 'undefined') {
+      fetchRealData();
+    }
   }, [username]);
 
   // Generate mock contribution data for visualization
