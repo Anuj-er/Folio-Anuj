@@ -1,6 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import { useEffect, useState } from 'react';
 import AnimatedGreetings from '@/components/Hello';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -29,7 +30,26 @@ const lenisOptions = {
   gestureOrientation: 'vertical' as const,
   normalizeWheel: true,
 };
+
+// This is a client-only page
 export default function Home() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="relative w-16 h-16">
+          <div className="absolute top-0 left-0 w-full h-full border-4 border-purple-300/20 rounded-full animate-ping"></div>
+          <div className="absolute top-0 left-0 w-full h-full border-4 border-t-purple-500 rounded-full animate-spin"></div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <ReactLenis root options={lenisOptions}>
       <AnimatedGreetings />
