@@ -13,6 +13,7 @@ import ContactForm from '@/components/ContactForm';
 import Goodbye from '@/components/Goodbye';
 import { ReactLenis } from '@studio-freight/react-lenis';
 import Gallery from '@/components/Gallery';
+import GitHubActivity from '@/components/GitHubActivity';
 
 const lenisOptions = {
   lerp: 0.1,
@@ -34,10 +35,11 @@ export default function Home() {
       <About />
       <SkillsSection />
       <Approach />
+      <TestimonialsSection />
       <AllProjects />
       <PreviousWork />
       <Gallery />
-      <TestimonialsSection />
+      <GitHubActivity />
       <ContactForm />
       <Goodbye />
     </ReactLenis>

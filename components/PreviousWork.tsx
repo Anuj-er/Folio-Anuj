@@ -1,10 +1,16 @@
+'use client';
+
 import Image from 'next/image';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Timeline } from '@/components/ui/timeline';
 import Link from 'next/link';
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 export default function PreviousWork() {
-  const data = [
+  const [showAll, setShowAll] = useState(false);
+  const [displayData, setDisplayData] = useState<any[]>([]);
+  
+  const allData = [
     {
       title: 'HackFest25',
       content: (
@@ -152,7 +158,6 @@ export default function PreviousWork() {
           <div className="grid grid-cols-1 gap-4">
             <div className="relative h-20 md:h-44 lg:h-[400px]">
               <Image
-              // Corrected File Name
                 src="/previous-work/HackIndia.jpg"
                 alt="HackIndia 2024 Experience"
                 fill
@@ -251,9 +256,58 @@ export default function PreviousWork() {
     },
   ];
 
+  // Update display data when showAll changes
+  useEffect(() => {
+    // Give the timeline a moment to complete any ongoing animations
+    // before changing the data
+    const timer = setTimeout(() => {
+      setDisplayData(showAll ? allData : allData.slice(0, 4));
+    }, 50);
+    
+    return () => clearTimeout(timer);
+  }, [showAll]);
+
+  const handleToggleView = () => {
+    setShowAll(!showAll);
+    
+    // Scroll to the button position when collapsing
+    if (showAll) {
+      // When collapsing (going from show all to show less)
+      const element = document.getElementById('view-more-button');
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+      }
+    }
+  };
+
   return (
     <div className="relative w-full bg-black" id="prev-work">
-      <Timeline data={data} />
+      <Timeline data={displayData} />
+      
+      {/* View More/Less Button */}
+      <div 
+        id="view-more-button"
+        className="flex justify-center pb-20"
+      >
+        <button
+          onClick={handleToggleView}
+          className="group flex items-center gap-2 rounded-full bg-gray-900 px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:bg-gray-800"
+        >
+          {showAll ? (
+            <>
+              View Less 
+              <FaChevronUp className="text-xs transition-transform duration-300 group-hover:-translate-y-1" />
+            </>
+          ) : (
+            <>
+              View More 
+              <FaChevronDown className="text-xs transition-transform duration-300 group-hover:translate-y-1" />
+            </>
+          )}
+        </button>
+      </div>
     </div>
   );
 }

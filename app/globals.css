@@ -93,6 +93,29 @@
   .scrollbar-custom::-webkit-scrollbar-thumb:hover {
     background-color: rgb(44, 44, 44);
   }
+  
+  /* Custom scrollbar for project descriptions */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(167, 139, 250, 0.3) transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(167, 139, 250, 0.3);
+    border-radius: 20px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(167, 139, 250, 0.5);
+  }
 }
 
 /* Animation utilities */

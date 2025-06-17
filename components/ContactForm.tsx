@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, FormEvent } from 'react';
 import emailjs from '@emailjs/browser';
 import  ShimmerButton  from "@/components/ui/shimmer-button";
@@ -111,6 +113,7 @@ const ContactForm = () => {
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className="w-full bg-transparent px-0 py-2 text-white placeholder:text-white/60 
                   border-b border-white/40 focus:border-blue-500 focus:outline-none transition-colors"
+                suppressHydrationWarning
               />
               {errors.email && <p className="text-red-400 text-sm">{errors.email}</p>}
             </div>

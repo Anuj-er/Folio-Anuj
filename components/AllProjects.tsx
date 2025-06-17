@@ -1,10 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { BorderBeam } from "@/components/ui/border-beam";
 import { cn } from "@/lib/utils";
 import Image from 'next/image';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Link from 'next/link';
 
 interface Project {
@@ -17,7 +17,55 @@ interface Project {
 }
 
 export default function AllProjects() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [showLeftButton, setShowLeftButton] = useState(false);
+  const [showRightButton, setShowRightButton] = useState(true);
+
+  // Check scroll position to show/hide buttons
+  const checkScrollPosition = () => {
+    if (!scrollContainerRef.current) return;
+    
+    const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+    setShowLeftButton(scrollLeft > 0);
+    setShowRightButton(scrollLeft < scrollWidth - clientWidth - 10); // 10px buffer
+  };
+
+  // Handle scroll events
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', checkScrollPosition);
+      // Initial check
+      checkScrollPosition();
+      
+      return () => scrollContainer.removeEventListener('scroll', checkScrollPosition);
+    }
+  }, []);
+
+  // Scroll left or right
+  const scroll = (direction: 'left' | 'right') => {
+    if (!scrollContainerRef.current) return;
+    
+    const container = scrollContainerRef.current;
+    const scrollAmount = container.clientWidth * 0.8; // 80% of visible width
+    
+    container.scrollTo({
+      left: direction === 'left' 
+        ? container.scrollLeft - scrollAmount 
+        : container.scrollLeft + scrollAmount,
+      behavior: 'smooth'
+    });
+  };
+
   const projects: Project[] = [
+    {
+      title: "Shipment Tracker",
+      description: "A React application forcargo shipment tracking featuring interactive maps, comprehensive dashboard, and Docker support.",
+      image: "/Projects/allshipment.png",
+      githubLink: "https://github.com/Anuj-er/cargo-tracker-webapp",
+      liveLink: "https://shipmenttracker.vercel.app/",
+      tags: ["react", "docker", "responsive", "mapbox", "mern-stack", "tracking-api", "shipment-tracking"]
+    },
     {
       title: "AutoStash Linux",
       description: "A secure, GUI-based Linux backup system with encryption, incremental backups, GitHub integration, and real-time system monitoring.",
@@ -121,10 +169,35 @@ export default function AllProjects() {
           </p>
         </div>
 
-        {/* Projects scroll container */}
+        {/* Projects scroll container with navigation buttons */}
         <div className="relative">
+          {/* Left scroll button */}
+          {showLeftButton && (
+            <button 
+              onClick={() => scroll('left')}
+              className="absolute left-1 sm:left-3 top-1/2 -translate-y-1/2 z-20 bg-black/70 hover:bg-black/90 text-white rounded-full p-2 sm:p-3 shadow-lg border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-110"
+              aria-label="Scroll left"
+            >
+              <FaChevronLeft className="text-lg sm:text-xl" />
+            </button>
+          )}
+          
+          {/* Right scroll button */}
+          {showRightButton && (
+            <button 
+              onClick={() => scroll('right')}
+              className="absolute right-1 sm:right-3 top-1/2 -translate-y-1/2 z-20 bg-black/70 hover:bg-black/90 text-white rounded-full p-2 sm:p-3 shadow-lg border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-110"
+              aria-label="Scroll right"
+            >
+              <FaChevronRight className="text-lg sm:text-xl" />
+            </button>
+          )}
+
           {/* Projects wrapper */}
-          <div className="flex gap-4 sm:gap-6 md:gap-8 overflow-x-auto pb-6 sm:pb-8 px-2 sm:px-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          <div 
+            ref={scrollContainerRef}
+            className="flex gap-4 sm:gap-6 md:gap-8 overflow-x-auto pb-6 sm:pb-8 px-2 sm:px-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          >
             {projects.map((project, index) => (
               <div
                 key={index}
@@ -152,9 +225,14 @@ export default function AllProjects() {
                       {project.title}
                     </h3>
 
-                    <p className="text-sm sm:text-base text-white/70 mb-4 sm:mb-6 line-clamp-3 group-hover:text-white/90 transition-colors duration-300">
-                      {project.description}
-                    </p>
+                    <div className="mb-4 sm:mb-6 h-[80px] overflow-y-auto pr-1 custom-scrollbar relative">
+                      <p className="text-sm sm:text-base text-white/70 group-hover:text-white/90 transition-colors duration-300">
+                        {project.description}
+                      </p>
+                      {project.description.length > 100 && (
+                        <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-[#0e0e0e]/80 to-transparent pointer-events-none"></div>
+                      )}
+                    </div>
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
@@ -206,6 +284,13 @@ export default function AllProjects() {
           {/* Scroll fade indicators */}
           <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-16 md:w-20 bg-gradient-to-r from-black to-transparent pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-16 md:w-20 bg-gradient-to-l from-black to-transparent pointer-events-none" />
+        </div>
+        
+        {/* Scroll hint text */}
+        <div className="text-center mt-4 text-white/40 text-sm flex items-center justify-center gap-2">
+          <FaChevronLeft className="text-xs" />
+          <span>Scroll to explore more projects</span>
+          <FaChevronRight className="text-xs" />
         </div>
       </div>
     </section>

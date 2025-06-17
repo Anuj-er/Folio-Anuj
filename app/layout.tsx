@@ -3,6 +3,10 @@ import { Hanken_Grotesk } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import { Analytics } from '@vercel/analytics/react';
+import { ConditionalContactButton } from '@/components/ConditionalContactButton';
+import { SimpleBackToTop } from '../components/SimpleBackToTop';
+import { SmoothCursor } from '../components/magicui/smooth-cursor';
+import { BackgroundMusic } from '../components/BackgroundMusic';
 
 const hankenGrotesk = Hanken_Grotesk({
   subsets: ['latin'],
@@ -109,9 +113,13 @@ export default function RootLayout({
           text-white
           antialiased 
           min-h-screen
+          md:cursor-none
           ${hankenGrotesk.className}
         `}
       >
+        {/* Contact button with conditional positioning */}
+        <ConditionalContactButton />
+        
         <div className="flex min-h-screen flex-col">
           <Navbar />
           <main className="flex-1 w-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -123,6 +131,16 @@ export default function RootLayout({
             {}
           </footer>
         </div>
+        
+        {/* Static back to top button */}
+        <SimpleBackToTop />
+        
+        {/* Background music control */}
+        <BackgroundMusic audioSrc="/audio/background.mp3" initialVolume={0.5} />
+        
+        {/* Custom smooth cursor */}
+        <SmoothCursor color="#a78bfa" size={10} ringSize={32} />
+        
         <Analytics />
       </body>
     </html>
