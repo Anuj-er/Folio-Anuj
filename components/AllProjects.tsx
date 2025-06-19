@@ -119,7 +119,7 @@ export default function AllProjects() {
       description: "A Next.js-based portfolio showcasing my skills, projects, and experiences with interactive features.",
       image: "/Projects/portfolio.png",
       githubLink: "https://github.com/Anuj-er/Folio-Anuj",
-      liveLink: "https://siwach.vercel.app",
+      liveLink: "https://anujer.is-a.dev",
       tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Portfolio"]
     },
     {

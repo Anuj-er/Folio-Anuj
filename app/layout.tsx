@@ -25,7 +25,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://siwach.vercel.app'),
+  metadataBase: new URL('https://anujer.is-a.dev'),
   title: {
     default: 'Anuj Siwach | Developer',
     template: '%s | Anuj Siwach'
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://siwach.vercel.app',
+    url: 'https://anujer.is-a.dev',
     title: 'Anuj Siwach | Developer',
     description: 'Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.',
     siteName: 'Anuj Siwach Portfolio',
