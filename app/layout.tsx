@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     siteName: 'Anuj Siwach Portfolio',
     images: [
       {
-        url: '/og_image.png',
+        url: 'https://anujer.is-a.dev/og_image.png',
         width: 1200,
         height: 630,
         alt: 'Anuj Siwach - Developer',
