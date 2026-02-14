@@ -11,6 +11,8 @@ import Goodbye from '@/components/Goodbye';
 import HomeClientWrapper from '@/components/HomeClientWrapper';
 import { getAboutData, getProjects, getExperiences } from '@/lib/actions';
 
+export const dynamic = 'force-dynamic';
+
 // Dynamically import components that might cause SSR issues
 const Gallery = dynamic(() => import('@/components/Gallery'), { ssr: false });
 const GitHubActivity = dynamic(() => import('@/components/GitHubActivity'), { ssr: false });
