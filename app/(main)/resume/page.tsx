@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 };
 
 async function ResumeContent() {
-    const data = await getAboutData();
-    const resumeUrl = data?.socialLinks?.resume || '/resume/resume.pdf';
+    // Hardcoded to local path as per user preference for folder-based management
+    const resumeUrl = '/resume/resume.pdf';
 
     return (
         <div className="w-full max-w-[1000px] flex flex-col items-center">

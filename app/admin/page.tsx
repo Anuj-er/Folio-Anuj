@@ -354,17 +354,27 @@ export default function AdminPage() {
                                 />
                             </div>
                             <div className="md:col-span-2">
-                                <label className="block text-sm text-gray-400 mb-1">Resume / Document Link</label>
-                                <div className="flex flex-col gap-1">
-                                    <input
-                                        className="w-full rounded border border-gray-700 bg-black p-2 text-white"
-                                        placeholder="e.g., /resume/resume.pdf or a link"
-                                        value={about.socialLinks?.resume || ''}
-                                        onChange={(e) => setAbout({ ...about, socialLinks: { ...about.socialLinks, resume: e.target.value } })}
-                                    />
-                                    <p className="text-[10px] text-gray-500 italic">
-                                        Tip: If you upload your resume to the <code>public/resume</code> folder, use <code>/resume/resume.pdf</code> here.
+                                <label className="block text-sm text-gray-400 mb-2">Resume / Document Management</label>
+                                <div className="p-4 rounded border border-gray-800 bg-gray-900/50">
+                                    <p className="text-sm text-white font-medium mb-1 flex items-center gap-2">
+                                        <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                        Local Hosting Active
                                     </p>
+                                    <p className="text-xs text-gray-400 leading-relaxed mb-3">
+                                        Your site is configured to use the local resume file at:
+                                        <code className="block mt-1 p-2 bg-black rounded border border-gray-800 text-blue-400">
+                                            public/resume/resume.pdf
+                                        </code>
+                                    </p>
+                                    <div className="flex gap-4">
+                                        <a
+                                            href="/resume/resume.pdf"
+                                            target="_blank"
+                                            className="text-xs text-blue-400 hover:text-blue-300 underline"
+                                        >
+                                            View Current Resume
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

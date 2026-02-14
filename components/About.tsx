@@ -108,16 +108,14 @@ const About = ({ initialData }: { initialData?: any }) => {
                             View my projects on GitHub
                           </Link>
                         )}
-                        {data.socialLinks?.resume && (
-                          <Link
-                            href={data.socialLinks.resume}
-                            target="_blank"
-                            className="flex items-center gap-2 text-sm sm:text-base text-gray-300 hover:text-blue-400 transition-colors"
-                          >
-                            <IoDocumentTextOutline className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
-                            Download My Resume
-                          </Link>
-                        )}
+                        <Link
+                          href="/resume/resume.pdf"
+                          target="_blank"
+                          className="flex items-center gap-2 text-sm sm:text-base text-gray-300 hover:text-blue-400 transition-colors"
+                        >
+                          <IoDocumentTextOutline className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+                          Download My Resume
+                        </Link>
                       </div>
                     </motion.div>
                   )}
