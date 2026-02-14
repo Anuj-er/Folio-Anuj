@@ -3,3 +3,6 @@ node_modules
 .next
 .next/cache
 .next/server
+
+# Environment variables
+.env.local

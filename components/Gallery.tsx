@@ -3,17 +3,17 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 
-const PhotoCard = ({ 
-  src, 
+const PhotoCard = ({
+  src,
   alt,
-  className = "" 
-}: { 
+  className = ""
+}: {
   src: string;
   alt: string;
   className?: string;
 }) => {
   return (
-    <div 
+    <div
       className={cn(
         "group relative w-full overflow-hidden rounded-xl sm:rounded-2xl",
         "transition-all duration-300 ease-out hover:scale-[1.02]",
@@ -23,8 +23,8 @@ const PhotoCard = ({
     >
       <div className="relative w-full h-full">
         <div className="absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10" />
-        <img 
-          src={src} 
+        <img
+          src={src}
           alt={alt}
           className="w-full h-full object-cover"
           loading="lazy"
@@ -37,52 +37,52 @@ const PhotoCard = ({
 const Gallery = () => {
   const photos = [
     {
-      src: "./Gallery/second.jpg",
+      src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048056/folio-anuj/Gallery/second.jpg",
       alt: "with Stephen Simon",
       className: "col-span-1 md:col-span-1 row-span-2 aspect-[3/5] min-h-[400px] sm:min-h-[500px] lg:min-h-[600px]"
     },
     {
-      src: "./Gallery/3.jpg",
+      src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048052/folio-anuj/Gallery/3.jpg",
       alt: "image",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
-      src: "./Gallery/4.jpg",
+      src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048052/folio-anuj/Gallery/4.jpg",
       alt: "image",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
-      src: "./Gallery/5.jpg",
+      src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048052/folio-anuj/Gallery/5.jpg",
       alt: "image",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
-      src: "./Gallery/1.png",
+      src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048048/folio-anuj/Gallery/1.jpg",
       alt: "image",
       className: "col-span-1 md:col-span-1 row-span-2 aspect-[3/5] min-h-[400px] sm:min-h-[500px] lg:min-h-[600px]"
     },
     {
-      src: "./Gallery/7.jpg",
+      src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048052/folio-anuj/Gallery/7.jpg",
       alt: "image",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
-      src: "./Gallery/6.jpg",
+      src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048052/folio-anuj/Gallery/6.jpg",
       alt: "image",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
-      src: "./Gallery/8.jpg",
+      src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048056/folio-anuj/Gallery/8.jpg",
       alt: "image",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
-      src: "./Gallery/9.jpg",
+      src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048056/folio-anuj/Gallery/9.jpg",
       alt: "image",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
-      src: "./Gallery/10.jpg",
+      src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048048/folio-anuj/Gallery/10.jpg",
       alt: "image",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },

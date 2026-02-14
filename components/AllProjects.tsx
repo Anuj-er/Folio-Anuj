@@ -61,7 +61,7 @@ export default function AllProjects() {
     {
       title: "Shipment Tracker",
       description: "A React application forcargo shipment tracking featuring interactive maps, comprehensive dashboard, and Docker support.",
-      image: "/Projects/allshipment.png",
+      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048060/folio-anuj/Projects/allshipment.png",
       githubLink: "https://github.com/Anuj-er/cargo-tracker-webapp",
       liveLink: "https://shipmenttracker.vercel.app/",
       tags: ["react", "docker", "responsive", "mapbox", "mern-stack", "tracking-api", "shipment-tracking"]
@@ -69,7 +69,7 @@ export default function AllProjects() {
     {
       title: "AutoStash Linux",
       description: "A secure, GUI-based Linux backup system with encryption, incremental backups, GitHub integration, and real-time system monitoring.",
-      image: "/Projects/autostash.png",
+      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048060/folio-anuj/Projects/autostash.png",
       githubLink: "https://github.com/Anuj-er/autostash-linux",
       liveLink: "",
       tags: ["linux", "python3", "tkinter-gui"]
@@ -77,7 +77,7 @@ export default function AllProjects() {
     {
       title: "Pharmacy Management System",
       description: "A comprehensive Java application for pharmacy management with inventory control, customer management, and sales processing using custom data structures.",
-      image: "/Projects/pharmacy.png",
+      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048064/folio-anuj/Projects/pharmacy.png",
       githubLink: "https://github.com/Anuj-er/PharmacyManagementSystem-Java-DSA",
       liveLink: "",
       tags: ["java", "linkedlist", "mergesort-algorithm", "dsa"]
@@ -85,7 +85,7 @@ export default function AllProjects() {
     {
       title: "RaitaLeaks",
       description: "A secure social media platform for information sharing with real-time notifications, user authentication, and media support.",
-      image: "/Projects/raitaleaks.png",
+      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048064/folio-anuj/Projects/raitaleaks.png",
       githubLink: "https://github.com/Anuj-er/RaitaLeaks",
       liveLink: "https://raita-leaks.vercel.app",
       tags: ["react", "nodejs", "mongodb", "websockets", "cloudinary", "jwt-authentication", "mern-stack"]
@@ -93,7 +93,7 @@ export default function AllProjects() {
     {
       title: "Digital-Clock-App",
       description: "A sleek, customizable digital clock app with responsive design and cross-browser compatibility.",
-      image: "/Projects/digitalclock.png",
+      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048060/folio-anuj/Projects/digitalclock.jpg",
       githubLink: "https://github.com/Anuj-er/Digital-Clock-App/",
       liveLink: "https://eclipse-clock.vercel.app/",
       tags: ["reactjs", "clock", "weather-api", "tailwind-css"]
@@ -101,7 +101,7 @@ export default function AllProjects() {
     {
       title: "Simple-Calculator-App",
       description: "A fast and responsive calculator app with a clean, modern interface built using React and Tailwind CSS.",
-      image: "/Projects/quickCalc.png",
+      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048064/folio-anuj/Projects/quickCalc.jpg",
       githubLink: "https://github.com/Anuj-er/Simple-Calculator-App/",
       liveLink: "https://quickcalculator.vercel.app/",
       tags: ["calculator", "reactjs", "tailwindcss", "quickcalc"]
@@ -109,7 +109,7 @@ export default function AllProjects() {
     {
       title: "Testpad-Solutions", 
       description: "A comprehensive repository containing solutions for university courses and assignments.",
-      image: "/Projects/Testpad.png",
+      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048056/folio-anuj/Projects/Testpad.png",
       githubLink: "https://github.com/Anuj-er/Testpad-Solutions",
       liveLink: "",
       tags: [ "mysql", "html5", "frontend", "backend", "cpp"],
@@ -117,7 +117,7 @@ export default function AllProjects() {
     {
       title: "Folio-Anuj",
       description: "A Next.js-based portfolio showcasing my skills, projects, and experiences with interactive features.",
-      image: "/Projects/portfolio.png",
+      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048064/folio-anuj/Projects/portfolio.jpg",
       githubLink: "https://github.com/Anuj-er/Folio-Anuj",
       liveLink: "https://anujer.is-a.dev",
       tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Portfolio"]
@@ -125,7 +125,7 @@ export default function AllProjects() {
     {
       title: "ProTrack Dashboard",
       description: "A modern project management dashboard with real-time analytics and team collaboration features.",
-      image: "/Projects/Protrack.png",
+      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048056/folio-anuj/Projects/Protrack.jpg",
       githubLink: "https://github.com/Jiya-Damara/ProTrack2",
       liveLink: "https://jiya-damara.github.io/ProTrack2/",
       tags: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Dashboard"]
@@ -133,7 +133,7 @@ export default function AllProjects() {
     {
       title: "Ucampus-InfoSite",
       description: "A website showcasing the Ucampus app designed to enhance the student experience.",
-      image: "/Projects/ucampus.png",
+      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048064/folio-anuj/Projects/ucampus.png",
       githubLink: "https://github.com/Anuj-er/Ucampus-InfoSite",
       liveLink: "https://ucampus.vercel.app",
       tags: ["html5", "reactjs", "food-app", "app-information"]
@@ -141,7 +141,7 @@ export default function AllProjects() {
     {
       title: "By The Cook",
       description: "A food recipe website featuring delicious recipes from around the world.",
-      image: "/Projects/bythecook.png",
+      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048061/folio-anuj/Projects/bythecook.jpg",
       githubLink: "https://github.com/Anuj-er/Cafe-Website/",
       liveLink: "https://anuj-er.github.io/Cafe-Website/",
       tags: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Cafe"]
@@ -149,7 +149,7 @@ export default function AllProjects() {
     {
       title: "Library-Management-System-Cpp",
       description: "A console-based Library Management System developed in C++.",
-      image: "/Projects/interface-c++.png",
+      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048060/folio-anuj/Projects/interface-c%2B%2B.png",
       githubLink: "https://github.com/Anuj-er/Library-Management-System-Cpp",
       liveLink: "",
       tags: ["C++", "OOP", "CLI"]

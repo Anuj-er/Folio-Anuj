@@ -85,7 +85,7 @@ const About = () => {
             className="relative h-[300px] sm:h-[400px] md:h-full w-full max-w-[400px] mx-auto md:mx-0 overflow-hidden rounded-xl sm:rounded-2xl border border-[#292929]"
           >
             <Image
-              src="/Anuj.png"
+              src="https://res.cloudinary.com/folioanuj/image/upload/v1771048048/folio-anuj/Anuj.jpg"
               alt="Anuj Kumar"
               fill
               className="object-cover transition-transform duration-500 hover:scale-105"

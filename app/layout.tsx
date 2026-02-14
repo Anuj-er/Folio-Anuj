@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  
+
   // Open Graph
   openGraph: {
     type: 'website',
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     siteName: 'Anuj Siwach Portfolio',
     images: [
       {
-        url: 'https://anujer.is-a.dev/og_image.png',
+        url: "https://res.cloudinary.com/folioanuj/image/upload/v1771048070/folio-anuj/og_image.jpg",
         width: 1200,
         height: 630,
         alt: 'Anuj Siwach - Developer',
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Anuj Siwach | Developer',
     description: 'Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.',
-    images: ['/og_image.png'],
+    images: ["https://res.cloudinary.com/folioanuj/image/upload/v1771048070/folio-anuj/og_image.jpg"],
     creator: '@5iwach',
     site: '@5iwach',
   },
@@ -106,7 +106,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body 
+      <body
         className={`
           select-none 
           bg-black 
@@ -119,7 +119,7 @@ export default function RootLayout({
       >
         {/* Contact button with conditional positioning */}
         <ConditionalContactButton />
-        
+
         <div className="flex min-h-screen flex-col">
           <Navbar />
           <main className="flex-1 w-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -128,19 +128,19 @@ export default function RootLayout({
             </div>
           </main>
           <footer className="w-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
-            {}
+            { }
           </footer>
         </div>
-        
+
         {/* Static back to top button */}
         <SimpleBackToTop />
-        
+
         {/* Background music control */}
         <BackgroundMusic audioSrc="/audio/background.mp3" initialVolume={0.5} />
-        
+
         {/* Custom smooth cursor */}
         <SmoothCursor color="#a78bfa" size={10} ringSize={32} />
-        
+
         <Analytics />
       </body>
     </html>

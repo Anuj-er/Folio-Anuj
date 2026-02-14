@@ -15,49 +15,49 @@ const testimonials: Testimonial[] = [
     name: "Anushi Rajput",
     role: "HackIndia National Finalist'24",
     body: "Your smart play and teamwork truly made a difference in our success!🤝 ✨",
-    img: "/Testamonials/Anushi.jpeg"
+    img: "https://res.cloudinary.com/folioanuj/image/upload/v1771048067/folio-anuj/Testamonials/Anushi.jpg"
   },
   {
     name: "Stephen Simon",
     role: "RD for C# Corner",
     body: "This was always smiling and energetic. Good Luck for your future!🚀",
-    img: "/Testamonials/Stephen.jpeg"
+    img: "https://res.cloudinary.com/folioanuj/image/upload/v1771048070/folio-anuj/Testamonials/Stephen.jpg"
   },
   {
     name: "Dr. Punit Soni",
     role: "Associate Professor at Chitkara University",
     body: "Well deserved! Keep up the good work.",
-    img: "/Testamonials/Punit.jpeg"
+    img: "https://res.cloudinary.com/folioanuj/image/upload/v1771048070/folio-anuj/Testamonials/Punit.jpg"
   },
   {
     name: "Akanksha Mishra",
     role: "Hackindia Finalist",
     body: "Your support and contributions were a game-changer for the team.",
-    img: "/Testamonials/Akanksha.jpeg"
+    img: "https://res.cloudinary.com/folioanuj/image/upload/v1771048067/folio-anuj/Testamonials/Akanksha.jpg"
   },
   {
     name: "HTET NE OO",
     role: "Wipro Certified Faculty",
     body: "Keep it up Anuj! You're doing great work.",
-    img: "/Testamonials/HTETNEOOmam.jpeg"
+    img: "https://res.cloudinary.com/folioanuj/image/upload/v1771048067/folio-anuj/Testamonials/HTETNEOOmam.jpg"
   },
   {
     name: "Garvit Pahwa",
     role: "CSE student",
     body: "I would love the opportunity to work with you",
-    img: "/Testamonials/Pahwa.jpeg"
+    img: "https://res.cloudinary.com/folioanuj/image/upload/v1771048067/folio-anuj/Testamonials/Pahwa.jpg"
   },
   {
     name: "Miko Matsumura",
     role: "Yale Neuroscience, Managing Partner gCC Venture Capital",
     body: "keep up the good work ser",
-    img: "/Testamonials/miko.jpeg"
+    img: "https://res.cloudinary.com/folioanuj/image/upload/v1771048070/folio-anuj/Testamonials/miko.jpg"
   },
   {
     name: "Deepshika Gulati",
     role: "CSE student",
     body: "Well deserved! Keep up the good work.",
-    img: "/Testamonials/Deepshika.jpeg"
+    img: "https://res.cloudinary.com/folioanuj/image/upload/v1771048067/folio-anuj/Testamonials/Deepshika.jpg"
   },
 
 ];

@@ -6,10 +6,12 @@ import { Timeline } from '@/components/ui/timeline';
 import Link from 'next/link';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
+
+
 export default function PreviousWork() {
   const [showAll, setShowAll] = useState(false);
   const [displayData, setDisplayData] = useState<any[]>([]);
-  
+
   const allData = [
     {
       title: 'HackFest25',
@@ -23,7 +25,7 @@ export default function PreviousWork() {
           <div className="grid grid-cols-1 gap-4 mt-4">
             <div className="relative h-20 md:h-44 lg:h-[400px]">
               <Image
-                src="/previous-work/hackfest25.jpg"
+                src="https://res.cloudinary.com/folioanuj/image/upload/v1771048080/folio-anuj/previous-work/hackfest25.jpg"
                 alt="HackFest25 Experience"
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -50,7 +52,7 @@ export default function PreviousWork() {
           <div className="grid grid-cols-1 gap-4 mt-4">
             <div className="relative h-20 md:h-44 lg:h-[400px]">
               <Image
-                src="/previous-work/hack_gallery.png"
+                src="https://res.cloudinary.com/folioanuj/image/upload/v1771048080/folio-anuj/previous-work/hack_gallery.jpg"
                 alt="HackIndia'25 Mentoring Experience"
                 fill
                 className="rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
@@ -65,12 +67,12 @@ export default function PreviousWork() {
       content: (
         <div>
           <p className="mb-8 text-xs font-normal text-neutral-200 md:text-sm">
-          Last month, I had the privilege of participating in the 36-hour Web3 & MERN 'Fusion Fest' hackathon organized by the Design Thinking Club, in collaboration with HackwithIndia, Unstop.
+            Last month, I had the privilege of participating in the 36-hour Web3 & MERN 'Fusion Fest' hackathon organized by the Design Thinking Club, in collaboration with HackwithIndia, Unstop.
           </p>
           <div className="grid grid-cols-1 gap-4 mt-4">
             <div className="relative h-20 md:h-44 lg:h-[400px]">
               <Image
-                src="/previous-work/fusionFest.jpeg"
+                src="https://res.cloudinary.com/folioanuj/image/upload/v1771048080/folio-anuj/previous-work/fusionFest.jpg"
                 alt="FusionFest Hackathon"
                 fill
                 className="rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
@@ -85,12 +87,12 @@ export default function PreviousWork() {
       content: (
         <div>
           <p className="mb-8 text-xs font-normal text-neutral-200 md:text-sm">
-          I am thrilled to share that our team, "404 Coders", secured 1st place at the 𝘚𝘖𝘔𝘕𝘐𝘜𝘔 hackathon.
+            I am thrilled to share that our team, "404 Coders", secured 1st place at the 𝘚𝘖𝘔𝘕𝘐𝘜𝘔 hackathon.
           </p>
           <div className="grid grid-cols-1 gap-4 mt-4">
             <div className="relative h-20 md:h-44 lg:h-[400px]">
               <Image
-                src="/previous-work/Somnium.jpeg"
+                src="https://res.cloudinary.com/folioanuj/image/upload/v1771048076/folio-anuj/previous-work/Somnium.jpg"
                 alt="Somnium Victory"
                 fill
                 className="rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
@@ -114,7 +116,7 @@ export default function PreviousWork() {
           <div className="grid grid-cols-1 gap-4 mt-4">
             <div className="relative h-20 md:h-44 lg:h-[400px]">
               <Image
-                src="/previous-work/TestPad.png"
+                src="https://res.cloudinary.com/folioanuj/image/upload/v1771048076/folio-anuj/previous-work/TestPad.png"
                 alt="TestPad Solution Repository Overview"
                 fill
                 className="rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
@@ -134,7 +136,7 @@ export default function PreviousWork() {
           <div className="grid grid-cols-1 gap-4">
             <div className="relative h-20 md:h-44 lg:h-[400px]">
               <Image
-                src="/og_image.png"
+                src="https://res.cloudinary.com/folioanuj/image/upload/v1771048070/folio-anuj/og_image.jpg"
                 alt="og_image"
                 fill
                 className="rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
@@ -158,7 +160,7 @@ export default function PreviousWork() {
           <div className="grid grid-cols-1 gap-4">
             <div className="relative h-20 md:h-44 lg:h-[400px]">
               <Image
-                src="/previous-work/HackIndia.jpg"
+                src="https://res.cloudinary.com/folioanuj/image/upload/v1771048072/folio-anuj/previous-work/HackIndia.jpg"
                 alt="HackIndia 2024 Experience"
                 fill
                 className="rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
@@ -181,14 +183,14 @@ export default function PreviousWork() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             {[
-              'og_image.png',
-              'homepage.png',
-              'explore.png',
-              'food_outlet.png'
-            ].map((image, index) => (
+              "https://res.cloudinary.com/folioanuj/image/upload/v1771048084/folio-anuj/previous-work/og_image.png",
+              "https://res.cloudinary.com/folioanuj/image/upload/v1771048080/folio-anuj/previous-work/homepage.png",
+              "https://res.cloudinary.com/folioanuj/image/upload/v1771048076/folio-anuj/previous-work/explore.png",
+              "https://res.cloudinary.com/folioanuj/image/upload/v1771048080/folio-anuj/previous-work/food_outlet.png"
+            ].map((imageSrc, index) => (
               <div key={index} className="relative h-20 md:h-44 lg:h-60">
                 <Image
-                  src={`/previous-work/${image}`}
+                  src={imageSrc}
                   alt={`UCampus screenshot ${index + 1}`}
                   fill
                   className="rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
@@ -212,14 +214,14 @@ export default function PreviousWork() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             {[
-              'Protrack.png',
-              'Protrack-2.png',
-              'Protrack-3.png',
-              'Protrack-4.png'
-            ].map((image, index) => (
+              "https://res.cloudinary.com/folioanuj/image/upload/v1771048076/folio-anuj/previous-work/Protrack.jpg",
+              "https://res.cloudinary.com/folioanuj/image/upload/v1771048072/folio-anuj/previous-work/Protrack-2.png",
+              "https://res.cloudinary.com/folioanuj/image/upload/v1771048072/folio-anuj/previous-work/Protrack-3.png",
+              "https://res.cloudinary.com/folioanuj/image/upload/v1771048076/folio-anuj/previous-work/Protrack-4.png"
+            ].map((imageSrc, index) => (
               <div key={index} className="relative h-20 md:h-44 lg:h-60">
                 <Image
-                  src={`/previous-work/${image}`}
+                  src={imageSrc}
                   alt={`ProTrack screenshot ${index + 1}`}
                   fill
                   className="rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
@@ -244,7 +246,7 @@ export default function PreviousWork() {
           <div className="grid grid-cols-1 gap-4">
             <div className="relative h-20 md:h-44 lg:h-[400px]">
               <Image
-                src="/previous-work/Dean-list.png"
+                src="https://res.cloudinary.com/folioanuj/image/upload/v1771048072/folio-anuj/previous-work/Dean-list.jpg"
                 alt="Dean's List Recognition"
                 fill
                 className="rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
@@ -263,13 +265,13 @@ export default function PreviousWork() {
     const timer = setTimeout(() => {
       setDisplayData(showAll ? allData : allData.slice(0, 4));
     }, 50);
-    
+
     return () => clearTimeout(timer);
   }, [showAll]);
 
   const handleToggleView = () => {
     setShowAll(!showAll);
-    
+
     // Scroll to the button position when collapsing
     if (showAll) {
       // When collapsing (going from show all to show less)
@@ -285,9 +287,9 @@ export default function PreviousWork() {
   return (
     <div className="relative w-full bg-black" id="prev-work">
       <Timeline data={displayData} />
-      
+
       {/* View More/Less Button */}
-      <div 
+      <div
         id="view-more-button"
         className="flex justify-center pb-20"
       >
@@ -297,12 +299,12 @@ export default function PreviousWork() {
         >
           {showAll ? (
             <>
-              View Less 
+              View Less
               <FaChevronUp className="text-xs transition-transform duration-300 group-hover:-translate-y-1" />
             </>
           ) : (
             <>
-              View More 
+              View More
               <FaChevronDown className="text-xs transition-transform duration-300 group-hover:translate-y-1" />
             </>
           )}
