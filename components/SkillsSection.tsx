@@ -1,5 +1,9 @@
 import React, { memo, useMemo } from 'react';
 import { motion } from 'framer-motion';
+import {
+  SiNextdotjs, SiReact, SiTypescript, SiNodedotjs, SiExpress, SiMongodb,
+  SiPython, SiCplusplus, SiDocker, SiGit, SiTailwindcss, SiPostman
+} from 'react-icons/si';
 
 const skillIcons = {
   frontend: () => (
@@ -48,22 +52,6 @@ const SkillIcon = memo(({ Icon }: { Icon: React.FC }) => (
 ));
 
 SkillIcon.displayName = 'SkillIcon';
-
-// Memoize the stat card component
-const StatCard = memo(({ stat }: { stat: { label: string; value: string; icon: string } }) => (
-  <motion.div
-    whileHover={{ scale: 1.05 }}
-    className="text-center p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300"
-  >
-    <div className="text-2xl mb-2">{stat.icon}</div>
-    <div className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-      {stat.value}
-    </div>
-    <div className="text-xs sm:text-sm text-white/70 mt-1">{stat.label}</div>
-  </motion.div>
-));
-
-StatCard.displayName = 'StatCard';
 
 // Memoize the skill category card
 const SkillCategoryCard = memo(({ category, index }: { category: any; index: number }) => (
@@ -128,7 +116,7 @@ const SkillsSection = () => {
     {
       title: "Frontend Development",
       subtitle: "Currently enhancing my skills in modern web technologies",
-      skills: ["React", "HTML5", "TypeScript", "TailwindCSS", "CSS3"],
+      skills: ["React", "Next.js", "HTML5", "TypeScript", "TailwindCSS", "CSS3"],
       progress: 75,
       learning: true,
       color: "from-blue-400 to-cyan-400"
@@ -152,15 +140,12 @@ const SkillsSection = () => {
     }
   ];
 
-  const slugs = [
-    "typescript", "javascript", "python", "cplusplus", "react", "mongodb", "nodejs",
-    "html5", "css3", "tailwindcss", "git", "github", "visualstudiocode"
-  ];
+
 
   return (
     <div id="journey" className="min-h-screen bg-black py-12 sm:py-20">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -174,7 +159,7 @@ const SkillsSection = () => {
           <p className="mt-4 text-lg sm:text-xl text-white/70">
             Actively expanding my technical expertise
           </p>
-          
+
           <div className="flex justify-center gap-4 sm:gap-8 mt-6 sm:mt-8">
             {Object.entries(skillIcons).map(([key, Icon]) => (
               <SkillIcon key={key} Icon={Icon} />
@@ -182,21 +167,84 @@ const SkillsSection = () => {
           </div>
         </motion.div>
 
-        {/* Stats with hover effects */}
-        <motion.div 
+        {/* Achievement Stats - Enhanced Design */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mb-8 sm:mb-12 p-4 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300"
+          className="mb-8 sm:mb-12"
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {[
-              { label: "Technologies Learning", value: "10+", icon: "🚀" },
-              { label: "Study Hours/Week", value: "30+", icon: "⏰" },
-              { label: "Projects Building", value: "11+", icon: "💻" },
-              { label: "Learning Progress", value: "60%", icon: "📈" }
-            ].map((stat) => (
-              <StatCard key={stat.label} stat={stat} />
+              { label: "Academic Excellence", value: "8.89", sublabel: "CGPA", icon: "🎓", gradient: "from-blue-500 to-cyan-500" },
+              { label: "Competitive Coding", value: "Knight", sublabel: "LeetCode Badge", icon: "⚔️", gradient: "from-yellow-500 to-orange-500" },
+              { label: "Portfolio", value: "15+", sublabel: "Projects Built", icon: "💻", gradient: "from-purple-500 to-pink-500" },
+              { label: "Professional Growth", value: "3", sublabel: "Oracle Certifications", icon: "📜", gradient: "from-green-500 to-emerald-500" }
+            ].map((stat, idx) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: idx * 0.1 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group relative p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-md border border-white/10 hover:border-white/30 transition-all duration-500 overflow-hidden"
+              >
+                {/* Gradient glow effect on hover */}
+                <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-gradient-to-br ${stat.gradient} blur-xl`} />
+
+                <div className="relative z-10 text-center">
+                  <div className="text-4xl sm:text-5xl mb-3 group-hover:scale-110 transition-transform duration-300">{stat.icon}</div>
+                  <div className={`text-3xl sm:text-4xl font-black mb-1 text-transparent bg-clip-text bg-gradient-to-r ${stat.gradient}`}>
+                    {stat.value}
+                  </div>
+                  <div className="text-xs sm:text-sm font-medium text-white/90 mb-1">{stat.sublabel}</div>
+                  <div className="text-[10px] sm:text-xs text-white/50 uppercase tracking-wider">{stat.label}</div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Tech Stack Badges */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mb-8 sm:mb-12"
+        >
+          <h3 className="text-xl sm:text-2xl font-bold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
+            Tech Stack
+          </h3>
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 max-w-4xl mx-auto">
+            {[
+              { name: "Next.js", icon: <SiNextdotjs className="group-hover:text-white transition-colors" />, color: "hover:bg-black" },
+              { name: "React", icon: <SiReact className="group-hover:text-[#61DAFB] transition-colors" />, color: "hover:bg-[#61DAFB]/10 hover:border-[#61DAFB]/30" },
+              { name: "TypeScript", icon: <SiTypescript className="group-hover:text-[#3178C6] transition-colors" />, color: "hover:bg-[#3178C6]/10 hover:border-[#3178C6]/30" },
+              { name: "Node.js", icon: <SiNodedotjs className="group-hover:text-[#339933] transition-colors" />, color: "hover:bg-[#339933]/10 hover:border-[#339933]/30" },
+              { name: "Express", icon: <SiExpress className="group-hover:text-white transition-colors" />, color: "hover:bg-white/10" },
+              { name: "MongoDB", icon: <SiMongodb className="group-hover:text-[#47A248] transition-colors" />, color: "hover:bg-[#47A248]/10 hover:border-[#47A248]/30" },
+              { name: "Python", icon: <SiPython className="group-hover:text-[#3776AB] transition-colors" />, color: "hover:bg-[#3776AB]/10 hover:border-[#3776AB]/30" },
+              { name: "Tailwind", icon: <SiTailwindcss className="group-hover:text-[#06B6D4] transition-colors" />, color: "hover:bg-[#06B6D4]/10 hover:border-[#06B6D4]/30" },
+              { name: "C++", icon: <SiCplusplus className="group-hover:text-[#00599C] transition-colors" />, color: "hover:bg-[#00599C]/10 hover:border-[#00599C]/30" },
+              { name: "Docker", icon: <SiDocker className="group-hover:text-[#2496ED] transition-colors" />, color: "hover:bg-[#2496ED]/10 hover:border-[#2496ED]/30" },
+              { name: "Postman", icon: <SiPostman className="group-hover:text-[#FF6C37] transition-colors" />, color: "hover:bg-[#FF6C37]/10 hover:border-[#FF6C37]/30" },
+              { name: "Git", icon: <SiGit className="group-hover:text-[#F05032] transition-colors" />, color: "hover:bg-[#F05032]/10 hover:border-[#F05032]/30" }
+            ].map((tech, idx) => (
+              <motion.div
+                key={tech.name}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: 0.4 + idx * 0.03 }}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className={`group flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm transition-all duration-300 cursor-default ${tech.color}`}
+              >
+                <span className="text-xl sm:text-2xl text-gray-400 transition-colors duration-300">
+                  {tech.icon}
+                </span>
+                <span className="text-sm sm:text-base font-medium text-gray-300 group-hover:text-white transition-colors">
+                  {tech.name}
+                </span>
+              </motion.div>
             ))}
           </div>
         </motion.div>
