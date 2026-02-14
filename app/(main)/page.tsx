@@ -1,4 +1,4 @@
-import dynamic from 'next/dynamic';
+import NextDynamic from 'next/dynamic';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import TestimonialsSection from '@/components/TestimonialsSection';
@@ -14,8 +14,8 @@ import { getAboutData, getProjects, getExperiences } from '@/lib/actions';
 export const dynamic = 'force-dynamic';
 
 // Dynamically import components that might cause SSR issues
-const Gallery = dynamic(() => import('@/components/Gallery'), { ssr: false });
-const GitHubActivity = dynamic(() => import('@/components/GitHubActivity'), { ssr: false });
+const Gallery = NextDynamic(() => import('@/components/Gallery'), { ssr: false });
+const GitHubActivity = NextDynamic(() => import('@/components/GitHubActivity'), { ssr: false });
 
 // This is now a Server Component
 export default async function Home() {
