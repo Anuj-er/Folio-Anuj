@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { getAboutData, updateAboutData, getProjects, createProject, deleteProject, getExperiences, createExperience, deleteExperience } from '@/lib/actions';
+import ImageUpload from '@/components/admin/ImageUpload';
 
 export default function AdminPage() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -288,11 +289,11 @@ export default function AdminPage() {
 
 
                     <div>
-                        <label className="block text-sm text-gray-400 mb-1">Profile Image URL</label>
-                        <input
-                            className="w-full rounded border border-gray-700 bg-black p-2 text-white"
+                        <label className="block text-sm text-gray-400 mb-2">Profile Image</label>
+                        <ImageUpload
                             value={about.profileImage || ''}
-                            onChange={(e) => setAbout({ ...about, profileImage: e.target.value })}
+                            onChange={(url) => setAbout({ ...about, profileImage: url })}
+                            label="Upload Profile Picture"
                         />
                     </div>
 
@@ -352,8 +353,12 @@ export default function AdminPage() {
                                 <textarea className="w-full bg-black border border-gray-700 p-2 rounded focus:border-blue-500 outline-none" rows={3} value={newProject.description} onChange={e => setNewProject({ ...newProject, description: e.target.value })} required />
                             </div>
                             <div>
-                                <label className="text-sm text-gray-400">Image URL *</label>
-                                <input className="w-full bg-black border border-gray-700 p-2 rounded focus:border-blue-500 outline-none" value={newProject.image} onChange={e => setNewProject({ ...newProject, image: e.target.value })} required />
+                                <label className="text-sm text-gray-400 mb-2 block">Project Image *</label>
+                                <ImageUpload
+                                    value={newProject.image}
+                                    onChange={(url) => setNewProject({ ...newProject, image: url })}
+                                    label="Upload Project Screenshot"
+                                />
                             </div>
                             <div>
                                 <label className="text-sm text-gray-400 mb-2 block">Tags</label>
@@ -443,21 +448,30 @@ export default function AdminPage() {
                             </div>
 
                             <div>
-                                <label className="text-sm text-gray-400 mb-2 block">Images (URLs)</label>
-                                {newExperience.images.map((img, idx) => (
-                                    <div key={idx} className="flex gap-2 mb-2">
-                                        <input
-                                            className="w-full bg-black border border-gray-700 p-2 rounded focus:border-purple-500 outline-none"
-                                            placeholder={`Image URL ${idx + 1}`}
-                                            value={img}
-                                            onChange={e => updateExpImage(idx, e.target.value)}
-                                        />
-                                        {newExperience.images.length > 1 && (
-                                            <button type="button" onClick={() => removeExpImageField(idx)} className="text-red-500 px-2 hover:bg-white/10 rounded">✕</button>
-                                        )}
-                                    </div>
-                                ))}
-                                <button type="button" onClick={addExpImageField} className="text-sm text-purple-400 hover:text-purple-300">+ Add Another Image URL</button>
+                                <label className="text-sm text-gray-400 mb-2 block">Images (Upload)</label>
+                                <div className="space-y-4">
+                                    {newExperience.images.map((img, idx) => (
+                                        <div key={idx} className="flex gap-2 items-start">
+                                            <ImageUpload
+                                                value={img}
+                                                onChange={(url) => updateExpImage(idx, url)}
+                                                label={`Image ${idx + 1}`}
+                                                className="flex-1"
+                                            />
+                                            {newExperience.images.length > 1 && (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => removeExpImageField(idx)}
+                                                    className="text-red-500 p-2 hover:bg-white/10 rounded mt-8"
+                                                    title="Remove Image Field"
+                                                >
+                                                    ✕
+                                                </button>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                                <button type="button" onClick={addExpImageField} className="text-sm text-purple-400 hover:text-purple-300 mt-2">+ Add Another Image</button>
                             </div>
 
                             <button type="submit" className="bg-purple-600 hover:bg-purple-500 px-6 py-2 rounded w-fit mt-2">Add Post</button>

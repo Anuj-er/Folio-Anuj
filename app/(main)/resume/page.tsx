@@ -56,7 +56,6 @@ export default function ResumePage() {
                         title="Resume PDF"
                     />
                 </div>
-
             </div>
         </div>
     );
