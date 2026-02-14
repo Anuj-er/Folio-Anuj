@@ -1,3 +1,5 @@
+'use client';
+
 import React, { memo, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -182,7 +184,7 @@ const SkillsSection = () => {
               { label: "", value: "3", sublabel: "Oracle Certifications", icon: "📜", gradient: "from-green-500 to-emerald-500" }
             ].map((stat, idx) => (
               <motion.div
-                key={stat.label}
+                key={stat.sublabel}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: idx * 0.1 }}

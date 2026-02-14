@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ArrowUp } from "lucide-react";
+import useGreetingComplete from '@/hooks/useGreetingComplete';
 
 export function SimpleBackToTop() {
   const [visible, setVisible] = useState(false);
@@ -17,18 +18,22 @@ export function SimpleBackToTop() {
     };
 
     window.addEventListener("scroll", toggleVisibility);
-    
+
     // Clean up the event listener
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
+
+  const isGreetingComplete = useGreetingComplete();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  if (!isGreetingComplete) return null;
+
   return (
-    <a 
-      href="#" 
+    <a
+      href="#"
       onClick={(e) => {
         e.preventDefault();
         scrollToTop();
@@ -43,7 +48,7 @@ export function SimpleBackToTop() {
         ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-0 pointer-events-none'}
       `}
       style={{
-        boxShadow: "0 0 20px rgba(168, 85, 247, 0.5)" 
+        boxShadow: "0 0 20px rgba(168, 85, 247, 0.5)"
       }}
       aria-label="Back to top"
     >

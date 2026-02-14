@@ -1,13 +1,27 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useRef, useEffect, useState } from 'react';
+import { motion, useSpring, useMotionValue } from 'framer-motion';
+import useGreetingComplete from '@/hooks/useGreetingComplete';
 
 const CustomCursor = () => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isHovering, setIsHovering] = useState(false);
+    const [isTouchDevice, setIsTouchDevice] = useState(false);
+    const isGreetingComplete = useGreetingComplete();
 
     useEffect(() => {
+        const checkTouch = () => {
+            setIsTouchDevice(window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 1024);
+        };
+
+        checkTouch();
+        window.addEventListener('resize', checkTouch);
+        return () => window.removeEventListener('resize', checkTouch);
+    }, []);
+
+    useEffect(() => {
+        if (isTouchDevice) return;
         const updateMousePosition = (e: MouseEvent) => {
             setMousePosition({ x: e.clientX, y: e.clientY });
         };
@@ -35,6 +49,8 @@ const CustomCursor = () => {
             window.removeEventListener('mouseover', handleMouseOver);
         };
     }, []);
+
+    if (isTouchDevice || !isGreetingComplete) return null;
 
     return (
         <>

@@ -98,9 +98,9 @@ const AnimatedBackground = () => (
   </div>
 );
 
-const Hero: React.FC = () => {
+const Hero: React.FC<{ initialData?: any }> = ({ initialData }) => {
   const [scale, setScale] = useState(1);
-  const [socialLinks, setSocialLinks] = useState<any>(null);
+  const [socialLinks, setSocialLinks] = useState<any>(initialData?.socialLinks || null);
 
   useEffect(() => {
     let ticking = false;
@@ -124,18 +124,20 @@ const Hero: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const fetchLinks = async () => {
-      try {
-        const data = await getAboutData();
-        if (data && data.socialLinks) {
-          setSocialLinks(data.socialLinks);
+    if (!initialData && !socialLinks) {
+      const fetchLinks = async () => {
+        try {
+          const data = await getAboutData();
+          if (data && data.socialLinks) {
+            setSocialLinks(data.socialLinks);
+          }
+        } catch (error) {
+          console.log('Error fetching social links:', error);
         }
-      } catch (error) {
-        console.log('Error fetching social links:', error);
-      }
-    };
-    fetchLinks();
-  }, []);
+      };
+      fetchLinks();
+    }
+  }, [initialData, socialLinks]);
 
   // Construct links array based on fetched data
   const links = [

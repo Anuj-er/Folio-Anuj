@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { getAboutData, updateAboutData, getProjects, createProject, deleteProject, getExperiences, createExperience, deleteExperience } from '@/lib/actions';
+import { getAboutData, updateAboutData, getProjects, createProject, deleteProject, getExperiences, createExperience, deleteExperience, verifyAdminPassword } from '@/lib/actions';
 import ImageUpload from '@/components/admin/ImageUpload';
 
 export default function AdminPage() {
@@ -51,9 +51,10 @@ export default function AdminPage() {
         setExperiences(expData || []);
     };
 
-    const handleLogin = (e: React.FormEvent) => {
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (password === 'admin123') {
+        const isValid = await verifyAdminPassword(password);
+        if (isValid) {
             setIsAuthenticated(true);
             localStorage.setItem('adminAuth', 'true');
             fetchData();

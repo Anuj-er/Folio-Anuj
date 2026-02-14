@@ -5,6 +5,27 @@ import About from '@/models/About';
 import Project from '@/models/Project';
 import Experience from '@/models/Experience';
 import { revalidatePath } from 'next/cache';
+import { cookies } from 'next/headers';
+
+// --- AUTH HELPER ---
+
+/**
+ * Checks if the current request is authenticated as admin.
+ * Uses HTTP-only cookies for security.
+ */
+export async function isAdmin() {
+    const cookieStore = cookies();
+    const session = cookieStore.get('admin_session');
+
+    if (!session) return false;
+
+    const adminPassword = process.env.ADMIN_PASSWORD;
+    if (!adminPassword) return false;
+
+    // In a production app, you might use a JWT or a hashed session ID.
+    // To keep it 'Anuj-style simple' but secure, we verify the cookie value.
+    return session.value === adminPassword;
+}
 
 // --- ABOUT SECTION ACTIONS ---
 
@@ -15,6 +36,7 @@ export async function getAboutData() {
 }
 
 export async function updateAboutData(data: any) {
+    if (!await isAdmin()) throw new Error('Unauthorized');
     await connectDB();
     const { _id, __v, ...updateData } = data;
     const about = await About.findOneAndUpdate({}, updateData, { returnDocument: 'after', upsert: true, setDefaultsOnInsert: true });
@@ -31,6 +53,7 @@ export async function getProjects() {
 }
 
 export async function createProject(data: any) {
+    if (!await isAdmin()) throw new Error('Unauthorized');
     await connectDB();
     // Get the highest order number and increment
     const maxOrderDoc = await Project.findOne().sort({ order: -1 }).select('order').lean();
@@ -42,6 +65,7 @@ export async function createProject(data: any) {
 }
 
 export async function updateProject(id: string, data: any) {
+    if (!await isAdmin()) throw new Error('Unauthorized');
     await connectDB();
     const { _id, __v, ...updateData } = data;
     const project = await Project.findByIdAndUpdate(id, updateData, { new: true });
@@ -50,6 +74,7 @@ export async function updateProject(id: string, data: any) {
 }
 
 export async function deleteProject(id: string) {
+    if (!await isAdmin()) throw new Error('Unauthorized');
     await connectDB();
     await Project.findByIdAndDelete(id);
     revalidatePath('/');
@@ -65,6 +90,7 @@ export async function getExperiences() {
 }
 
 export async function createExperience(data: any) {
+    if (!await isAdmin()) throw new Error('Unauthorized');
     await connectDB();
     // Get the highest order number and increment
     const maxOrderDoc = await Experience.findOne().sort({ order: -1 }).select('order').lean();
@@ -76,6 +102,7 @@ export async function createExperience(data: any) {
 }
 
 export async function updateExperience(id: string, data: any) {
+    if (!await isAdmin()) throw new Error('Unauthorized');
     await connectDB();
     const { _id, __v, ...updateData } = data;
     const experience = await Experience.findByIdAndUpdate(id, updateData, { new: true });
@@ -84,8 +111,32 @@ export async function updateExperience(id: string, data: any) {
 }
 
 export async function deleteExperience(id: string) {
+    if (!await isAdmin()) throw new Error('Unauthorized');
     await connectDB();
     await Experience.findByIdAndDelete(id);
     revalidatePath('/');
     return { success: true };
 }
+
+export async function verifyAdminPassword(password: string) {
+    const adminPassword = process.env.ADMIN_PASSWORD;
+    if (!adminPassword) {
+        console.error("ADMIN_PASSWORD is not set in environment variables");
+        return false;
+    }
+
+    if (password === adminPassword) {
+        // Set a secure HTTP-only session cookie
+        const cookieStore = cookies();
+        cookieStore.set('admin_session', adminPassword, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict',
+            maxAge: 60 * 60 * 24 * 7, // 1 week
+            path: '/',
+        });
+        return true;
+    }
+    return false;
+}
+

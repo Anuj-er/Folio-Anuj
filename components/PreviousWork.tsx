@@ -7,59 +7,77 @@ import Link from 'next/link';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { getExperiences } from '@/lib/actions';
 
-export default function PreviousWork() {
+export default function PreviousWork({ initialExperiences = [] }: { initialExperiences?: any[] }) {
   const [showAll, setShowAll] = useState(false);
   const [allData, setAllData] = useState<any[]>([]);
   const [displayData, setDisplayData] = useState<any[]>([]);
+  const [hasFetched, setHasFetched] = useState(initialExperiences.length > 0);
 
-  // Fetch experiences on mount
-  useEffect(() => {
-    const fetchExperiences = async () => {
-      const data = await getExperiences();
-      if (data && data.length > 0) {
-        // Transform DB data to Timeline format
-        const formattedData = data.map((exp: any) => ({
-          title: exp.title,
-          content: (
-            <div>
-              <p className="mb-8 text-xs font-normal text-neutral-200 md:text-sm">
-                {exp.description}
-                {exp.links && exp.links.length > 0 && (
-                  <>
-                    <br /><br />
-                    Check it out{' '}
-                    {exp.links.map((link: any, i: number) => (
-                      <span key={i}>
-                        <Link href={link.url} className="text-gray-300 no-underline" target="_blank" rel="noopener noreferrer">
-                          {link.text}
-                        </Link>
-                        {i < exp.links.length - 1 ? ', ' : ''}
-                      </span>
-                    ))}
-                  </>
-                )}
-              </p>
-              <div className={`grid ${exp.images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-4 mt-4`}>
-                {exp.images.map((img: string, i: number) => (
-                  <div key={i} className={`relative h-20 md:h-44 ${exp.images.length > 1 ? 'lg:h-60' : 'lg:h-[400px]'}`}>
-                    <Image
-                      src={img}
-                      alt={`${exp.title} image ${i + 1}`}
-                      fill
-                      className="rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-                    />
-                  </div>
+  // Function to transform DB data to Timeline format
+  const transformData = (data: any[]) => {
+    return data.map((exp: any) => ({
+      title: exp.title,
+      content: (
+        <div>
+          <p className="mb-8 text-xs font-normal text-neutral-200 md:text-sm">
+            {exp.description}
+            {exp.links && exp.links.length > 0 && (
+              <>
+                <br /><br />
+                Check it out{' '}
+                {exp.links.map((link: any, i: number) => (
+                  <span key={i}>
+                    <Link href={link.url} className="text-gray-300 no-underline" target="_blank" rel="noopener noreferrer">
+                      {link.text}
+                    </Link>
+                    {i < exp.links.length - 1 ? ', ' : ''}
+                  </span>
                 ))}
+              </>
+            )}
+          </p>
+          <div className={`grid ${exp.images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-4 mt-4`}>
+            {exp.images.map((img: string, i: number) => (
+              <div key={i} className={`relative h-20 md:h-44 ${exp.images.length > 1 ? 'lg:h-60' : 'lg:h-[400px]'}`}>
+                <Image
+                  src={img}
+                  alt={`${exp.title} image ${i + 1}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+                />
               </div>
-            </div>
-          )
-        }));
-        setAllData(formattedData);
-        setDisplayData(formattedData.slice(0, 4));
-      }
-    };
-    fetchExperiences();
-  }, []);
+            ))}
+          </div>
+        </div>
+      )
+    }));
+  };
+
+  // Set initial data if provided
+  useEffect(() => {
+    if (initialExperiences.length > 0) {
+      const formattedData = transformData(initialExperiences);
+      setAllData(formattedData);
+      setDisplayData(formattedData.slice(0, 4));
+    }
+  }, [initialExperiences]);
+
+  // Fetch experiences on mount if not provided
+  useEffect(() => {
+    if (!hasFetched) {
+      const fetchExperiences = async () => {
+        const data = await getExperiences();
+        if (data && data.length > 0) {
+          const formattedData = transformData(data);
+          setAllData(formattedData);
+          setDisplayData(formattedData.slice(0, 4));
+          setHasFetched(true);
+        }
+      };
+      fetchExperiences();
+    }
+  }, [hasFetched]);
 
   // Update display data when showAll changes
   useEffect(() => {

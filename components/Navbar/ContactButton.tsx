@@ -20,24 +20,20 @@ export const ContactButton = ({ className }: { className?: string }) => {
       setTimeout(() => {
         const isGreetingComplete = localStorage.getItem('greetingAnimationComplete') === 'true';
         if (isGreetingComplete) {
-          console.log("Greeting already completed in previous session");
           setGreetingComplete(true);
           setVisible(true);
-        } else {
-          console.log("Waiting for greeting animation to complete...");
         }
       }, 200);
 
       // Listen for the greeting animation complete event
       const handleGreetingComplete = () => {
-        console.log("Greeting animation complete event received!");
         setGreetingComplete(true);
         setVisible(true);
       };
 
       // Attach event listener
       window.addEventListener(GREETING_COMPLETE_EVENT, handleGreetingComplete);
-      
+
       // Add scroll listener to hide the button after scrolling down too far
       const handleScroll = () => {
         // Only handle scroll events if greeting is complete
@@ -52,7 +48,7 @@ export const ContactButton = ({ className }: { className?: string }) => {
       };
 
       window.addEventListener('scroll', handleScroll);
-      
+
       // Clean up
       return () => {
         window.removeEventListener(GREETING_COMPLETE_EVENT, handleGreetingComplete);
@@ -71,10 +67,10 @@ export const ContactButton = ({ className }: { className?: string }) => {
           setVisible(true);
         }
       };
-      
+
       // Check initial scroll position
       handleScroll();
-      
+
       window.addEventListener('scroll', handleScroll);
       return () => window.removeEventListener('scroll', handleScroll);
     }
@@ -89,8 +85,8 @@ export const ContactButton = ({ className }: { className?: string }) => {
   };
 
   return (
-    <Link 
-      href="/#contact" 
+    <Link
+      href="/#contact"
       scroll={false}
       onClick={handleContactClick}
       className={cn(
@@ -102,14 +98,14 @@ export const ContactButton = ({ className }: { className?: string }) => {
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <div className="absolute inset-0 bg-gradient-to-r from-[#60a5fa]/5 via-[#a78bfa]/5 to-[#60a5fa]/5" />
       </div>
-      
+
       <div className="flex items-center gap-1.5 sm:gap-2 relative z-10">
         <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-gradient-to-r from-[#60a5fa] to-[#a78bfa] transition-all duration-300 group-hover:scale-[100.8]"></div>
         <span className="inline-block transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0 text-white text-xs sm:text-sm">
           Contact Me
         </span>
       </div>
-      
+
       <div className="absolute top-0 z-10 flex h-full w-full translate-x-12 items-center justify-center gap-1.5 sm:gap-2 opacity-0 transition-all duration-300 group-hover:-translate-x-5 group-hover:opacity-100">
         <span className="text-black font-medium text-xs sm:text-sm">Contact Me</span>
         <ArrowRightIcon className="h-3 w-3 sm:h-4 sm:w-4 text-black" />

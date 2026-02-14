@@ -18,22 +18,26 @@ interface Project {
   tags: string[];
 }
 
-export default function AllProjects() {
+export default function AllProjects({ initialProjects = [] }: { initialProjects?: Project[] }) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [showLeftButton, setShowLeftButton] = useState(false);
   const [showRightButton, setShowRightButton] = useState(true);
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<Project[]>(initialProjects);
+  const [hasFetched, setHasFetched] = useState(initialProjects.length > 0);
 
-  // Fetch projects on mount
+  // Fetch projects on mount if not provided via props
   useEffect(() => {
-    const fetchProjects = async () => {
-      const data = await getProjects();
-      if (data && data.length > 0) {
-        setProjects(data);
-      }
-    };
-    fetchProjects();
-  }, []);
+    if (!hasFetched) {
+      const fetchProjects = async () => {
+        const data = await getProjects();
+        if (data && data.length > 0) {
+          setProjects(data);
+          setHasFetched(true);
+        }
+      };
+      fetchProjects();
+    }
+  }, [hasFetched]);
 
   // Check scroll position to show/hide buttons
   const checkScrollPosition = () => {
@@ -128,9 +132,9 @@ export default function AllProjects() {
                     <Image
                       src={project.image}
                       alt={project.title}
-                      width={400}
-                      height={250}
-                      className="object-contain w-full h-full bg-black/20"
+                      fill
+                      sizes="(max-width: 640px) 280px, (max-width: 768px) 320px, (max-width: 1024px) 360px, 400px"
+                      className="object-contain bg-black/20"
                     />
                     {/* Soft gradient overlay for image */}
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0e0e0e]/80" />

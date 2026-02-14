@@ -8,18 +8,20 @@ import { FaCode, FaGithub } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { getAboutData } from '@/lib/actions';
 
-const About = () => {
-  const [data, setData] = useState<any>(null);
+const About = ({ initialData }: { initialData?: any }) => {
+  const [data, setData] = useState<any>(initialData || null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const aboutData = await getAboutData();
-      if (aboutData) {
-        setData(aboutData);
-      }
-    };
-    fetchData();
-  }, []);
+    if (!initialData) {
+      const fetchData = async () => {
+        const aboutData = await getAboutData();
+        if (aboutData) {
+          setData(aboutData);
+        }
+      };
+      fetchData();
+    }
+  }, [initialData]);
 
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },

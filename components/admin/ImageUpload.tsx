@@ -100,13 +100,13 @@ export default function ImageUpload({ value, onChange, label = "Upload Image", c
             // Let's just hardcode the cloud name 'folioanuj' and I'll need the API key...
             // User provided: CLOUDINARY_API_KEY=714461154758949
 
-            formData.append('api_key', '714461154758949');
+            formData.append('api_key', process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY || '');
             formData.append('timestamp', timestamp.toString());
             formData.append('signature', signature);
             formData.append('folder', 'folio-anuj');
 
             const uploadResponse = await fetch(
-                `https://api.cloudinary.com/v1_1/folioanuj/image/upload`,
+                `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
                 {
                     method: 'POST',
                     body: formData,
@@ -160,8 +160,8 @@ export default function ImageUpload({ value, onChange, label = "Upload Image", c
             ) : (
                 <div
                     className={`relative border-2 border-dashed rounded-lg p-6 flex flex-col items-center justify-center cursor-pointer transition-colors ${dragActive
-                            ? 'border-blue-500 bg-blue-500/10'
-                            : 'border-gray-700 hover:border-blue-500 hover:bg-gray-800'
+                        ? 'border-blue-500 bg-blue-500/10'
+                        : 'border-gray-700 hover:border-blue-500 hover:bg-gray-800'
                         }`}
                     onDragEnter={handleDrag}
                     onDragLeave={handleDrag}

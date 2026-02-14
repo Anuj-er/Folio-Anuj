@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Volume2, VolumeX } from "lucide-react";
+import useGreetingComplete from '@/hooks/useGreetingComplete';
 
 interface BackgroundMusicProps {
   audioSrc: string;
@@ -16,6 +17,7 @@ export function BackgroundMusic({
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const isGreetingComplete = useGreetingComplete();
 
   useEffect(() => {
     // Create audio element
@@ -54,6 +56,8 @@ export function BackgroundMusic({
     setIsPlaying(!isPlaying);
     setHasInteracted(true);
   };
+
+  if (!isGreetingComplete) return null;
 
   return (
     <motion.button

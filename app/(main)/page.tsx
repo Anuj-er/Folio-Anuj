@@ -1,8 +1,4 @@
-'use client';
-
 import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
-import AnimatedGreetings from '@/components/Hello';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import TestimonialsSection from '@/components/TestimonialsSection';
@@ -12,58 +8,35 @@ import PreviousWork from '@/components/PreviousWork';
 import Approach from "@/components/Approach";
 import ContactForm from '@/components/ContactForm';
 import Goodbye from '@/components/Goodbye';
-import { ReactLenis } from '@studio-freight/react-lenis';
+import HomeClientWrapper from '@/components/HomeClientWrapper';
+import { getAboutData, getProjects, getExperiences } from '@/lib/actions';
 
 // Dynamically import components that might cause SSR issues
 const Gallery = dynamic(() => import('@/components/Gallery'), { ssr: false });
 const GitHubActivity = dynamic(() => import('@/components/GitHubActivity'), { ssr: false });
 
-const lenisOptions = {
-  lerp: 0.1,
-  duration: 1.2,
-  smoothTouch: false,
-  smooth: true,
-  wheelMultiplier: 0.7,
-  touchMultiplier: 1.5,
-  infinite: false,
-  orientation: 'vertical' as const,
-  gestureOrientation: 'vertical' as const,
-  normalizeWheel: true,
-};
-
-// This is a client-only page
-export default function Home() {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  if (!isClient) {
-    return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="relative w-16 h-16">
-          <div className="absolute top-0 left-0 w-full h-full border-4 border-purple-300/20 rounded-full animate-ping"></div>
-          <div className="absolute top-0 left-0 w-full h-full border-4 border-t-purple-500 rounded-full animate-spin"></div>
-        </div>
-      </div>
-    );
-  }
+// This is now a Server Component
+export default async function Home() {
+  // Fetch all data on the server
+  const [aboutData, projectsData, experiencesData] = await Promise.all([
+    getAboutData(),
+    getProjects(),
+    getExperiences()
+  ]);
 
   return (
-    <ReactLenis root options={lenisOptions}>
-      <AnimatedGreetings />
-      <Hero />
-      <About />
+    <HomeClientWrapper>
+      <Hero initialData={aboutData} />
+      <About initialData={aboutData} />
       <SkillsSection />
       <Approach />
       <TestimonialsSection />
-      <AllProjects />
-      <PreviousWork />
+      <AllProjects initialProjects={projectsData} />
+      <PreviousWork initialExperiences={experiencesData} />
       <Gallery />
       <GitHubActivity />
       <ContactForm />
       <Goodbye />
-    </ReactLenis>
+    </HomeClientWrapper>
   );
 }

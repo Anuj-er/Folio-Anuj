@@ -15,27 +15,26 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   // Recalculate height when data changes or component mounts
   useEffect(() => {
-    const updateHeight = () => {
-      if (ref.current) {
-        const rect = ref.current.getBoundingClientRect();
-        setHeight(rect.height);
+    if (!ref.current) return;
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.target === ref.current) {
+          setHeight(entry.contentRect.height);
+        }
       }
-    };
+    });
+
+    resizeObserver.observe(ref.current);
 
     // Initial calculation
-    updateHeight();
-    
-    // Add resize listener to handle window size changes
-    window.addEventListener('resize', updateHeight);
-    
-    // Recalculate after a short delay to ensure all content is rendered
-    const timeoutId = setTimeout(updateHeight, 500);
-    
+    const rect = ref.current.getBoundingClientRect();
+    setHeight(rect.height);
+
     return () => {
-      window.removeEventListener('resize', updateHeight);
-      clearTimeout(timeoutId);
+      resizeObserver.disconnect();
     };
-  }, [data, ref]); // Re-run when data changes
+  }, [data]); // Re-run when data changes
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -46,7 +45,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
-    <div className="w-full bg-black font-sans md:px-10" ref={containerRef}>
+    <div className="relative w-full bg-black font-sans md:px-10" ref={containerRef}>
       <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 lg:px-10">
         <h2 className="mb-4 max-w-4xl text-lg font-semibold text-white md:text-4xl xl:text-6xl">
           What's Happening in My World
