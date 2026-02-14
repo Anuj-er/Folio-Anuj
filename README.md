@@ -1,12 +1,13 @@
 <div align="center">
-  <!-- Placeholder for GIF -->
-  <img src="public/banner-github.gif" width="100%" alt="Portfolio Banner">
+  <img src="https://cdn.dribbble.com/userupload/28117148/file/original-c0db2041822a946b9529b5ae1fdf08e8.gif" width="100%" style="border-radius: 10px; margin-bottom: 20px;" alt="Portfolio Banner">
 
-  <h1>✨ Anuj Siwach | Full-Stack Portfolio</h1>
+  <h1>✨ Anuj Siwach | Full-Stack Portfolio ✨</h1>
 
-  <p><strong>A premium, high-performance portfolio built with Next.js 14, TypeScript, and MongoDB.</strong></p>
+  <p align="center">
+    <kbd>Next.js 14</kbd> • <kbd>TypeScript</kbd> • <kbd>MongoDB Atlas</kbd> • <kbd>Cloudinary</kbd> • <kbd>Framer Motion</kbd>
+  </p>
 
-  <p>
+  <p align="center">
     <a href="https://anujer.is-a.dev">
       <img src="https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=vercel" alt="Live Demo">
     </a>
@@ -14,136 +15,186 @@
       <img src="https://img.shields.io/github/stars/Anuj-er/Folio-Anuj?style=for-the-badge&logo=github" alt="Stars">
     </a>
     <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License">
+    <img src="https://img.shields.io/badge/PRs-Welcome-purple?style=for-the-badge" alt="PRs Welcome">
+  </p>
+
+  <br />
+
+  <p align="center">
+    <strong>A production-grade, high-performance portfolio engineered for aesthetics and security.</strong><br />
+    Featuring Server-Side Rendering (SSR), Secure Admin Controls, and complex fluid animations.
   </p>
 </div>
 
 ---
 
-## 🚀 Overview
+## � Deep Dive: The Project Architecture
 
-This isn't just a static site. It's a full-stack application featuring a custom **Admin Dashboard**, **Server-Side Rendering (SSR)** for SEO and performance, and a robust **Security Layer** to protect data. 
+This project is built using a **hybrid architecture** that balances the SEO benefits of Server-Side Rendering with the interactivity of modern React Client Components.
 
-Built with a focus on "Rich Aesthetics," it utilizes **Framer Motion** for glassmorphic effects and fluid micro-animations.
-
----
-
-## 🛠️ Tech Stack
-
-### Frontend & Core
-- **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
-- **Language**: [TypeScript](https://www.typescript.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/) & [React-Lenis](https://github.com/darkroomengineering/lenis)
-
-### Backend & Infrastructure
-- **Database**: [MongoDB Atlas](https://www.mongodb.com/atlas) (Mongoose ODM)
-- **Asset Hosting**: [Cloudinary CDN](https://cloudinary.com/) (Secure image management)
-- **Authentication**: Custom Secure Admin Portal with session-based guards.
-
----
-
-## 🏗️ Architecture
+### 🏗️ System Overview
 
 ```mermaid
 graph TD
-    User((User))
-    Admin((Admin))
-    
-    subgraph "Next.js Application Layer"
-        SSR[Server-Side Rendering]
-        SC[Client Components - Framer Motion]
-        SA[Server Actions - Security Guards]
+    subgraph "Public Frontend"
+        UI[User Interface - Framer Motion]
+        SSR[Next.js Server Component - Fetching]
     end
-    
-    subgraph "External Services"
+
+    subgraph "Private Management"
+        Admin[Admin Dashboard]
+        Auth[Security Layer - HTTP-only Cookies]
+    end
+
+    subgraph "Backend Services"
         DB[(MongoDB Atlas)]
         CDN[Cloudinary CDN]
+        Storage[Public Assets]
+    end
+
+    subgraph "Logic & Security"
+        Actions[Server Actions]
+        Guards[isAdmin Verification]
     end
 
     User --> SSR
-    SSR --> SC
-    Admin --> SA
-    SA --> DB
-    SA --> CDN
-    SC --> User
+    SSR --> UI
+    SSR -- "Mongoose" --> DB
+    SSR -- "Cloudinary SDK" --> CDN
+    
+    Admin -- "Next.js Actions" --> Actions
+    Actions --> Guards
+    Guards -- "Success" --> DB
+    Guards -- "Success" --> CDN
 ```
 
 ---
 
-## ✨ Key Features
+## 🛡️ Security Hardening (Production Ready)
 
-- **⚡ SSR Optimized**: Data is fetched on the server to ensure zero layout shift and lightning-fast initial loads.
-- **🛡️ Admin Dashboard**: A private panel to manage Projects, Experience, and Profile data without touching the code.
-- **🖼️ Automated Image Optimization**: Integrated with Cloudinary for on-the-fly resizing and modern format delivery.
-- **📱 Responsive & Fluid**: Custom cursors that adapt to touch devices and a smooth scrolling experience.
-- **🎨 Funny 404**: A custom-designed error page with a glitch aesthetic and humorous copy.
-- **⚔️ Developer Connectivity**: Integrated GitHub & LeetCode tracking for real-time coding stats.
+Unlike basic portfolios, this project treats security as a first-class citizen. 
+
+<details>
+<summary><b>Click to view detailed Security Protocols</b></summary>
+<br />
+
+| Feature | Implementation | Purpose |
+| :--- | :--- | :--- |
+| **Server-Side Authorization** | `isAdmin()` Guard | Prevents unauthorized triggering of database actions (Create/Update/Delete). |
+| **Session Protection** | HTTP-Only Cookies | Stores auth tokens in non-accessible cookies to prevent XSS attacks. |
+| **Action Guards** | Persistent Validation | All data mutations are checked server-side before execution. |
+| **Production Locks** | Seed Guard | The `seed.js` script refuses to wipe the database if `NODE_ENV=production`. |
+| **Secret Management** | Environment Variables | No keys (Cloudinary, MongoDB, Passwords) are ever leaked in the repo. |
+
+</details>
 
 ---
 
-## 🛡️ Security
-This project implements several security best practices:
-- **HTTP-Only Cookies**: Admin sessions are stored in secure, server-side cookies protecting against XSS.
-- **Server Action Guards**: Every database modification action is protected by a server-side authorization check.
-- **Production Seed Guard**: The data seeding script is hard-locked to prevent accidental database wipes in production.
-- **Environment Sanitation**: No secrets are stored in the codebase; all keys are managed via environment variables.
+## ⚡ Performance Optimization
+
+### The SSR Data Flow
+The application has been refactored from Client-Side `useEffect` fetching to **Server-Side Rendering**.
+
+```mermaid
+sequenceDiagram
+    participant Browser
+    participant Server as Next.js Server
+    participant DB as MongoDB Atlas
+
+    Browser->>Server: Request Home Page
+    Server->>DB: Fetch All Data (About, Projects, Experience)
+    DB-->>Server: Data Returned
+    Server->>Server: Pre-render Page with Data
+    Server-->>Browser: Fully Formed HTML + Hydration Script
+    Note over Browser: Zero Layout Shift!
+```
 
 ---
 
-## 📂 Folder Structure
+## ✨ Features Spotlight
+
+<div align="center">
+  <table width="100%">
+    <tr>
+      <td width="50%" align="center">
+        <h3>🛡️ Admin Dashboard</h3>
+        <p>A secure, private portal to edit your bio, add new projects, and update work experience without writing a single line of code.</p>
+      </td>
+      <td width="50%" align="center">
+        <h3>🎨 Rich Aesthetics</h3>
+        <p>Leveraging GSAP and Framer Motion to create smooth glassmorphic effects, particle backgrounds, and fluid scroll-linked animations.</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" align="center">
+        <h3>🖼️ Image Performance</h3>
+        <p>Uses <code>next/image</code> with Cloudinary CDN. Features modern formats (WebP/AVIF) and optimized <code>sizes</code> for 100% Core Web Vital scores.</p>
+      </td>
+      <td width="50%" align="center">
+        <h3>⚔️ Developer Connectivity</h3>
+        <p>Integrated GitHub & LeetCode tracking. Displays real-time coding activity and performance directly on the profile.</p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+---
+
+## 📂 Project Navigation
 
 ```text
 .
-├── app/                  # Next.js App Router (Main & Admin)
-├── components/           # UI Components (Framer Motion powered)
-├── lib/                  # Database & Server Action logic
-├── models/               # Mongoose Schemas
-├── public/               # Static assets & Resume
-├── scripts/              # Seed & Utility scripts
-├── next.config.mjs       # Image Domain & Experimental settings
-└── package.json          # Dependencies & Scripts
+├── app/
+│   ├── (main)/           # Public views (SSR optimized)
+│   ├── admin/            # Secure management dashboard
+│   ├── api/              # Cloudinary signature routes
+│   └── layout.tsx        # Global design tokens
+├── components/
+│   ├── ui/               # Reusable Framer Motion components
+│   └── admin/            # Dashboard specific controls
+├── lib/
+│   ├── actions.ts        # Secure Server Actions (The Brain)
+│   └── db.ts             # Mongoose connection pool
+├── models/               # MongoDB Schemas
+└── scripts/              # Productivity & Backup tools
 ```
 
 ---
 
-## ⚙️ Setup & Installation
+## ⚙️ Quick Start
 
-### 1. Clone & Install
+### 1️⃣ Installation
 ```bash
 git clone https://github.com/Anuj-er/Folio-Anuj.git
 cd Folio-Anuj
 npm install
 ```
 
-### 2. Environment Setup
-Create a `.env.local` file (use `.env.example` as a template):
+### 2️⃣ Environment Configuration
+Create a `.env.local` using the template below:
+
 ```env
-MONGODB_URI=your_mongodb_uri
-ADMIN_PASSWORD=your_secure_password
-NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
+# Database
+MONGODB_URI=your_uri_here
+
+# Admin Portal
+ADMIN_PASSWORD=your_secure_pass
+
+# Cloudinary
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=name
+CLOUDINARY_API_KEY=key
+CLOUDINARY_API_SECRET=secret
 ```
 
-### 3. Run Locally
+### 3️⃣ Run Dev
 ```bash
 npm run dev
 ```
 
 ---
 
-## 🤝 Contributing
-Contributions are welcome! If you have suggestions for improvement, feel free to open a PR.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
 <div align="center">
-  <p>If you like this project, please give it a ⭐️!</p>
-  <p>Created with ❤️ by <a href="https://github.com/Anuj-er">Anuj Kumar</a></p>
+  <h3>✨ Built for impact. Secured for scale. ✨</h3>
+  <p>If you like this project, please consider giving it a ⭐️!</p>
+  <p>Created by <a href="https://github.com/Anuj-er">Anuj Siwach</a></p>
 </div>
