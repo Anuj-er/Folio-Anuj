@@ -354,19 +354,18 @@ export default function AdminPage() {
                                 />
                             </div>
                             <div className="md:col-span-2">
-                                <FileUpload
-                                    value={about.socialLinks?.resume || ''}
-                                    onChange={(url) => setAbout({ ...about, socialLinks: { ...about.socialLinks, resume: url } })}
-                                    label="Upload Resume (PDF)"
-                                    accept=".pdf,application/pdf"
-                                />
-                                <p className="text-xs text-gray-500 mt-1">Alternatively, you can still paste a direct URL here if you prefer.</p>
-                                <input
-                                    className="w-full mt-2 rounded border border-gray-700 bg-black p-2 text-sm text-white"
-                                    placeholder="Resume URL"
-                                    value={about.socialLinks?.resume || ''}
-                                    onChange={(e) => setAbout({ ...about, socialLinks: { ...about.socialLinks, resume: e.target.value } })}
-                                />
+                                <label className="block text-sm text-gray-400 mb-1">Resume / Document Link</label>
+                                <div className="flex flex-col gap-1">
+                                    <input
+                                        className="w-full rounded border border-gray-700 bg-black p-2 text-white"
+                                        placeholder="e.g., /resume/resume.pdf or a link"
+                                        value={about.socialLinks?.resume || ''}
+                                        onChange={(e) => setAbout({ ...about, socialLinks: { ...about.socialLinks, resume: e.target.value } })}
+                                    />
+                                    <p className="text-[10px] text-gray-500 italic">
+                                        Tip: If you upload your resume to the <code>public/resume</code> folder, use <code>/resume/resume.pdf</code> here.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -86,7 +86,8 @@ export default function FileUpload({
             const timestamp = Math.round(new Date().getTime() / 1000);
             const paramsToSign = {
                 timestamp: timestamp,
-                folder: 'folio-anuj', // Optional: organize images in a folder
+                folder: 'folio-anuj',
+                access_mode: 'public',
             };
 
             const response = await fetch('/api/cloudinary/sign', {
@@ -127,15 +128,14 @@ export default function FileUpload({
             formData.append('timestamp', timestamp.toString());
             formData.append('signature', signature);
             formData.append('folder', 'folio-anuj');
+            formData.append('access_mode', 'public');
 
-            // Determine resource type based on file type
-            // Note: raw uploads in Cloudinary sometimes behave differently. 
-            // For PDFs, 'auto' or 'image' usually works fine for previewing, 
-            // but 'raw' is for non-transformable files. 
-            // Let's use 'auto' which is most reliable.
+            // Determine resource type: PDFs are best handled as 'image' in Cloudinary 
+            // for public previewing and multi-page support.
+            const resourceType = file.type === 'application/pdf' ? 'image' : 'auto';
 
             const uploadResponse = await fetch(
-                `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'folioanuj'}/auto/upload`,
+                `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'folioanuj'}/${resourceType}/upload`,
                 {
                     method: 'POST',
                     body: formData,

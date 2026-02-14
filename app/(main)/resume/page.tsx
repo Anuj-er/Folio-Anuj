@@ -20,28 +20,44 @@ async function ResumeContent() {
                     <h1 className="text-2xl font-bold text-white">Resume</h1>
                 </div>
 
-                <a
-                    href={resumeUrl}
-                    download="Anuj_Kumar_Resume.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm font-medium text-white/70 hover:text-white transition-colors group"
-                >
-                    <span>Download PDF</span>
-                    <svg
-                        className="w-4 h-4 group-hover:translate-y-0.5 transition-transform"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+                <div className="flex items-center gap-4">
+                    <a
+                        href={resumeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors group"
                     >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                        />
-                    </svg>
-                </a>
+                        <span>View in New Tab</span>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                    </a>
+
+                    <div className="h-4 w-[1px] bg-gray-700"></div>
+
+                    <a
+                        href={resumeUrl}
+                        download="Anuj_Kumar_Resume.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm font-medium text-white/70 hover:text-white transition-colors group"
+                    >
+                        <span>Download PDF</span>
+                        <svg
+                            className="w-4 h-4 group-hover:translate-y-0.5 transition-transform"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                            />
+                        </svg>
+                    </a>
+                </div>
             </div>
 
             {/* PDF Viewer - Full Height for Seamless Scrolling */}
