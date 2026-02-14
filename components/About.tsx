@@ -77,7 +77,7 @@ const About = ({ initialData }: { initialData?: any }) => {
                   ) : (
                     <>
                       <motion.p {...fadeInUp} className="text-sm sm:text-base leading-relaxed">
-                        Based in Chandigarh, India, I'm a second-year Computer Science Engineering student at Chitkara University,
+                        Based in Chandigarh, India, I&apos;m a second-year Computer Science Engineering student at Chitkara University,
                         with a deep passion for learning and solving real-world problems through technology.
                       </motion.p>
                       <motion.p {...fadeInUp} className="text-sm sm:text-base leading-relaxed">

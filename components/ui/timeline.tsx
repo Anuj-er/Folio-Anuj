@@ -48,10 +48,10 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
     <div className="relative w-full bg-black font-sans md:px-10" ref={containerRef}>
       <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 lg:px-10">
         <h2 className="mb-4 max-w-4xl text-lg font-semibold text-white md:text-4xl xl:text-6xl">
-          What's Happening in My World
+          What&apos;s Happening in My World
         </h2>
         <p className="max-w-sm text-sm text-neutral-300 md:text-base">
-          Here's a quick snapshot of what I'm up to lately! From personal milestones to exciting projects, catch up on all the latest updates happening in my life.
+          Here&apos;s a quick snapshot of what I&apos;m up to lately! From personal milestones to exciting projects, catch up on all the latest updates happening in my life.
         </p>
       </div>
 

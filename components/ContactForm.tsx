@@ -2,7 +2,7 @@
 
 import React, { useState, FormEvent } from 'react';
 import emailjs from '@emailjs/browser';
-import  ShimmerButton  from "@/components/ui/shimmer-button";
+import ShimmerButton from "@/components/ui/shimmer-button";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -10,13 +10,13 @@ const ContactForm = () => {
     email: '',
     message: ''
   });
-  
+
   const [errors, setErrors] = useState({
     name: '',
     email: '',
     message: ''
   });
-  
+
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
 
@@ -87,7 +87,7 @@ const ContactForm = () => {
             Contact Me
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-white/70">
-            Let's discuss our next project
+            Let&apos;s discuss our next project
           </p>
         </div>
 
@@ -141,9 +141,8 @@ const ContactForm = () => {
             </div>
 
             {submitStatus && (
-              <div className={`text-center text-sm font-medium ${
-                submitStatus.includes('success') ? 'text-green-400' : 'text-red-400'
-              }`}>
+              <div className={`text-center text-sm font-medium ${submitStatus.includes('success') ? 'text-green-400' : 'text-red-400'
+                }`}>
                 {submitStatus}
               </div>
             )}

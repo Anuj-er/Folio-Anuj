@@ -82,10 +82,10 @@ export default function NotFound() {
                         Page Not Found
                     </h2>
                     <p className="text-lg text-white/60 font-medium">
-                        "Whoops! This page vanished faster than my social life during finals week."
+                        &quot;Whoops! This page vanished faster than my social life during finals week.&quot;
                         <br />
                         <span className="text-sm font-normal italic opacity-70">
-                            Either this link is broken, or you just found a secret level that doesn't exist yet.
+                            Either this link is broken, or you just found a secret level that doesn&apos;t exist yet.
                         </span>
                     </p>
                 </motion.div>
@@ -108,7 +108,7 @@ export default function NotFound() {
 
                 {/* Playful Footer */}
                 <p className="mt-12 text-xs text-white/30 tracking-widest uppercase">
-                    Lost? Don't worry, we've all been there.
+                    Lost? Don&apos;t worry, we&apos;ve all been there.
                 </p>
             </div>
 

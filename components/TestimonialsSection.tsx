@@ -62,7 +62,7 @@ const testimonials: Testimonial[] = [
 
 ];
 
-interface TestimonialCardProps extends Testimonial {}
+interface TestimonialCardProps extends Testimonial { }
 
 const TestimonialCard: React.FC<TestimonialCardProps> = ({ img, name, role, body }) => {
   return (
@@ -76,9 +76,9 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ img, name, role, body
     )}>
       <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
         <div className="shrink-0">
-          <img 
-            className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 rounded-full object-cover border border-white/5 group-hover:border-white/10 transition-all duration-300" 
-            alt={`${name}'s profile picture`} 
+          <img
+            className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 rounded-full object-cover border border-white/5 group-hover:border-white/10 transition-all duration-300"
+            alt={`${name}'s profile picture`}
             src={img}
           />
         </div>
@@ -92,9 +92,9 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ img, name, role, body
         </div>
       </div>
       <blockquote className="text-[11px] sm:text-xs lg:text-sm text-white/70 leading-relaxed italic line-clamp-3">
-        "{body}"
+        &quot;{body}&quot;
       </blockquote>
-      <div className="absolute top-2 right-2 lg:top-3 lg:right-3 opacity-5 text-2xl sm:text-3xl lg:text-4xl font-serif">"</div>
+      <div className="absolute top-2 right-2 lg:top-3 lg:right-3 opacity-5 text-2xl sm:text-3xl lg:text-4xl font-serif">&quot;</div>
     </figure>
   );
 };
@@ -107,7 +107,7 @@ interface MarqueeProps {
 
 const Marquee: React.FC<MarqueeProps> = ({ children, reverse = false, className }) => {
   return (
-    <div 
+    <div
       className={cn(
         "flex gap-3 sm:gap-4 lg:gap-6 animate-marquee", // Increased gap for large screens
         reverse && "animate-marquee-reverse",
@@ -132,22 +132,22 @@ const TestimonialsSection: React.FC = () => {
             What People Say
           </h2>
           <p className="text-xs sm:text-sm lg:text-base text-white/70 max-w-2xl mx-auto font-light">
-            Feedback and insights shared by mentors and classmates I've had the privilege to learn from.
+            Feedback and insights shared by mentors and classmates I&apos;ve had the privilege to learn from.
           </p>
         </div>
 
         <div className="relative flex flex-col gap-4 sm:gap-6 lg:gap-8 overflow-hidden py-4">
-          <Marquee 
-            className="[--duration:35s] sm:[--duration:40s] lg:[--duration:45s]" 
+          <Marquee
+            className="[--duration:35s] sm:[--duration:40s] lg:[--duration:45s]"
             reverse={false}
           >
             {firstRow.map((testimonial) => (
               <TestimonialCard key={testimonial.name} {...testimonial} />
             ))}
           </Marquee>
-          
-          <Marquee 
-            className="[--duration:40s] sm:[--duration:45s] lg:[--duration:50s]" 
+
+          <Marquee
+            className="[--duration:40s] sm:[--duration:45s] lg:[--duration:50s]"
             reverse={true}
           >
             {secondRow.map((testimonial) => (
