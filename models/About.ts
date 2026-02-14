@@ -5,13 +5,9 @@ const AboutSchema = new Schema({
     badges: [{ type: String }], // Array of badges
     name: { type: String, default: "Anuj Kumar" },
     headline: { type: String }, // e.g., "Curious Mind | Tech Enthusiast | Innovator"
-    bio: { type: String, required: true },
     paragraphs: [{ type: String }], // Array of description paragraphs
     currentFocus: [{ type: String }], // Array of current focus items
     skills: [{ type: String }],
-    experienceYears: { type: Number, default: 0 },
-    projectsCompleted: { type: Number, default: 0 },
-    clientsSatisfied: { type: Number, default: 0 },
     socialLinks: {
         github: { type: String },
         linkedin: { type: String },

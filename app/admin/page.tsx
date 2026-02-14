@@ -14,7 +14,15 @@ export default function AdminPage() {
     const [experiences, setExperiences] = useState<any[]>([]);
 
     // Form States
-    const [newProject, setNewProject] = useState({ title: '', description: '', image: '', tags: '', githubLink: '', liveLink: '' });
+    // Form States
+    const [newProject, setNewProject] = useState<{ title: string; description: string; image: string; tags: string[]; githubLink: string; liveLink: string }>({
+        title: '',
+        description: '',
+        image: '',
+        tags: [''],
+        githubLink: '',
+        liveLink: ''
+    });
 
     // Experience Form State
     const [newExperience, setNewExperience] = useState({
@@ -63,9 +71,9 @@ export default function AdminPage() {
 
     const handleProjectAdd = async (e: React.FormEvent) => {
         e.preventDefault();
-        const tagsArray = newProject.tags.split(',').map(t => t.trim()).filter(Boolean);
+        const tagsArray = newProject.tags.map(t => t.trim()).filter(Boolean);
         await createProject({ ...newProject, tags: tagsArray });
-        setNewProject({ title: '', description: '', image: '', tags: '', githubLink: '', liveLink: '' });
+        setNewProject({ title: '', description: '', image: '', tags: [''], githubLink: '', liveLink: '' });
         fetchData();
     };
 
@@ -152,21 +160,26 @@ export default function AdminPage() {
                         {(about.badges || ['']).map((badge: string, idx: number) => (
                             <div key={idx} className="flex gap-2 mb-2">
                                 <input
-                                    className="w-full rounded border border-gray-700 bg-black p-2"
+                                    className="w-full rounded border border-gray-700 bg-black p-2 text-white"
                                     placeholder={`Badge ${idx + 1} (e.g., HackIndia National Finalist)`}
                                     value={badge}
                                     onChange={(e) => {
-                                        const newBadges = [...(about.badges || [''])];
-                                        newBadges[idx] = e.target.value;
-                                        setAbout({ ...about, badges: newBadges });
+                                        const val = e.target.value;
+                                        setAbout((prev: any) => {
+                                            const newBadges = [...(prev.badges || [''])];
+                                            newBadges[idx] = val;
+                                            return { ...prev, badges: newBadges };
+                                        });
                                     }}
                                 />
                                 {(about.badges || ['']).length > 1 && (
                                     <button
                                         type="button"
                                         onClick={() => {
-                                            const newBadges = (about.badges || ['']).filter((_: any, i: number) => i !== idx);
-                                            setAbout({ ...about, badges: newBadges });
+                                            setAbout((prev: any) => {
+                                                const newBadges = (prev.badges || ['']).filter((_: any, i: number) => i !== idx);
+                                                return { ...prev, badges: newBadges };
+                                            });
                                         }}
                                         className="text-red-500 px-2 hover:bg-white/10 rounded"
                                     >
@@ -177,7 +190,7 @@ export default function AdminPage() {
                         ))}
                         <button
                             type="button"
-                            onClick={() => setAbout({ ...about, badges: [...(about.badges || ['']), ''] })}
+                            onClick={() => setAbout((prev: any) => ({ ...prev, badges: [...(prev.badges || ['']), ''] }))}
                             className="text-xs text-blue-400 hover:text-blue-300"
                         >
                             + Add Badge
@@ -187,7 +200,7 @@ export default function AdminPage() {
                     <div>
                         <label className="block text-sm text-gray-400 mb-1">Name</label>
                         <input
-                            className="w-full rounded border border-gray-700 bg-black p-2"
+                            className="w-full rounded border border-gray-700 bg-black p-2 text-white"
                             value={about.name || 'Anuj Kumar'}
                             onChange={(e) => setAbout({ ...about, name: e.target.value })}
                         />
@@ -196,7 +209,7 @@ export default function AdminPage() {
                     <div>
                         <label className="block text-sm text-gray-400 mb-1">Headline (Below Name)</label>
                         <input
-                            className="w-full rounded border border-gray-700 bg-black p-2"
+                            className="w-full rounded border border-gray-700 bg-black p-2 text-white"
                             placeholder="e.g., Curious Mind | Tech Enthusiast | Innovator"
                             value={about.headline || ''}
                             onChange={(e) => setAbout({ ...about, headline: e.target.value })}
@@ -208,20 +221,23 @@ export default function AdminPage() {
                         {(about.paragraphs || ['']).map((para: string, idx: number) => (
                             <div key={idx} className="mb-2">
                                 <textarea
-                                    className="w-full h-20 rounded border border-gray-700 bg-black p-2 text-sm"
+                                    className="w-full h-20 rounded border border-gray-700 bg-black p-2 text-sm text-white"
                                     placeholder={`Paragraph ${idx + 1}`}
                                     value={para}
                                     onChange={(e) => {
-                                        const newParas = [...(about.paragraphs || [''])];
-                                        newParas[idx] = e.target.value;
-                                        setAbout({ ...about, paragraphs: newParas });
+                                        const val = e.target.value;
+                                        setAbout((prev: any) => {
+                                            const newParas = [...(prev.paragraphs || [''])];
+                                            newParas[idx] = val;
+                                            return { ...prev, paragraphs: newParas };
+                                        });
                                     }}
                                 />
                             </div>
                         ))}
                         <button
                             type="button"
-                            onClick={() => setAbout({ ...about, paragraphs: [...(about.paragraphs || ['']), ''] })}
+                            onClick={() => setAbout((prev: any) => ({ ...prev, paragraphs: [...(prev.paragraphs || ['']), ''] }))}
                             className="text-xs text-blue-400 hover:text-blue-300"
                         >
                             + Add Paragraph
@@ -231,58 +247,55 @@ export default function AdminPage() {
                     <div className="border-t border-gray-800 pt-4 mt-2">
                         <h4 className="text-sm font-bold mb-2 text-gray-300">Current Focus Items</h4>
                         {(about.currentFocus || ['']).map((item: string, idx: number) => (
-                            <div key={idx} className="mb-2">
+                            <div key={idx} className="flex items-center gap-2 mb-2">
                                 <input
-                                    className="w-full rounded border border-gray-700 bg-black p-2 text-sm"
+                                    className="flex-1 rounded border border-gray-700 bg-black p-2 text-sm text-white"
                                     placeholder={`Focus item ${idx + 1}`}
                                     value={item}
                                     onChange={(e) => {
-                                        const newFocus = [...(about.currentFocus || [''])];
-                                        newFocus[idx] = e.target.value;
-                                        setAbout({ ...about, currentFocus: newFocus });
+                                        const val = e.target.value;
+                                        setAbout((prev: any) => {
+                                            const newFocus = [...(prev.currentFocus || [''])];
+                                            newFocus[idx] = val;
+                                            return { ...prev, currentFocus: newFocus };
+                                        });
                                     }}
                                 />
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        setAbout((prev: any) => {
+                                            const newFocus = [...(prev.currentFocus || [])];
+                                            newFocus.splice(idx, 1);
+                                            return { ...prev, currentFocus: newFocus };
+                                        });
+                                    }}
+                                    className="text-red-500 hover:text-red-400 px-2 font-bold"
+                                    title="Remove ID"
+                                >
+                                    ✕
+                                </button>
                             </div>
                         ))}
                         <button
                             type="button"
-                            onClick={() => setAbout({ ...about, currentFocus: [...(about.currentFocus || ['']), ''] })}
+                            onClick={() => setAbout((prev: any) => ({ ...prev, currentFocus: [...(prev.currentFocus || ['']), ''] }))}
                             className="text-xs text-blue-400 hover:text-blue-300"
                         >
                             + Add Focus Item
                         </button>
                     </div>
 
-                    <div className="border-t border-gray-800 pt-4 mt-2">
-                        <h4 className="text-sm font-bold mb-2 text-gray-300">Legacy Bio (Optional)</h4>
-                        <textarea
-                            className="w-full h-32 rounded border border-gray-700 bg-black p-2"
-                            value={about.bio || ''}
-                            onChange={(e) => setAbout({ ...about, bio: e.target.value })}
-                        />
-                    </div>
+
                     <div>
                         <label className="block text-sm text-gray-400 mb-1">Profile Image URL</label>
                         <input
-                            className="w-full rounded border border-gray-700 bg-black p-2"
+                            className="w-full rounded border border-gray-700 bg-black p-2 text-white"
                             value={about.profileImage || ''}
                             onChange={(e) => setAbout({ ...about, profileImage: e.target.value })}
                         />
                     </div>
-                    <div className="grid grid-cols-3 gap-4">
-                        <div>
-                            <label className="block text-sm text-gray-400 mb-1">Years Exp</label>
-                            <input type="number" className="w-full rounded border border-gray-700 bg-black p-2" value={about.experienceYears} onChange={(e) => setAbout({ ...about, experienceYears: parseInt(e.target.value) })} />
-                        </div>
-                        <div>
-                            <label className="block text-sm text-gray-400 mb-1">Projects</label>
-                            <input type="number" className="w-full rounded border border-gray-700 bg-black p-2" value={about.projectsCompleted} onChange={(e) => setAbout({ ...about, projectsCompleted: parseInt(e.target.value) })} />
-                        </div>
-                        <div>
-                            <label className="block text-sm text-gray-400 mb-1">Clients</label>
-                            <input type="number" className="w-full rounded border border-gray-700 bg-black p-2" value={about.clientsSatisfied} onChange={(e) => setAbout({ ...about, clientsSatisfied: parseInt(e.target.value) })} />
-                        </div>
-                    </div>
+
 
                     <div className="border-t border-gray-800 pt-4 mt-2">
                         <h4 className="text-lg font-bold mb-4 text-blue-400">Social & Resume Links</h4>
@@ -290,7 +303,7 @@ export default function AdminPage() {
                             <div>
                                 <label className="block text-sm text-gray-400 mb-1">GitHub URL</label>
                                 <input
-                                    className="w-full rounded border border-gray-700 bg-black p-2"
+                                    className="w-full rounded border border-gray-700 bg-black p-2 text-white"
                                     value={about.socialLinks?.github || ''}
                                     onChange={(e) => setAbout({ ...about, socialLinks: { ...about.socialLinks, github: e.target.value } })}
                                 />
@@ -298,7 +311,7 @@ export default function AdminPage() {
                             <div>
                                 <label className="block text-sm text-gray-400 mb-1">LinkedIn URL</label>
                                 <input
-                                    className="w-full rounded border border-gray-700 bg-black p-2"
+                                    className="w-full rounded border border-gray-700 bg-black p-2 text-white"
                                     value={about.socialLinks?.linkedin || ''}
                                     onChange={(e) => setAbout({ ...about, socialLinks: { ...about.socialLinks, linkedin: e.target.value } })}
                                 />
@@ -306,7 +319,7 @@ export default function AdminPage() {
                             <div>
                                 <label className="block text-sm text-gray-400 mb-1">Twitter/X URL</label>
                                 <input
-                                    className="w-full rounded border border-gray-700 bg-black p-2"
+                                    className="w-full rounded border border-gray-700 bg-black p-2 text-white"
                                     value={about.socialLinks?.twitter || ''}
                                     onChange={(e) => setAbout({ ...about, socialLinks: { ...about.socialLinks, twitter: e.target.value } })}
                                 />
@@ -314,7 +327,7 @@ export default function AdminPage() {
                             <div>
                                 <label className="block text-sm text-gray-400 mb-1">Resume / Document Link (PDF)</label>
                                 <input
-                                    className="w-full rounded border border-gray-700 bg-black p-2"
+                                    className="w-full rounded border border-gray-700 bg-black p-2 text-white"
                                     value={about.socialLinks?.resume || ''}
                                     onChange={(e) => setAbout({ ...about, socialLinks: { ...about.socialLinks, resume: e.target.value } })}
                                 />
@@ -343,8 +356,45 @@ export default function AdminPage() {
                                 <input className="w-full bg-black border border-gray-700 p-2 rounded focus:border-blue-500 outline-none" value={newProject.image} onChange={e => setNewProject({ ...newProject, image: e.target.value })} required />
                             </div>
                             <div>
-                                <label className="text-sm text-gray-400">Tags (comma separated)</label>
-                                <input className="w-full bg-black border border-gray-700 p-2 rounded focus:border-blue-500 outline-none" value={newProject.tags} onChange={e => setNewProject({ ...newProject, tags: e.target.value })} />
+                                <label className="text-sm text-gray-400 mb-2 block">Tags</label>
+                                {newProject.tags.map((tag, idx) => (
+                                    <div key={idx} className="flex gap-2 mb-2">
+                                        <input
+                                            className="w-full bg-black border border-gray-700 p-2 rounded focus:border-blue-500 outline-none text-white"
+                                            placeholder={`Tag ${idx + 1}`}
+                                            value={tag}
+                                            onChange={e => {
+                                                const val = e.target.value;
+                                                setNewProject(prev => {
+                                                    const newTags = [...prev.tags];
+                                                    newTags[idx] = val;
+                                                    return { ...prev, tags: newTags };
+                                                });
+                                            }}
+                                        />
+                                        {newProject.tags.length > 1 && (
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    setNewProject(prev => {
+                                                        const newTags = prev.tags.filter((_, i) => i !== idx);
+                                                        return { ...prev, tags: newTags };
+                                                    });
+                                                }}
+                                                className="text-red-500 px-2 hover:bg-white/10 rounded"
+                                            >
+                                                ✕
+                                            </button>
+                                        )}
+                                    </div>
+                                ))}
+                                <button
+                                    type="button"
+                                    onClick={() => setNewProject(prev => ({ ...prev, tags: [...prev.tags, ''] }))}
+                                    className="text-sm text-blue-400 hover:text-blue-300"
+                                >
+                                    + Add Tag
+                                </button>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                                 <div>

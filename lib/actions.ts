@@ -16,7 +16,8 @@ export async function getAboutData() {
 
 export async function updateAboutData(data: any) {
     await connectDB();
-    const about = await About.findOneAndUpdate({}, data, { new: true, upsert: true, setDefaultsOnInsert: true });
+    const { _id, __v, ...updateData } = data;
+    const about = await About.findOneAndUpdate({}, updateData, { returnDocument: 'after', upsert: true, setDefaultsOnInsert: true });
     revalidatePath('/');
     return JSON.parse(JSON.stringify(about));
 }
@@ -42,7 +43,8 @@ export async function createProject(data: any) {
 
 export async function updateProject(id: string, data: any) {
     await connectDB();
-    const project = await Project.findByIdAndUpdate(id, data, { new: true });
+    const { _id, __v, ...updateData } = data;
+    const project = await Project.findByIdAndUpdate(id, updateData, { new: true });
     revalidatePath('/');
     return JSON.parse(JSON.stringify(project));
 }
@@ -58,20 +60,25 @@ export async function deleteProject(id: string) {
 
 export async function getExperiences() {
     await connectDB();
-    const experiences = await Experience.find().sort({ createdAt: -1 }).lean();
+    const experiences = await Experience.find().sort({ order: -1, createdAt: -1 }).lean();
     return JSON.parse(JSON.stringify(experiences));
 }
 
 export async function createExperience(data: any) {
     await connectDB();
-    const experience = await Experience.create(data);
+    // Get the highest order number and increment
+    const maxOrderDoc = await Experience.findOne().sort({ order: -1 }).select('order').lean();
+    const nextOrder = (maxOrderDoc?.order || 0) + 1;
+
+    const experience = await Experience.create({ ...data, order: nextOrder });
     revalidatePath('/');
     return JSON.parse(JSON.stringify(experience));
 }
 
 export async function updateExperience(id: string, data: any) {
     await connectDB();
-    const experience = await Experience.findByIdAndUpdate(id, data, { new: true });
+    const { _id, __v, ...updateData } = data;
+    const experience = await Experience.findByIdAndUpdate(id, updateData, { new: true });
     revalidatePath('/');
     return JSON.parse(JSON.stringify(experience));
 }

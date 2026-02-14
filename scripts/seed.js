@@ -18,13 +18,9 @@ const AboutSchema = new mongoose.Schema({
     badges: [{ type: String }],
     name: { type: String, default: "Anuj Kumar" },
     headline: { type: String },
-    bio: { type: String, required: true },
     paragraphs: [{ type: String }],
     currentFocus: [{ type: String }],
     skills: [{ type: String }],
-    experienceYears: { type: Number, default: 0 },
-    projectsCompleted: { type: Number, default: 0 },
-    clientsSatisfied: { type: Number, default: 0 },
     socialLinks: {
         github: { type: String },
         linkedin: { type: String },
@@ -66,7 +62,6 @@ const aboutData = {
     badges: ["HackIndia National Finalist", "Tech Enthusiast"],
     name: "Anuj Kumar",
     headline: "Curious Mind | Tech Enthusiast | Innovator",
-    bio: "I am a passionate Full Stack Developer with a knack for building scalable web applications. My journey in tech has been driven by curiosity and a relentless desire to learn. I specialize in modern technologies like React, Next.js, Node.js, and Cloud services. Over the years, I have worked on diverse projects ranging from heavy-duty web apps to slick, interactive portfolios.",
     paragraphs: [
         "Based in Chandigarh, India, I'm a second-year Computer Science Engineering student at Chitkara University, with a deep passion for learning and solving real-world problems through technology.",
         "From exploring diverse programming languages to working on cutting-edge projects, I am driven by my curiosity and the desire to make an impact in the tech space."
@@ -76,9 +71,6 @@ const aboutData = {
         "Building practical projects and solutions"
     ],
     skills: ["React", "Next.js", "Node.js", "TypeScript", "Tailwind CSS", "MongoDB", "Cloudinary"],
-    experienceYears: 2,
-    projectsCompleted: 10,
-    clientsSatisfied: 5,
     socialLinks: {
         github: 'https://github.com/Anuj-er',
         linkedin: 'https://www.linkedin.com/in/anuj-er/',
