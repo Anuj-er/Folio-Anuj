@@ -25,6 +25,9 @@ const Navbar: React.FC = () => {
             <Item href={'/#gallery'}>
               <span className="text-xs xs:text-sm sm:text-base whitespace-nowrap">Gallery</span>
             </Item>
+            <Item href={'/resume'}>
+              <span className="text-xs xs:text-sm sm:text-base whitespace-nowrap">Resume</span>
+            </Item>
           </div>
         </div>
       </div>
