@@ -1,7 +1,19 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { getAboutData, updateAboutData, getProjects, createProject, deleteProject, getExperiences, createExperience, deleteExperience, verifyAdminPassword } from '@/lib/actions';
+import {
+    getAboutData,
+    updateAboutData,
+    getProjects,
+    createProject,
+    deleteProject,
+    getExperiences,
+    createExperience,
+    deleteExperience,
+    verifyAdminPassword,
+    checkAuthStatus,
+    logout
+} from '@/lib/actions';
 import FileUpload from '@/components/admin/ImageUpload';
 
 export default function AdminPage() {
@@ -34,12 +46,18 @@ export default function AdminPage() {
     });
 
     useEffect(() => {
-        // Check local storage for auth persistence
-        const auth = localStorage.getItem('adminAuth');
-        if (auth === 'true') {
-            setIsAuthenticated(true);
-            fetchData();
-        }
+        const verifyAuth = async () => {
+            const isAuthorized = await checkAuthStatus();
+            if (isAuthorized) {
+                setIsAuthenticated(true);
+                fetchData();
+            } else {
+                // If the server says unauthorized, clear any stale local state
+                localStorage.removeItem('adminAuth');
+                setIsAuthenticated(false);
+            }
+        };
+        verifyAuth();
     }, []);
 
     const fetchData = async () => {
@@ -150,7 +168,16 @@ export default function AdminPage() {
                 <button onClick={() => setActiveTab('about')} className={`whitespace-nowrap px-4 py-2 ${activeTab === 'about' ? 'bg-blue-600 rounded' : 'text-gray-400'}`}>About</button>
                 <button onClick={() => setActiveTab('projects')} className={`whitespace-nowrap px-4 py-2 ${activeTab === 'projects' ? 'bg-blue-600 rounded' : 'text-gray-400'}`}>Projects</button>
                 <button onClick={() => setActiveTab('experience')} className={`whitespace-nowrap px-4 py-2 ${activeTab === 'experience' ? 'bg-blue-600 rounded' : 'text-gray-400'}`}>Experience (Previous Work)</button>
-                <button onClick={() => { setIsAuthenticated(false); localStorage.removeItem('adminAuth'); }} className="ml-auto text-red-400 hover:text-red-300">Logout</button>
+                <button
+                    onClick={async () => {
+                        await logout();
+                        setIsAuthenticated(false);
+                        localStorage.removeItem('adminAuth');
+                    }}
+                    className="ml-auto text-red-400 hover:text-red-300"
+                >
+                    Logout
+                </button>
             </div>
 
             {activeTab === 'about' && about && (

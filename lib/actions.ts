@@ -17,14 +17,23 @@ export async function isAdmin() {
     const cookieStore = cookies();
     const session = cookieStore.get('admin_session');
 
-    if (!session) return false;
+    if (!session) {
+        console.log("isAdmin: No session cookie found");
+        return false;
+    }
 
     const adminPassword = process.env.ADMIN_PASSWORD;
-    if (!adminPassword) return false;
+    if (!adminPassword) {
+        console.error("isAdmin: ADMIN_PASSWORD environment variable is missing!");
+        return false;
+    }
 
-    // In a production app, you might use a JWT or a hashed session ID.
-    // To keep it 'Anuj-style simple' but secure, we verify the cookie value.
-    return session.value === adminPassword;
+    const isValid = session.value === adminPassword;
+    if (!isValid) {
+        console.log("isAdmin: Session cookie value does not match current password");
+    }
+
+    return isValid;
 }
 
 // --- ABOUT SECTION ACTIONS ---
@@ -138,5 +147,14 @@ export async function verifyAdminPassword(password: string) {
         return true;
     }
     return false;
+}
+
+export async function checkAuthStatus() {
+    return await isAdmin();
+}
+
+export async function logout() {
+    const cookieStore = cookies();
+    cookieStore.delete('admin_session');
 }
 
