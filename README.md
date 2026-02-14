@@ -1,7 +1,7 @@
 <div align="center">
-  <img src="https://cdn.dribbble.com/userupload/28117148/file/original-c0db2041822a946b9529b5ae1fdf08e8.gif" width="100%" style="border-radius: 10px; margin-bottom: 20px;" alt="Portfolio Banner">
+  <img src="https://hapcosoccer.com/wp-content/uploads/2017/11/portfolio-gif.gif" width="100%" style="border-radius: 10px; margin-bottom: 20px;" alt="Portfolio Banner">
 
-  <h1>✨ Anuj Siwach | Full-Stack Portfolio ✨</h1>
+  <h1>Anuj Siwach</h1>
 
   <p align="center">
     <kbd>Next.js 14</kbd> • <kbd>TypeScript</kbd> • <kbd>MongoDB Atlas</kbd> • <kbd>Cloudinary</kbd> • <kbd>Framer Motion</kbd>
