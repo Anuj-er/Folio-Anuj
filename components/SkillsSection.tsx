@@ -176,10 +176,10 @@ const SkillsSection = () => {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {[
-              { label: "Academic Excellence", value: "8.89", sublabel: "CGPA", icon: "🎓", gradient: "from-blue-500 to-cyan-500" },
-              { label: "Competitive Coding", value: "Knight", sublabel: "LeetCode Badge", icon: "⚔️", gradient: "from-yellow-500 to-orange-500" },
-              { label: "Portfolio", value: "15+", sublabel: "Projects Built", icon: "💻", gradient: "from-purple-500 to-pink-500" },
-              { label: "Professional Growth", value: "3", sublabel: "Oracle Certifications", icon: "📜", gradient: "from-green-500 to-emerald-500" }
+              { label: "", value: "8.89", sublabel: "CGPA", icon: "🎓", gradient: "from-blue-500 to-cyan-500" },
+              { label: "", value: "Knight", sublabel: "LeetCode Badge", icon: "⚔️", gradient: "from-yellow-500 to-orange-500" },
+              { label: "", value: "15+", sublabel: "Projects Built", icon: "💻", gradient: "from-purple-500 to-pink-500" },
+              { label: "", value: "3", sublabel: "Oracle Certifications", icon: "📜", gradient: "from-green-500 to-emerald-500" }
             ].map((stat, idx) => (
               <motion.div
                 key={stat.label}

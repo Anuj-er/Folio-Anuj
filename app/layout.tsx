@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar';
 import { Analytics } from '@vercel/analytics/react';
 import { ConditionalContactButton } from '@/components/ConditionalContactButton';
 import { SimpleBackToTop } from '../components/SimpleBackToTop';
-import { SmoothCursor } from '../components/magicui/smooth-cursor';
+import CustomCursor from '../components/CustomCursor';
 import { BackgroundMusic } from '../components/BackgroundMusic';
 
 const hankenGrotesk = Hanken_Grotesk({
@@ -113,7 +113,7 @@ export default function RootLayout({
           text-white
           antialiased 
           min-h-screen
-          md:cursor-none
+          cursor-none
           ${hankenGrotesk.className}
         `}
       >
@@ -138,8 +138,8 @@ export default function RootLayout({
         {/* Background music control */}
         <BackgroundMusic audioSrc="/audio/background.mp3" initialVolume={0.5} />
 
-        {/* Custom smooth cursor */}
-        <SmoothCursor color="#a78bfa" size={10} ringSize={32} />
+        {/* Custom animated cursor */}
+        <CustomCursor />
 
         <Analytics />
       </body>

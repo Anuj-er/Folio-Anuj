@@ -1,327 +1,328 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaCode, FaStar, FaCodeBranch } from 'react-icons/fa';
+import { FaGithub, FaStar, FaCodeBranch } from 'react-icons/fa';
 
 interface Contribution {
-  date: string;
-  count: number;
+    date: string;
+    count: number;
 }
 
 interface Repository {
-  name: string;
-  description: string;
-  url: string;
-  stars: number;
-  forks: number;
-  language: string;
+    name: string;
+    description: string;
+    url: string;
+    stars: number;
+    forks: number;
+    language: string;
 }
 
-// Static repository data to avoid API calls during build
 const staticRepos: Repository[] = [
-  {
-    name: "Folio-Anuj",
-    description: "A Next.js-based portfolio showcasing my skills, projects, and experiences with interactive features.",
-    url: "https://github.com/Anuj-er/Folio-Anuj",
-    stars: 2,
-    forks: 0,
-    language: "TypeScript"
-  },
-  {
-    name: "cargo-tracker-webapp",
-    description: "A React application for cargo shipment tracking featuring interactive maps, comprehensive dashboard, and Docker support.",
-    url: "https://github.com/Anuj-er/cargo-tracker-webapp",
-    stars: 1,
-    forks: 0,
-    language: "JavaScript"
-  },
-  {
-    name: "autostash-linux",
-    description: "A secure, GUI-based Linux backup system with encryption, incremental backups, GitHub integration, and real-time system monitoring.",
-    url: "https://github.com/Anuj-er/autostash-linux",
-    stars: 1,
-    forks: 0,
-    language: "Python"
-  },
-  {
-    name: "RaitaLeaks",
-    description: "A secure social media platform for information sharing with real-time notifications, user authentication, and media support.",
-    url: "https://github.com/Anuj-er/RaitaLeaks",
-    stars: 1,
-    forks: 0,
-    language: "JavaScript"
-  },
-  {
-    name: "PharmacyManagementSystem-Java-DSA",
-    description: "A comprehensive Java application for pharmacy management with inventory control, customer management, and sales processing using custom data structures.",
-    url: "https://github.com/Anuj-er/PharmacyManagementSystem-Java-DSA",
-    stars: 0,
-    forks: 0,
-    language: "Java"
-  }
+    {
+        name: 'Folio-Anuj',
+        description: 'Personal portfolio website built with Next.js, TypeScript, and Tailwind CSS',
+        url: 'https://github.com/anuj-er/Folio-Anuj',
+        stars: 5,
+        forks: 2,
+        language: 'TypeScript'
+    },
+    {
+        name: 'DSA-Practice',
+        description: 'Data Structures and Algorithms practice problems and solutions',
+        url: 'https://github.com/anuj-er/DSA-Practice',
+        stars: 12,
+        forks: 4,
+        language: 'Java'
+    },
+    {
+        name: 'Web-Dev-Projects',
+        description: 'Collection of web development projects and experiments',
+        url: 'https://github.com/anuj-er/Web-Dev-Projects',
+        stars: 8,
+        forks: 3,
+        language: 'JavaScript'
+    }
 ];
 
 const GitHubActivity = () => {
-  const [contributions, setContributions] = useState<Contribution[]>([]);
-  const [repos, setRepos] = useState<Repository[]>(staticRepos);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState('');
-  const [username] = useState('anuj-er'); // Your GitHub username
+    const [contributions, setContributions] = useState<Contribution[]>([]);
+    const [repos, setRepos] = useState<Repository[]>(staticRepos);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState('');
+    const [username] = useState('anuj-er');
 
-  useEffect(() => {
-    // Only generate mock contributions on client-side
-    const mockContributions = generateMockContributions();
-    setContributions(mockContributions);
-    setIsLoading(false);
-    
-    // Optional: Try to fetch real data if we're on the client side
-    const fetchRealData = async () => {
-      try {
-        const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=5`);
-        
-        if (reposResponse.ok) {
-          const reposData = await reposResponse.json();
-          
-          const formattedRepos: Repository[] = reposData.map((repo: any) => ({
-            name: repo.name,
-            description: repo.description || 'No description available',
-            url: repo.html_url,
-            stars: repo.stargazers_count,
-            forks: repo.forks_count,
-            language: repo.language || 'Not specified'
-          }));
-          
-          setRepos(formattedRepos);
+    useEffect(() => {
+        const mockContributions = generateMockContributions();
+        setContributions(mockContributions);
+        setIsLoading(false);
+
+        const fetchRealData = async () => {
+            try {
+                const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=5`);
+
+                if (reposResponse.ok) {
+                    const reposData = await reposResponse.json();
+
+                    const formattedRepos: Repository[] = reposData.map((repo: any) => ({
+                        name: repo.name,
+                        description: repo.description || 'No description available',
+                        url: repo.html_url,
+                        stars: repo.stargazers_count,
+                        forks: repo.forks_count,
+                        language: repo.language || 'Not specified'
+                    }));
+
+                    setRepos(formattedRepos);
+                }
+            } catch (err) {
+                console.error('Error fetching GitHub data:', err);
+            }
+        };
+
+        if (typeof window !== 'undefined') {
+            fetchRealData();
         }
-      } catch (err) {
-        // Silently fail - we'll use the static data
-        console.error('Error fetching GitHub data:', err);
-      }
+    }, [username]);
+
+    const generateMockContributions = (): Contribution[] => {
+        const contributions: Contribution[] = [];
+        const today = new Date();
+
+        // Generate 30 days of contributions
+        for (let i = 29; i >= 0; i--) {
+            const date = new Date(today);
+            date.setDate(date.getDate() - i);
+            const count = Math.floor(Math.random() * 10);
+
+            contributions.push({
+                date: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+                count
+            });
+        }
+
+        return contributions;
     };
-    
-    // Only run in browser environment
-    if (typeof window !== 'undefined') {
-      fetchRealData();
-    }
-  }, [username]);
 
-  // Generate mock contribution data for visualization
-  const generateMockContributions = (): Contribution[] => {
-    const contributions: Contribution[] = [];
-    const now = new Date();
-    
-    for (let i = 30; i >= 0; i--) {
-      const date = new Date(now);
-      date.setDate(date.getDate() - i);
-      
-      // Random count between 0-10 for demonstration
-      const count = Math.floor(Math.random() * 11);
-      
-      contributions.push({
-        date: date.toISOString().split('T')[0],
-        count
-      });
-    }
-    
-    return contributions;
-  };
+    const getContributionColor = (count: number): string => {
+        if (count === 0) return 'bg-gray-800/60';
+        if (count <= 2) return 'bg-purple-900/60';
+        if (count <= 4) return 'bg-purple-700/70';
+        if (count <= 6) return 'bg-purple-500/80';
+        return 'bg-purple-400';
+    };
 
-  const getContributionColor = (count: number): string => {
-    if (count === 0) return 'bg-gray-800/60';
-    if (count < 3) return 'bg-purple-900/80';
-    if (count < 6) return 'bg-purple-700/80';
-    if (count < 9) return 'bg-purple-500/90';
-    return 'bg-purple-300';
-  };
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0 }
+    };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
+    return (
+        <section className="w-full py-12 sm:py-16 md:py-20 bg-black relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-b from-purple-900/10 via-transparent to-transparent pointer-events-none" />
 
-  const repoVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.1,
-        duration: 0.5
-      }
-    })
-  };
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-8"
+                >
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#60a5fa] via-[#a78bfa] to-[#60a5fa] bg-clip-text text-transparent">
+                        Social & Coding Stats
+                    </h2>
+                    <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto mt-3">
+                        Track my coding journey across GitHub, LeetCode, and professional networks
+                    </p>
+                </motion.div>
 
-  return (
-    <section id="github-activity" className="w-full min-h-screen flex items-center justify-center p-4 overflow-hidden relative">
-      {/* Background gradient elements */}
-      <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-purple-700/20 rounded-full filter blur-3xl opacity-20"></div>
-      <div className="absolute -top-32 -right-32 w-96 h-96 bg-blue-700/20 rounded-full filter blur-3xl opacity-20"></div>
-      
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12 sm:mb-16 space-y-3 sm:space-y-4"
-        >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#60a5fa] via-[#a78bfa] to-[#60a5fa] bg-clip-text text-transparent">
-            What's Happening in My World
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
-            A glimpse into my open-source journey and recent GitHub contributions
-          </p>
-        </motion.div>
+                {isLoading ? (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="flex justify-center items-center py-20"
+                    >
+                        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"></div>
+                    </motion.div>
+                ) : error ? (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="text-center py-10 text-red-400"
+                    >
+                        {error}
+                    </motion.div>
+                ) : (
+                    <>
+                        {/* Top Row: LeetCode Stats Only */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-4 max-w-3xl mx-auto"
+                        >
+                            {/* LeetCode Stats */}
+                            <motion.div
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                whileHover={{ y: -2 }}
+                                className="p-3 rounded-lg bg-white/5 border border-white/10 hover:border-white/15 transition-all"
+                            >
+                                <div className="flex items-center gap-2 mb-2">
+                                    <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-orange-500 to-yellow-600 flex items-center justify-center">
+                                        <span className="text-sm">⚔️</span>
+                                    </div>
+                                    <h3 className="text-xs font-bold text-white">LeetCode Stats</h3>
+                                    <a
+                                        href="https://leetcode.com/u/anujer/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-[10px] text-orange-400 hover:text-orange-300 ml-auto"
+                                    >
+                                        Profile →
+                                    </a>
+                                </div>
 
-        {isLoading ? (
-          <div className="flex justify-center items-center h-60">
-            <div className="relative w-16 h-16">
-              <div className="absolute top-0 left-0 w-full h-full border-4 border-purple-300/20 rounded-full animate-ping"></div>
-              <div className="absolute top-0 left-0 w-full h-full border-4 border-t-purple-500 rounded-full animate-spin"></div>
+                                {/* Full LeetCode Stats Card */}
+                                <div className="rounded-lg overflow-hidden bg-black/20">
+                                    <img
+                                        src="https://leetcard.jacoblin.cool/anujer?theme=dark&font=Ubuntu&ext=contest"
+                                        alt="LeetCode Stats"
+                                        className="w-full h-auto max-h-[280px] object-contain"
+                                        loading="lazy"
+                                    />
+                                </div>
+                            </motion.div>
+                        </motion.div>
+
+                        {/* GitHub Activity Grid - 2 Columns: Contribution + Repos */}
+                        <motion.div
+                            variants={containerVariants}
+                            initial="hidden"
+                            animate="visible"
+                            className="grid grid-cols-1 lg:grid-cols-2 gap-4"
+                        >
+                            {/* Contribution graph - Left */}
+                            <motion.div
+                                variants={itemVariants}
+                                className="bg-black/20 backdrop-blur-xl rounded-lg p-4 border border-white/10 hover:border-white/20 transition-all duration-300"
+                            >
+                                <div className="flex items-center mb-3">
+                                    <div className="w-7 h-7 flex items-center justify-center rounded-full bg-gradient-to-br from-purple-500/80 to-blue-500/80 mr-2">
+                                        <FaGithub className="text-sm text-white" />
+                                    </div>
+                                    <h3 className="text-sm font-semibold text-white">Contribution Activity</h3>
+                                </div>
+
+                                <div className="grid grid-cols-7 gap-1 p-2">
+                                    {contributions.map((contribution, index) => (
+                                        <motion.div
+                                            key={index}
+                                            className="relative group"
+                                            initial={{ scale: 0.8, opacity: 0 }}
+                                            animate={{ scale: 1, opacity: 1 }}
+                                            transition={{ delay: index * 0.01, duration: 0.3 }}
+                                        >
+                                            <div
+                                                className={`w-full aspect-square rounded-sm ${getContributionColor(contribution.count)} hover:scale-110 transition-all duration-300 shadow-sm border border-white/5`}
+                                            ></div>
+                                            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-900/90 backdrop-blur-md text-[10px] text-white rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-white/10 shadow-lg z-20">
+                                                <div className="font-medium">{contribution.count} contributions</div>
+                                                <div className="text-[9px] text-gray-300">{contribution.date}</div>
+                                            </div>
+                                        </motion.div>
+                                    ))}
+                                </div>
+
+                                <div className="mt-3 flex justify-between items-center text-xs text-white/70 bg-white/5 p-2 rounded-lg">
+                                    <span>Past 30 Days</span>
+                                    <div className="flex items-center">
+                                        <span className="mr-1 text-[10px]">Less</span>
+                                        <div className="flex space-x-0.5">
+                                            <div className="w-3 h-3 rounded-sm bg-gray-800/60 border border-white/5"></div>
+                                            <div className="w-3 h-3 rounded-sm bg-purple-900/80 border border-white/5"></div>
+                                            <div className="w-3 h-3 rounded-sm bg-purple-700/80 border border-white/5"></div>
+                                            <div className="w-3 h-3 rounded-sm bg-purple-500/90 border border-white/5"></div>
+                                            <div className="w-3 h-3 rounded-sm bg-purple-300 border border-white/5"></div>
+                                        </div>
+                                        <span className="ml-1 text-[10px]">More</span>
+                                    </div>
+                                </div>
+
+                                <a
+                                    href={`https://github.com/${username}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="mt-3 inline-flex items-center gap-2 text-xs text-purple-400 hover:text-purple-300 transition-colors group"
+                                >
+                                    <span>View full GitHub profile</span>
+                                    <span className="transform transition-transform group-hover:translate-x-1">→</span>
+                                </a>
+                            </motion.div>
+
+                            {/* Recent repositories - Right (keeping your improved version) */}
+                            <motion.div
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                whileHover={{ y: -2 }}
+                                className="p-3 rounded-lg bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 hover:border-blue-500/30 transition-all"
+                            >
+                                <div className="flex items-center gap-2 mb-3">
+                                    <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                                        <FaCodeBranch className="text-sm text-white" />
+                                    </div>
+                                    <h3 className="text-sm font-bold text-white">Recent Repositories</h3>
+                                </div>
+
+                                <div className="space-y-2.5">
+                                    {repos.slice(0, 3).map((repo, index) => (
+                                        <div
+                                            key={index}
+                                            className="p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-500/30 transition-all group"
+                                        >
+                                            <a
+                                                href={repo.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-sm font-semibold text-blue-400 hover:text-blue-300 line-clamp-1 block group-hover:underline"
+                                            >
+                                                {repo.name}
+                                            </a>
+                                            <p className="text-xs text-white/60 mt-1 line-clamp-2">{repo.description}</p>
+                                            <div className="flex items-center gap-3 mt-2 text-xs text-white/50">
+                                                {repo.language && (
+                                                    <span className="flex items-center gap-1">
+                                                        <div className="w-2 h-2 rounded-full bg-blue-400"></div>
+                                                        {repo.language}
+                                                    </span>
+                                                )}
+                                                <span className="flex items-center gap-1">
+                                                    <FaStar className="text-yellow-400" /> {repo.stars}
+                                                </span>
+                                                <span className="flex items-center gap-1">
+                                                    <FaCodeBranch className="text-green-400" /> {repo.forks}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        </motion.div>
+                    </>
+                )}
             </div>
-          </div>
-        ) : error ? (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-red-400 text-center p-8 bg-red-900/10 backdrop-blur-sm rounded-xl border border-red-500/20"
-          >
-            {error}
-          </motion.div>
-        ) : (
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
-          >
-            {/* Contribution graph */}
-            <motion.div 
-              variants={itemVariants}
-              className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/10 shadow-[0_0_25px_rgba(168,85,247,0.15)] hover:shadow-[0_0_30px_rgba(168,85,247,0.25)] transition-all duration-500"
-            >
-              <div className="flex items-center mb-6">
-                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-br from-purple-500/80 to-blue-500/80 mr-3">
-                  <FaGithub className="text-xl text-white" />
-                </div>
-                <h3 className="text-xl font-semibold text-white">Contribution Activity</h3>
-              </div>
-              
-              <div className="grid grid-cols-7 gap-1.5 p-2">
-                {contributions.map((contribution, index) => (
-                  <motion.div 
-                    key={index} 
-                    className="relative group"
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: index * 0.01, duration: 0.3 }}
-                  >
-                    <div 
-                      className={`w-full aspect-square rounded-md ${getContributionColor(contribution.count)} hover:scale-110 transition-all duration-300 shadow-sm border border-white/5`}
-                    ></div>
-                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900/90 backdrop-blur-md text-xs text-white rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-white/10 shadow-lg z-20">
-                      <div className="font-medium">{contribution.count} contributions</div>
-                      <div className="text-gray-300">{contribution.date}</div>
-                      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-2 h-2 bg-gray-900/90 border-r border-b border-white/10"></div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-              
-              <div className="mt-6 flex justify-between items-center text-sm text-white/70 bg-white/5 p-3 rounded-lg">
-                <span>Past 30 Days</span>
-                <div className="flex items-center">
-                  <span className="mr-2 text-xs">Less</span>
-                  <div className="flex space-x-1">
-                    <div className="w-4 h-4 rounded-sm bg-gray-800/60 border border-white/5"></div>
-                    <div className="w-4 h-4 rounded-sm bg-purple-900/80 border border-white/5"></div>
-                    <div className="w-4 h-4 rounded-sm bg-purple-700/80 border border-white/5"></div>
-                    <div className="w-4 h-4 rounded-sm bg-purple-500/90 border border-white/5"></div>
-                    <div className="w-4 h-4 rounded-sm bg-purple-300 border border-white/5"></div>
-                  </div>
-                  <span className="ml-2 text-xs">More</span>
-                </div>
-              </div>
-              
-              <a 
-                href={`https://github.com/${username}`} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors group"
-              >
-                <span>View full GitHub profile</span>
-                <span className="transform transition-transform group-hover:translate-x-1">→</span>
-              </a>
-            </motion.div>
-            
-            {/* Recent repositories */}
-            <motion.div 
-              variants={itemVariants}
-              className="bg-black/20 backdrop-blur-xl rounded-2xl p-8 border border-white/10 shadow-[0_0_25px_rgba(96,165,250,0.15)] hover:shadow-[0_0_30px_rgba(96,165,250,0.25)] transition-all duration-500"
-            >
-              <div className="flex items-center mb-6">
-                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500/80 to-purple-500/80 mr-3">
-                  <FaCodeBranch className="text-xl text-white" />
-                </div>
-                <h3 className="text-xl font-semibold text-white">Recent Repositories</h3>
-              </div>
-              
-              <div className="space-y-4">
-                {repos.map((repo, index) => (
-                  <motion.div 
-                    key={index}
-                    custom={index}
-                    variants={repoVariants}
-                    className="p-5 rounded-xl bg-white/5 hover:bg-white/10 transition-colors duration-300 border border-white/10 transform hover:-translate-y-1 hover:shadow-lg transition-all"
-                  >
-                    <h4 className="font-medium text-white text-lg flex items-center">
-                      <a 
-                        href={repo.url} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="hover:text-blue-400 transition-colors flex-1"
-                      >
-                        {repo.name}
-                      </a>
-                      <FaGithub className="text-white/50" />
-                    </h4>
-                    <p className="text-sm text-white/70 mt-2 mb-3 line-clamp-2">{repo.description}</p>
-                    
-                    <div className="flex flex-wrap items-center gap-4 mt-3 text-sm text-white/70">
-                      {repo.language && (
-                        <div className="flex items-center">
-                          <div className="w-3 h-3 rounded-full bg-blue-500 mr-2"></div>
-                          <span>{repo.language}</span>
-                        </div>
-                      )}
-                      <div className="flex items-center">
-                        <FaStar className="mr-1.5 text-yellow-500" />
-                        <span>{repo.stars}</span>
-                      </div>
-                      <div className="flex items-center">
-                        <FaCodeBranch className="mr-1.5 text-green-500" />
-                        <span>{repo.forks}</span>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </div>
-    </section>
-  );
+        </section>
+    );
 };
 
-export default GitHubActivity; 
+export default GitHubActivity;
+
