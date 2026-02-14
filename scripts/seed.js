@@ -293,6 +293,13 @@ async function seed() {
         await mongoose.connect(MONGODB_URI);
         console.log('✅ Connected');
 
+        // PRODUCTION GUARD
+        if (process.env.NODE_ENV === 'production') {
+            console.error('⚠️  CRITICAL: Seeding is disabled in PRODUCTION mode to prevent data loss.');
+            console.log('💡 To seed in production, you must temporarily change NODE_ENV or use a separate staging database.');
+            process.exit(1);
+        }
+
         console.log('🧹 Clearing existing data...');
         await About.deleteMany({});
         await Project.deleteMany({});
