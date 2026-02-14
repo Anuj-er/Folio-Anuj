@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { getAboutData, updateAboutData, getProjects, createProject, deleteProject, getExperiences, createExperience, deleteExperience, verifyAdminPassword } from '@/lib/actions';
-import ImageUpload from '@/components/admin/ImageUpload';
+import FileUpload from '@/components/admin/ImageUpload';
 
 export default function AdminPage() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -291,7 +291,7 @@ export default function AdminPage() {
 
                     <div>
                         <label className="block text-sm text-gray-400 mb-2">Profile Image</label>
-                        <ImageUpload
+                        <FileUpload
                             value={about.profileImage || ''}
                             onChange={(url) => setAbout({ ...about, profileImage: url })}
                             label="Upload Profile Picture"
@@ -326,10 +326,17 @@ export default function AdminPage() {
                                     onChange={(e) => setAbout({ ...about, socialLinks: { ...about.socialLinks, twitter: e.target.value } })}
                                 />
                             </div>
-                            <div>
-                                <label className="block text-sm text-gray-400 mb-1">Resume / Document Link (PDF)</label>
+                            <div className="md:col-span-2">
+                                <FileUpload
+                                    value={about.socialLinks?.resume || ''}
+                                    onChange={(url) => setAbout({ ...about, socialLinks: { ...about.socialLinks, resume: url } })}
+                                    label="Upload Resume (PDF)"
+                                    accept=".pdf,application/pdf"
+                                />
+                                <p className="text-xs text-gray-500 mt-1">Alternatively, you can still paste a direct URL here if you prefer.</p>
                                 <input
-                                    className="w-full rounded border border-gray-700 bg-black p-2 text-white"
+                                    className="w-full mt-2 rounded border border-gray-700 bg-black p-2 text-sm text-white"
+                                    placeholder="Resume URL"
                                     value={about.socialLinks?.resume || ''}
                                     onChange={(e) => setAbout({ ...about, socialLinks: { ...about.socialLinks, resume: e.target.value } })}
                                 />
@@ -353,12 +360,11 @@ export default function AdminPage() {
                                 <label className="text-sm text-gray-400">Description *</label>
                                 <textarea className="w-full bg-black border border-gray-700 p-2 rounded focus:border-blue-500 outline-none" rows={3} value={newProject.description} onChange={e => setNewProject({ ...newProject, description: e.target.value })} required />
                             </div>
-                            <div>
-                                <label className="text-sm text-gray-400 mb-2 block">Project Image *</label>
-                                <ImageUpload
+                            <div className="md:col-span-2">
+                                <FileUpload
                                     value={newProject.image}
-                                    onChange={(url) => setNewProject({ ...newProject, image: url })}
-                                    label="Upload Project Screenshot"
+                                    onChange={url => setNewProject({ ...newProject, image: url })}
+                                    label="Project Image *"
                                 />
                             </div>
                             <div>
@@ -451,12 +457,12 @@ export default function AdminPage() {
                             <div>
                                 <label className="text-sm text-gray-400 mb-2 block">Images (Upload)</label>
                                 <div className="space-y-4">
-                                    {newExperience.images.map((img, idx) => (
+                                    {newExperience.images.map((image, idx) => (
                                         <div key={idx} className="flex gap-2 items-start">
-                                            <ImageUpload
-                                                value={img}
+                                            <FileUpload
+                                                value={image}
                                                 onChange={(url) => updateExpImage(idx, url)}
-                                                label={`Image ${idx + 1}`}
+                                                label={`Slide ${idx + 1}`}
                                                 className="flex-1"
                                             />
                                             {newExperience.images.length > 1 && (

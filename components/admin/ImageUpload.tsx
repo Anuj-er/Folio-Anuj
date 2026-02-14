@@ -1,20 +1,29 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { FaCloudUploadAlt, FaTrash, FaSpinner, FaImage } from 'react-icons/fa';
+import { FaCloudUploadAlt, FaTrash, FaSpinner, FaImage, FaFilePdf } from 'react-icons/fa';
 
-interface ImageUploadProps {
+interface FileUploadProps {
     value: string;
     onChange: (url: string) => void;
     label?: string;
     className?: string;
+    accept?: string; // e.g. "image/*" or ".pdf"
 }
 
-export default function ImageUpload({ value, onChange, label = "Upload Image", className = "" }: ImageUploadProps) {
+export default function FileUpload({
+    value,
+    onChange,
+    label = "Upload File",
+    className = "",
+    accept = "image/*"
+}: FileUploadProps) {
     const [isUploading, setIsUploading] = useState(false);
     const [dragActive, setDragActive] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const inputRef = useRef<HTMLInputElement>(null);
+
+    const isPdf = value?.toLowerCase().endsWith('.pdf');
 
     const handleDrag = (e: React.DragEvent) => {
         e.preventDefault();
@@ -43,15 +52,29 @@ export default function ImageUpload({ value, onChange, label = "Upload Image", c
     };
 
     const handleFile = async (file: File) => {
-        // Validate file type
-        if (!file.type.startsWith('image/')) {
+        // Validate file type based on 'accept' prop
+        const isImageRequested = accept.includes('image');
+        const isPdfRequested = accept.includes('pdf') || accept.includes('.pdf');
+
+        if (isImageRequested && !file.type.startsWith('image/') && !isPdfRequested) {
             setError('Please upload an image file');
             return;
         }
 
-        // Validate file size (e.g., max 5MB)
-        if (file.size > 5 * 1024 * 1024) {
-            setError('File size should be less than 5MB');
+        if (isPdfRequested && file.type !== 'application/pdf' && !isImageRequested) {
+            setError('Please upload a PDF file');
+            return;
+        }
+
+        if (isPdfRequested && isImageRequested && !file.type.startsWith('image/') && file.type !== 'application/pdf') {
+            setError('Please upload an image or PDF file');
+            return;
+        }
+
+        // Validate file size (e.g., max 5MB for images, 10MB for PDFs)
+        const maxSize = isPdfRequested ? 10 * 1024 * 1024 : 5 * 1024 * 1024;
+        if (file.size > maxSize) {
+            setError(`File size should be less than ${isPdfRequested ? '10MB' : '5MB'}`);
             return;
         }
 
@@ -100,13 +123,19 @@ export default function ImageUpload({ value, onChange, label = "Upload Image", c
             // Let's just hardcode the cloud name 'folioanuj' and I'll need the API key...
             // User provided: CLOUDINARY_API_KEY=714461154758949
 
-            formData.append('api_key', process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY || '');
+            formData.append('api_key', process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY || '714461154758949');
             formData.append('timestamp', timestamp.toString());
             formData.append('signature', signature);
             formData.append('folder', 'folio-anuj');
 
+            // Determine resource type based on file type
+            // Note: raw uploads in Cloudinary sometimes behave differently. 
+            // For PDFs, 'auto' or 'image' usually works fine for previewing, 
+            // but 'raw' is for non-transformable files. 
+            // Let's use 'auto' which is most reliable.
+
             const uploadResponse = await fetch(
-                `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
+                `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'folioanuj'}/auto/upload`,
                 {
                     method: 'POST',
                     body: formData,
@@ -118,11 +147,12 @@ export default function ImageUpload({ value, onChange, label = "Upload Image", c
             if (data.secure_url) {
                 onChange(data.secure_url);
             } else {
-                throw new Error('Upload failed');
+                console.error('Cloudinary Error Data:', data);
+                throw new Error(data.error?.message || 'Upload failed');
             }
-        } catch (err) {
+        } catch (err: any) {
             console.error('Upload Error:', err);
-            setError('Failed to upload image. Please try again.');
+            setError(err.message || 'Failed to upload file. Please try again.');
         } finally {
             setIsUploading(false);
         }
@@ -141,17 +171,32 @@ export default function ImageUpload({ value, onChange, label = "Upload Image", c
 
             {value ? (
                 <div className="relative group rounded-lg overflow-hidden border border-gray-700 bg-gray-900">
-                    <img
-                        src={value}
-                        alt="Uploaded preview"
-                        className="w-full h-48 object-cover transition-opacity group-hover:opacity-75"
-                    />
+                    {isPdf ? (
+                        <div className="w-full h-48 flex flex-col items-center justify-center bg-gray-800 text-blue-400">
+                            <FaFilePdf size={48} className="mb-2" />
+                            <span className="text-xs text-gray-400 truncate max-w-[80%]">Resume PDF Uploaded</span>
+                            <a
+                                href={value}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="mt-2 text-xs underline hover:text-blue-300"
+                            >
+                                View Document
+                            </a>
+                        </div>
+                    ) : (
+                        <img
+                            src={value}
+                            alt="Uploaded preview"
+                            className="w-full h-48 object-cover transition-opacity group-hover:opacity-75"
+                        />
+                    )}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/50">
                         <button
                             type="button"
                             onClick={handleRemove}
                             className="p-2 bg-red-600 rounded-full hover:bg-red-700 text-white shadow-lg transform hover:scale-110 transition-transform"
-                            title="Remove Image"
+                            title="Remove File"
                         >
                             <FaTrash size={16} />
                         </button>
@@ -173,7 +218,7 @@ export default function ImageUpload({ value, onChange, label = "Upload Image", c
                         ref={inputRef}
                         type="file"
                         className="hidden"
-                        accept="image/*"
+                        accept={accept}
                         onChange={handleChange}
                     />
 
@@ -186,7 +231,9 @@ export default function ImageUpload({ value, onChange, label = "Upload Image", c
                         <div className="flex flex-col items-center text-center">
                             <FaCloudUploadAlt className="text-gray-400 mb-2" size={32} />
                             <p className="text-sm text-gray-300 font-medium">Click to upload or drag & drop</p>
-                            <p className="text-xs text-gray-500 mt-1">SVG, PNG, JPG or GIF (max 5MB)</p>
+                            <p className="text-xs text-gray-500 mt-1">
+                                {accept.includes('pdf') ? 'Images or PDF' : 'SVG, PNG, JPG or GIF'} (max 10MB)
+                            </p>
                             {error && <p className="text-xs text-red-500 mt-2">{error}</p>}
                         </div>
                     )}

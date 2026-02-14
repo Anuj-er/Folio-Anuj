@@ -155,7 +155,7 @@ const Hero: React.FC<{ initialData?: any }> = ({ initialData }) => {
     },
     {
       icon: <IoDocumentTextOutline size={24} />,
-      src: socialLinks?.resume || 'https://docs.google.com/document/d/1wCicoRxvyIMzqkGMlbq5CRsM_LKB6Whx/view?usp=sharing',
+      src: socialLinks?.resume || '/resume',
     },
   ];
 
