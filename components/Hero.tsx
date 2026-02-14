@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FaCaretDown } from 'react-icons/fa';
-import { HERO_LINKS } from '@/lib/consts';
+import { FaCaretDown, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { IoDocumentTextOutline } from 'react-icons/io5';
 import { cn } from "@/lib/utils";
+import { getAboutData } from '@/lib/actions';
 
 interface ParticleProps {
   className?: string;
@@ -14,12 +15,12 @@ interface ParticleProps {
   refresh?: boolean;
 }
 
-const Particles = ({ 
+const Particles = ({
   className = "",
   quantity = 100,
   ease = 80,
   color = "#ffffff",
-  refresh = false 
+  refresh = false
 }: ParticleProps) => {
   const [particles, setParticles] = useState<Array<{
     x: number;
@@ -99,6 +100,7 @@ const AnimatedBackground = () => (
 
 const Hero: React.FC = () => {
   const [scale, setScale] = useState(1);
+  const [socialLinks, setSocialLinks] = useState<any>(null);
 
   useEffect(() => {
     let ticking = false;
@@ -120,6 +122,40 @@ const Hero: React.FC = () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    const fetchLinks = async () => {
+      try {
+        const data = await getAboutData();
+        if (data && data.socialLinks) {
+          setSocialLinks(data.socialLinks);
+        }
+      } catch (error) {
+        console.log('Error fetching social links:', error);
+      }
+    };
+    fetchLinks();
+  }, []);
+
+  // Construct links array based on fetched data
+  const links = [
+    {
+      icon: <FaGithub size={24} />,
+      src: socialLinks?.github || 'https://github.com/Anuj-er',
+    },
+    {
+      icon: <FaLinkedin size={24} />,
+      src: socialLinks?.linkedin || 'https://www.linkedin.com/in/anuj-er/',
+    },
+    {
+      icon: <FaTwitter size={24} />,
+      src: socialLinks?.twitter || 'https://x.com/5iwach',
+    },
+    {
+      icon: <IoDocumentTextOutline size={24} />,
+      src: socialLinks?.resume || 'https://docs.google.com/document/d/1wCicoRxvyIMzqkGMlbq5CRsM_LKB6Whx/view?usp=sharing',
+    },
+  ];
 
   return (
     <div className="relative flex h-screen w-full items-center justify-center overflow-hidden">
@@ -153,7 +189,8 @@ const Hero: React.FC = () => {
         </p>
 
         <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
-          {HERO_LINKS.map((link, index) => (
+          {links.map((link, index) => (
+            // Only render if source exists (except fallback logic handles it mostly)
             <Link
               key={index}
               href={link.src}

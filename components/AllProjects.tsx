@@ -6,8 +6,10 @@ import { cn } from "@/lib/utils";
 import Image from 'next/image';
 import { FaGithub, FaExternalLinkAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Link from 'next/link';
+import { getProjects } from '@/lib/actions';
 
 interface Project {
+  _id?: string;
   title: string;
   description: string;
   image: string;
@@ -20,11 +22,23 @@ export default function AllProjects() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [showLeftButton, setShowLeftButton] = useState(false);
   const [showRightButton, setShowRightButton] = useState(true);
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  // Fetch projects on mount
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const data = await getProjects();
+      if (data && data.length > 0) {
+        setProjects(data);
+      }
+    };
+    fetchProjects();
+  }, []);
 
   // Check scroll position to show/hide buttons
   const checkScrollPosition = () => {
     if (!scrollContainerRef.current) return;
-    
+
     const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
     setShowLeftButton(scrollLeft > 0);
     setShowRightButton(scrollLeft < scrollWidth - clientWidth - 10); // 10px buffer
@@ -37,124 +51,28 @@ export default function AllProjects() {
       scrollContainer.addEventListener('scroll', checkScrollPosition);
       // Initial check
       checkScrollPosition();
-      
+
       return () => scrollContainer.removeEventListener('scroll', checkScrollPosition);
     }
-  }, []);
+  }, [projects]); // Re-run when projects load
 
   // Scroll left or right
   const scroll = (direction: 'left' | 'right') => {
     if (!scrollContainerRef.current) return;
-    
+
     const container = scrollContainerRef.current;
     const scrollAmount = container.clientWidth * 0.8; // 80% of visible width
-    
+
     container.scrollTo({
-      left: direction === 'left' 
-        ? container.scrollLeft - scrollAmount 
+      left: direction === 'left'
+        ? container.scrollLeft - scrollAmount
         : container.scrollLeft + scrollAmount,
       behavior: 'smooth'
     });
   };
 
-  const projects: Project[] = [
-    {
-      title: "Shipment Tracker",
-      description: "A React application forcargo shipment tracking featuring interactive maps, comprehensive dashboard, and Docker support.",
-      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048060/folio-anuj/Projects/allshipment.png",
-      githubLink: "https://github.com/Anuj-er/cargo-tracker-webapp",
-      liveLink: "https://shipmenttracker.vercel.app/",
-      tags: ["react", "docker", "responsive", "mapbox", "mern-stack", "tracking-api", "shipment-tracking"]
-    },
-    {
-      title: "AutoStash Linux",
-      description: "A secure, GUI-based Linux backup system with encryption, incremental backups, GitHub integration, and real-time system monitoring.",
-      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048060/folio-anuj/Projects/autostash.png",
-      githubLink: "https://github.com/Anuj-er/autostash-linux",
-      liveLink: "",
-      tags: ["linux", "python3", "tkinter-gui"]
-    },
-    {
-      title: "Pharmacy Management System",
-      description: "A comprehensive Java application for pharmacy management with inventory control, customer management, and sales processing using custom data structures.",
-      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048064/folio-anuj/Projects/pharmacy.png",
-      githubLink: "https://github.com/Anuj-er/PharmacyManagementSystem-Java-DSA",
-      liveLink: "",
-      tags: ["java", "linkedlist", "mergesort-algorithm", "dsa"]
-    },
-    {
-      title: "RaitaLeaks",
-      description: "A secure social media platform for information sharing with real-time notifications, user authentication, and media support.",
-      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048064/folio-anuj/Projects/raitaleaks.png",
-      githubLink: "https://github.com/Anuj-er/RaitaLeaks",
-      liveLink: "https://raita-leaks.vercel.app",
-      tags: ["react", "nodejs", "mongodb", "websockets", "cloudinary", "jwt-authentication", "mern-stack"]
-    },
-    {
-      title: "Digital-Clock-App",
-      description: "A sleek, customizable digital clock app with responsive design and cross-browser compatibility.",
-      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048060/folio-anuj/Projects/digitalclock.jpg",
-      githubLink: "https://github.com/Anuj-er/Digital-Clock-App/",
-      liveLink: "https://eclipse-clock.vercel.app/",
-      tags: ["reactjs", "clock", "weather-api", "tailwind-css"]
-    },
-    {
-      title: "Simple-Calculator-App",
-      description: "A fast and responsive calculator app with a clean, modern interface built using React and Tailwind CSS.",
-      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048064/folio-anuj/Projects/quickCalc.jpg",
-      githubLink: "https://github.com/Anuj-er/Simple-Calculator-App/",
-      liveLink: "https://quickcalculator.vercel.app/",
-      tags: ["calculator", "reactjs", "tailwindcss", "quickcalc"]
-    },
-    {
-      title: "Testpad-Solutions", 
-      description: "A comprehensive repository containing solutions for university courses and assignments.",
-      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048056/folio-anuj/Projects/Testpad.png",
-      githubLink: "https://github.com/Anuj-er/Testpad-Solutions",
-      liveLink: "",
-      tags: [ "mysql", "html5", "frontend", "backend", "cpp"],
-    },
-    {
-      title: "Folio-Anuj",
-      description: "A Next.js-based portfolio showcasing my skills, projects, and experiences with interactive features.",
-      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048064/folio-anuj/Projects/portfolio.jpg",
-      githubLink: "https://github.com/Anuj-er/Folio-Anuj",
-      liveLink: "https://anujer.is-a.dev",
-      tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Portfolio"]
-    },
-    {
-      title: "ProTrack Dashboard",
-      description: "A modern project management dashboard with real-time analytics and team collaboration features.",
-      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048056/folio-anuj/Projects/Protrack.jpg",
-      githubLink: "https://github.com/Jiya-Damara/ProTrack2",
-      liveLink: "https://jiya-damara.github.io/ProTrack2/",
-      tags: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Dashboard"]
-    },
-    {
-      title: "Ucampus-InfoSite",
-      description: "A website showcasing the Ucampus app designed to enhance the student experience.",
-      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048064/folio-anuj/Projects/ucampus.png",
-      githubLink: "https://github.com/Anuj-er/Ucampus-InfoSite",
-      liveLink: "https://ucampus.vercel.app",
-      tags: ["html5", "reactjs", "food-app", "app-information"]
-    },
-    {
-      title: "By The Cook",
-      description: "A food recipe website featuring delicious recipes from around the world.",
-      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048061/folio-anuj/Projects/bythecook.jpg",
-      githubLink: "https://github.com/Anuj-er/Cafe-Website/",
-      liveLink: "https://anuj-er.github.io/Cafe-Website/",
-      tags: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Cafe"]
-    },
-    {
-      title: "Library-Management-System-Cpp",
-      description: "A console-based Library Management System developed in C++.",
-      image: "https://res.cloudinary.com/folioanuj/image/upload/v1771048060/folio-anuj/Projects/interface-c%2B%2B.png",
-      githubLink: "https://github.com/Anuj-er/Library-Management-System-Cpp",
-      liveLink: "",
-      tags: ["C++", "OOP", "CLI"]
-    }
-  ];
+  // If no projects yet, show loading or nothing (or skeleton)
+  if (projects.length === 0) return null;
 
   return (
     <section id="Projects" className="relative w-full py-10 sm:py-20">
@@ -173,7 +91,7 @@ export default function AllProjects() {
         <div className="relative">
           {/* Left scroll button */}
           {showLeftButton && (
-            <button 
+            <button
               onClick={() => scroll('left')}
               className="absolute left-1 sm:left-3 top-1/2 -translate-y-1/2 z-20 bg-black/70 hover:bg-black/90 text-white rounded-full p-2 sm:p-3 shadow-lg border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-110"
               aria-label="Scroll left"
@@ -181,10 +99,10 @@ export default function AllProjects() {
               <FaChevronLeft className="text-lg sm:text-xl" />
             </button>
           )}
-          
+
           {/* Right scroll button */}
           {showRightButton && (
-            <button 
+            <button
               onClick={() => scroll('right')}
               className="absolute right-1 sm:right-3 top-1/2 -translate-y-1/2 z-20 bg-black/70 hover:bg-black/90 text-white rounded-full p-2 sm:p-3 shadow-lg border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-110"
               aria-label="Scroll right"
@@ -194,7 +112,7 @@ export default function AllProjects() {
           )}
 
           {/* Projects wrapper */}
-          <div 
+          <div
             ref={scrollContainerRef}
             className="flex gap-4 sm:gap-6 md:gap-8 overflow-x-auto pb-6 sm:pb-8 px-2 sm:px-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           >
@@ -249,16 +167,18 @@ export default function AllProjects() {
 
                     {/* Buttons */}
                     <div className="mt-auto flex gap-2 sm:gap-4">
-                      <Link
-                        href={project.githubLink}
-                        target="_blank"
-                        className="flex items-center justify-center flex-1 gap-1.5 sm:gap-2 rounded-xl border border-white/10 
-                          bg-white/5 py-2.5 sm:py-3 text-sm sm:text-base text-white/90 transition-all duration-300 
-                          hover:bg-white/10 hover:border-white/30 hover:text-white"
-                      >
-                        <FaGithub className="text-lg sm:text-xl" />
-                        <span>Source Code</span>
-                      </Link>
+                      {project.githubLink && (
+                        <Link
+                          href={project.githubLink}
+                          target="_blank"
+                          className="flex items-center justify-center flex-1 gap-1.5 sm:gap-2 rounded-xl border border-white/10 
+                            bg-white/5 py-2.5 sm:py-3 text-sm sm:text-base text-white/90 transition-all duration-300 
+                            hover:bg-white/10 hover:border-white/30 hover:text-white"
+                        >
+                          <FaGithub className="text-lg sm:text-xl" />
+                          <span>Source Code</span>
+                        </Link>
+                      )}
                       {project.liveLink && (
                         <Link
                           href={project.liveLink}
@@ -285,7 +205,7 @@ export default function AllProjects() {
           <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-16 md:w-20 bg-gradient-to-r from-black to-transparent pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-16 md:w-20 bg-gradient-to-l from-black to-transparent pointer-events-none" />
         </div>
-        
+
         {/* Scroll hint text */}
         <div className="text-center mt-4 text-white/40 text-sm flex items-center justify-center gap-2">
           <FaChevronLeft className="text-xs" />
