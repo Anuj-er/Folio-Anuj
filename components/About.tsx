@@ -56,9 +56,9 @@ const About = ({ initialData }: { initialData?: any }) => {
                       ))}
                     </div>
                   )}
-                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white">
                     {data.name || 'Anuj Siwach'}
-                  </h1>
+                  </h2>
                   {data.headline && (
                     <p className="text-lg sm:text-xl font-semibold text-gray-400">
                       {data.headline}
