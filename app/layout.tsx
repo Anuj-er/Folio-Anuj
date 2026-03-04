@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     default: 'Anuj Siwach | Developer',
     template: '%s | Anuj Siwach'
   },
-  description: 'Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.',
+  description: 'Third-year Computer Science Engineering student and Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.',
   keywords: ['Anuj Siwach', 'Developer', 'React Developer', 'Next.js Developer', 'TypeScript', 'Web Development'],
   authors: [{ name: 'Anuj Siwach' }],
   creator: 'Anuj Siwach',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://anujer.is-a.dev',
     title: 'Anuj Siwach | Developer',
-    description: 'Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.',
+    description: 'Third-year Computer Science Engineering student and Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.',
     siteName: 'Anuj Siwach Portfolio',
     images: [
       {
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Anuj Siwach | Developer',
-    description: 'Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.',
+    description: 'Third-year Computer Science Engineering student and Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.',
     images: ["https://res.cloudinary.com/folioanuj/image/upload/v1771048070/folio-anuj/og_image.jpg"],
     creator: '@5iwach',
     site: '@5iwach',
@@ -130,7 +130,12 @@ export default function RootLayout({
                 "https://x.com/5iwach"
               ],
               "jobTitle": "Developer",
-              "description": "Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience."
+              "description": "Third-year Computer Science Engineering student and Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.",
+              "brand": {
+                "@type": "Brand",
+                "logo": "https://anujer.is-a.dev/favicon_io/android-chrome-512x512.png"
+              },
+              "knowsAbout": ["React", "Next.js", "TypeScript", "Web Development", "Computer Science Engineering"]
             })
           }}
         />

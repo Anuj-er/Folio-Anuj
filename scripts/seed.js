@@ -63,7 +63,7 @@ const aboutData = {
     name: "Anuj Kumar",
     headline: "Curious Mind | Tech Enthusiast | Innovator",
     paragraphs: [
-        "Based in Chandigarh, India, I'm a second-year Computer Science Engineering student at Chitkara University, with a deep passion for learning and solving real-world problems through technology.",
+        "Based in Chandigarh, India, I'm a third-year Computer Science Engineering student at Chitkara University, with a deep passion for learning and solving real-world problems through technology.",
         "From exploring diverse programming languages to working on cutting-edge projects, I am driven by my curiosity and the desire to make an impact in the tech space."
     ],
     currentFocus: [
