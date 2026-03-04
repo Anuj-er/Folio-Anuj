@@ -180,7 +180,7 @@ const Hero: React.FC<{ initialData?: any }> = ({ initialData }) => {
         <p className="mb-2 sm:mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white">
           Hey, I&apos;m{' '}
           <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-[#60a5fa] via-[#a78bfa] to-[#60a5fa] bg-clip-text text-transparent animate-shimmer bg-shimmer">
-            Anuj Kumar
+            Anuj Siwach
           </span>
         </p>
         <p className="mb-4 sm:mb-6 md:mb-8 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-white to-white/70 bg-clip-text text-transparent">

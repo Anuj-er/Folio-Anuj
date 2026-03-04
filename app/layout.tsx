@@ -92,6 +92,9 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  verification: {
+    google: '-I3qaFArEuaCZ0QYmi7-ATtFvBayIKbfHetKiQDMVlA',
+  },
 };
 
 export default function RootLayout({
@@ -112,6 +115,25 @@ export default function RootLayout({
         `}
       >
         {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Anuj Siwach",
+              "url": "https://anujer.is-a.dev",
+              "image": "https://res.cloudinary.com/folioanuj/image/upload/v1771048048/folio-anuj/Anuj.jpg",
+              "sameAs": [
+                "https://github.com/Anuj-er",
+                "https://www.linkedin.com/in/anuj-er/",
+                "https://x.com/5iwach"
+              ],
+              "jobTitle": "Developer",
+              "description": "Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience."
+            })
+          }}
+        />
         <Analytics />
       </body>
     </html>

@@ -3,7 +3,7 @@ import mongoose, { Schema, model, models } from 'mongoose';
 const AboutSchema = new Schema({
     profileImage: { type: String, required: true },
     badges: [{ type: String }], // Array of badges
-    name: { type: String, default: "Anuj Kumar" },
+    name: { type: String, default: "Anuj Siwach" },
     headline: { type: String }, // e.g., "Curious Mind | Tech Enthusiast | Innovator"
     paragraphs: [{ type: String }], // Array of description paragraphs
     currentFocus: [{ type: String }], // Array of current focus items
