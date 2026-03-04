@@ -38,52 +38,52 @@ const Gallery = () => {
   const photos = [
     {
       src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048056/folio-anuj/Gallery/second.jpg",
-      alt: "with Stephen Simon",
+      alt: "Anuj Siwach with Stephen Simon",
       className: "col-span-1 md:col-span-1 row-span-2 aspect-[3/5] min-h-[400px] sm:min-h-[500px] lg:min-h-[600px]"
     },
     {
       src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048052/folio-anuj/Gallery/3.jpg",
-      alt: "image",
+      alt: "Anuj Siwach - Professional Portrait",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
       src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048052/folio-anuj/Gallery/4.jpg",
-      alt: "image",
+      alt: "Anuj Siwach - Developer Life",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
       src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048052/folio-anuj/Gallery/5.jpg",
-      alt: "image",
+      alt: "Anuj Siwach - Coding Session",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
       src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048048/folio-anuj/Gallery/1.jpg",
-      alt: "image",
+      alt: "Anuj Siwach - Portrait",
       className: "col-span-1 md:col-span-1 row-span-2 aspect-[3/5] min-h-[400px] sm:min-h-[500px] lg:min-h-[600px]"
     },
     {
       src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048052/folio-anuj/Gallery/7.jpg",
-      alt: "image",
+      alt: "Anuj Siwach - Event Capture",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
       src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048052/folio-anuj/Gallery/6.jpg",
-      alt: "image",
+      alt: "Anuj Siwach - Workspace",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
       src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048056/folio-anuj/Gallery/8.jpg",
-      alt: "image",
+      alt: "Anuj Siwach - Portfolio Highlight",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
       src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048056/folio-anuj/Gallery/9.jpg",
-      alt: "image",
+      alt: "Anuj Siwach - Tech Enthusiast",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
       src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048048/folio-anuj/Gallery/10.jpg",
-      alt: "image",
+      alt: "Anuj Siwach - Final Shot",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
   ];
