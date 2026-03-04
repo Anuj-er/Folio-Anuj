@@ -22,14 +22,14 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://anujer.is-a.dev'),
   title: {
-    default: 'Anuj Siwach | Developer',
-    template: '%s | Anuj Siwach'
+    default: 'Anuj Kumar | Developer',
+    template: '%s | Anuj Kumar'
   },
   description: 'Third-year Computer Science Engineering student and Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.',
-  keywords: ['Anuj Siwach', 'Developer', 'React Developer', 'Next.js Developer', 'TypeScript', 'Web Development'],
-  authors: [{ name: 'Anuj Siwach' }],
-  creator: 'Anuj Siwach',
-  publisher: 'Anuj Siwach',
+  keywords: ['Anuj Kumar', 'Developer', 'React Developer', 'Next.js Developer', 'TypeScript', 'Web Development'],
+  authors: [{ name: 'Anuj Kumar' }],
+  creator: 'Anuj Kumar',
+  publisher: 'Anuj Kumar',
   formatDetection: {
     email: false,
     address: false,
@@ -41,15 +41,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://anujer.is-a.dev',
-    title: 'Anuj Siwach | Developer',
+    title: 'Anuj Kumar | Developer',
     description: 'Third-year Computer Science Engineering student and Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.',
-    siteName: 'Anuj Siwach Portfolio',
+    siteName: 'Anuj Kumar Portfolio',
     images: [
       {
         url: "https://res.cloudinary.com/folioanuj/image/upload/v1771048070/folio-anuj/og_image.jpg",
         width: 1200,
         height: 630,
-        alt: 'Anuj Siwach - Developer',
+        alt: 'Anuj Kumar - Developer',
         type: 'image/png',
       },
     ],
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   // Twitter
   twitter: {
     card: 'summary_large_image',
-    title: 'Anuj Siwach | Developer',
+    title: 'Anuj Kumar | Developer',
     description: 'Third-year Computer Science Engineering student and Developer specializing in React, Next.js, and TypeScript. Creating modern web experiences with a focus on performance and user experience.',
     images: ["https://res.cloudinary.com/folioanuj/image/upload/v1771048070/folio-anuj/og_image.jpg"],
     creator: '@5iwach',
@@ -129,7 +129,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              "name": "Anuj Siwach",
+              "name": "Anuj Kumar",
               "url": "https://anujer.is-a.dev",
               "image": "https://res.cloudinary.com/folioanuj/image/upload/v1771048048/folio-anuj/Anuj.jpg",
               "sameAs": [

@@ -57,7 +57,7 @@ const About = ({ initialData }: { initialData?: any }) => {
                     </div>
                   )}
                   <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white">
-                    {data.name || 'Anuj Siwach'}
+                    {data.name || 'Anuj Kumar'}
                   </h2>
                   {data.headline && (
                     <p className="text-lg sm:text-xl font-semibold text-gray-400">
@@ -132,7 +132,7 @@ const About = ({ initialData }: { initialData?: any }) => {
           >
             <Image
               src={data.profileImage || "https://res.cloudinary.com/folioanuj/image/upload/v1771048048/folio-anuj/Anuj.jpg"}
-              alt={data.name || "Anuj Siwach"}
+              alt={data.name || "Anuj Kumar"}
               fill
               className="object-cover transition-transform duration-500 hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"

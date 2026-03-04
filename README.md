@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://hapcosoccer.com/wp-content/uploads/2017/11/portfolio-gif.gif" width="100%" style="border-radius: 10px; margin-bottom: 20px;" alt="Portfolio Banner">
 
-  <h1>Anuj Siwach</h1>
+  <h1>Anuj Kumar</h1>
 
   <p align="center">
     <kbd>Next.js 14</kbd> • <kbd>TypeScript</kbd> • <kbd>MongoDB Atlas</kbd> • <kbd>Cloudinary</kbd> • <kbd>Framer Motion</kbd>
@@ -196,5 +196,5 @@ npm run dev
 <div align="center">
   <h3>✨ Built for impact. Secured for scale. ✨</h3>
   <p>If you like this project, please consider giving it a ⭐️!</p>
-  <p>Created by <a href="https://github.com/Anuj-er">Anuj Siwach</a></p>
+  <p>Created by <a href="https://github.com/Anuj-er">Anuj Kumar</a></p>
 </div>

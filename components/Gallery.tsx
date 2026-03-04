@@ -38,52 +38,52 @@ const Gallery = () => {
   const photos = [
     {
       src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048056/folio-anuj/Gallery/second.jpg",
-      alt: "Anuj Siwach with Stephen Simon",
+      alt: "Anuj Kumar with Stephen Simon",
       className: "col-span-1 md:col-span-1 row-span-2 aspect-[3/5] min-h-[400px] sm:min-h-[500px] lg:min-h-[600px]"
     },
     {
       src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048052/folio-anuj/Gallery/3.jpg",
-      alt: "Anuj Siwach - Professional Portrait",
+      alt: "Anuj Kumar - Professional Portrait",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
       src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048052/folio-anuj/Gallery/4.jpg",
-      alt: "Anuj Siwach - Developer Life",
+      alt: "Anuj Kumar - Developer Life",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
       src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048052/folio-anuj/Gallery/5.jpg",
-      alt: "Anuj Siwach - Coding Session",
+      alt: "Anuj Kumar - Coding Session",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
       src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048048/folio-anuj/Gallery/1.jpg",
-      alt: "Anuj Siwach - Portrait",
+      alt: "Anuj Kumar - Portrait",
       className: "col-span-1 md:col-span-1 row-span-2 aspect-[3/5] min-h-[400px] sm:min-h-[500px] lg:min-h-[600px]"
     },
     {
       src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048052/folio-anuj/Gallery/7.jpg",
-      alt: "Anuj Siwach - Event Capture",
+      alt: "Anuj Kumar - Event Capture",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
       src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048052/folio-anuj/Gallery/6.jpg",
-      alt: "Anuj Siwach - Workspace",
+      alt: "Anuj Kumar - Workspace",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
       src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048056/folio-anuj/Gallery/8.jpg",
-      alt: "Anuj Siwach - Portfolio Highlight",
+      alt: "Anuj Kumar - Portfolio Highlight",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
       src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048056/folio-anuj/Gallery/9.jpg",
-      alt: "Anuj Siwach - Tech Enthusiast",
+      alt: "Anuj Kumar - Tech Enthusiast",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
     {
       src: "https://res.cloudinary.com/folioanuj/image/upload/v1771048048/folio-anuj/Gallery/10.jpg",
-      alt: "Anuj Siwach - Final Shot",
+      alt: "Anuj Kumar - Final Shot",
       className: "col-span-1 aspect-[4/3] min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]"
     },
   ];
