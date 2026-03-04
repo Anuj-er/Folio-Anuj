@@ -68,6 +68,14 @@ export const metadata: Metadata = {
   // Icons
   icons: {
     icon: [
+      {
+        url: '/favicon-light.png',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/favicon-dark.png',
+        media: '(prefers-color-scheme: dark)',
+      },
       { url: '/favicon_io/favicon.ico' },
       { url: '/favicon_io/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
       { url: '/favicon_io/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
