@@ -193,19 +193,38 @@ const Hero: React.FC<{ initialData?: any }> = ({ initialData }) => {
         <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
           {links.map((link, index) => (
             // Only render if source exists (except fallback logic handles it mostly)
-            <Link
-              key={index}
-              href={link.src}
-              target="_blank"
-              className="group relative rounded-xl border border-white/20 bg-white/10 p-2 sm:p-3 text-white transition-all duration-300 hover:scale-110 hover:bg-white/20 backdrop-blur-sm overflow-hidden"
-            >
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
-              </div>
-              <div className="text-xl sm:text-2xl">
-                {link.icon}
-              </div>
-            </Link>
+            {
+              link.src.endsWith('.pdf') ? (
+                <a
+                  key={index}
+                  href={link.src}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative rounded-xl border border-white/20 bg-white/10 p-2 sm:p-3 text-white transition-all duration-300 hover:scale-110 hover:bg-white/20 backdrop-blur-sm overflow-hidden"
+                >
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
+                  </div>
+                  <div className="text-xl sm:text-2xl">
+                    {link.icon}
+                  </div>
+                </a>
+              ) : (
+                <Link
+                  key={index}
+                  href={link.src}
+                  target="_blank"
+                  className="group relative rounded-xl border border-white/20 bg-white/10 p-2 sm:p-3 text-white transition-all duration-300 hover:scale-110 hover:bg-white/20 backdrop-blur-sm overflow-hidden"
+                >
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
+                  </div>
+                  <div className="text-xl sm:text-2xl">
+                    {link.icon}
+                  </div>
+                </Link>
+              )
+            }
           ))}
         </div>
       </div>
