@@ -7,7 +7,7 @@ import {
   SiNextdotjs, SiReact, SiTypescript, SiNodedotjs, SiExpress, SiMongodb,
   SiPython, SiCplusplus, SiDocker, SiGit, SiTailwindcss, SiPostman, SiLeetcode
 } from 'react-icons/si';
-import { FaGraduationCap, FaLaptopCode } from 'react-icons/fa';
+import { FaGraduationCap, FaLaptopCode, FaJava } from 'react-icons/fa';
 
 const skillIcons = {
   frontend: () => (
@@ -131,7 +131,7 @@ const SkillsSection = () => {
     {
       title: "Programming Languages & Core Concepts",
       subtitle: "Building strong foundations in programming",
-      skills: ["C++", "Python", "JavaScript"],
+      skills: ["Java", "C++", "Python", "JavaScript"],
       subSkills: ["Operating Systems", "Object-Oriented Programming", "Source Code Management"],
       progress: 80,
       learning: true,
@@ -237,6 +237,7 @@ const SkillsSection = () => {
               { name: "MongoDB", icon: <SiMongodb className="group-hover:text-[#47A248] transition-colors" />, color: "hover:bg-[#47A248]/10 hover:border-[#47A248]/30" },
               { name: "Python", icon: <SiPython className="group-hover:text-[#3776AB] transition-colors" />, color: "hover:bg-[#3776AB]/10 hover:border-[#3776AB]/30" },
               { name: "Tailwind", icon: <SiTailwindcss className="group-hover:text-[#06B6D4] transition-colors" />, color: "hover:bg-[#06B6D4]/10 hover:border-[#06B6D4]/30" },
+              { name: "Java", icon: <FaJava className="group-hover:text-[#ED8B00] transition-colors" />, color: "hover:bg-[#ED8B00]/10 hover:border-[#ED8B00]/30" },
               { name: "C++", icon: <SiCplusplus className="group-hover:text-[#00599C] transition-colors" />, color: "hover:bg-[#00599C]/10 hover:border-[#00599C]/30" },
               { name: "Docker", icon: <SiDocker className="group-hover:text-[#2496ED] transition-colors" />, color: "hover:bg-[#2496ED]/10 hover:border-[#2496ED]/30" },
               { name: "Postman", icon: <SiPostman className="group-hover:text-[#FF6C37] transition-colors" />, color: "hover:bg-[#FF6C37]/10 hover:border-[#FF6C37]/30" },
