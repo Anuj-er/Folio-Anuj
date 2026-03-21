@@ -21,11 +21,9 @@ const Approach = () => {
         {/* Approach cards */}
         <div className="my-10 sm:my-20 flex flex-col lg:flex-row items-center justify-center w-full gap-4 sm:gap-6 md:gap-8">
           <Card
-            title="Planning & Strategy"
+            title="Architecture & System Design"
             icon={<AceternityIcon order="Phase 1" />}
-            des="We'll collaborate to map out your website's goals, target audience, 
-            and key functionalities. We'll discuss things like site structure, 
-            navigation, and content requirements."
+            des="I start by deeply understanding your core requirements. Together, we architect a scalable foundation, selecting the optimal tech stack and mapping out data structures to ensure long-term performance and maintainability."
           >
             <CanvasRevealEffect
               animationSpeed={5.1}
@@ -34,11 +32,9 @@ const Approach = () => {
           </Card>
           
           <Card
-            title="Development & Progress Update"
+            title="Agile Development & Iteration"
             icon={<AceternityIcon order="Phase 2" />}
-            des="Once we agree on the plan, I cue my lofi playlist and dive into
-            coding. From initial sketches to polished code, I keep you updated
-            every step of the way."
+            des="With a solid blueprint in place, I focus on writing clean, modular code. I believe in continuous delivery, providing regular updates and rapidly iterating on feedback to align perfectly with your vision."
           >
             <CanvasRevealEffect
               animationSpeed={3}
@@ -52,11 +48,9 @@ const Approach = () => {
           </Card>
           
           <Card
-            title="Development & Launch"
+            title="Deployment & Optimization"
             icon={<AceternityIcon order="Phase 3" />}
-            des="This is where the magic happens! Based on the approved design, 
-            I'll translate everything into functional code, building your website
-            from the ground up."
+            des="Before launch, I conduct rigorous performance and accessibility testing. Using modern CI/CD pipelines, I ensure a seamless deployment while optimizing for speed, SEO, and future scalability."
           >
             <CanvasRevealEffect
               animationSpeed={3}

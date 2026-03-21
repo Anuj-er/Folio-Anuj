@@ -1,11 +1,13 @@
 'use client';
 
-import React, { memo, useMemo } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { getProjects } from '@/lib/actions';
 import {
   SiNextdotjs, SiReact, SiTypescript, SiNodedotjs, SiExpress, SiMongodb,
-  SiPython, SiCplusplus, SiDocker, SiGit, SiTailwindcss, SiPostman
+  SiPython, SiCplusplus, SiDocker, SiGit, SiTailwindcss, SiPostman, SiLeetcode
 } from 'react-icons/si';
+import { FaGraduationCap, FaLaptopCode } from 'react-icons/fa';
 
 const skillIcons = {
   frontend: () => (
@@ -67,11 +69,6 @@ const SkillCategoryCard = memo(({ category, index }: { category: any; index: num
   >
     <div className="flex items-center gap-2 mb-2">
       <h3 className="text-lg sm:text-xl font-semibold text-white">{category.title}</h3>
-      {category.learning && (
-        <span className="px-2 py-0.5 rounded-full text-xs bg-blue-500/20 text-blue-300 border border-blue-500/30">
-          Learning
-        </span>
-      )}
     </div>
     <p className="text-xs sm:text-sm text-white/70 mb-4">{category.subtitle}</p>
     <div className="space-y-4">
@@ -142,7 +139,21 @@ const SkillsSection = () => {
     }
   ];
 
+  const [projectCount, setProjectCount] = useState<string>("15+");
 
+  useEffect(() => {
+    const fetchProjectCount = async () => {
+      try {
+        const data = await getProjects();
+        if (data && data.length > 0) {
+          setProjectCount(`${data.length}+`);
+        }
+      } catch (error) {
+        console.error("Failed to fetch projects count", error);
+      }
+    };
+    fetchProjectCount();
+  }, []);
 
   return (
     <div id="journey" className="min-h-screen bg-black py-12 sm:py-20">
@@ -174,14 +185,13 @@ const SkillsSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mb-8 sm:mb-12"
+          className="mb-8 sm:mb-12 max-w-5xl mx-auto"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
             {[
-              { label: "", value: "8.89", sublabel: "CGPA", icon: "🎓", gradient: "from-blue-500 to-cyan-500" },
-              { label: "", value: "Knight", sublabel: "LeetCode Badge", icon: "⚔️", gradient: "from-yellow-500 to-orange-500" },
-              { label: "", value: "15+", sublabel: "Projects Built", icon: "💻", gradient: "from-purple-500 to-pink-500" },
-              { label: "", value: "3", sublabel: "Oracle Certifications", icon: "📜", gradient: "from-green-500 to-emerald-500" }
+              { label: "", value: "9.0", sublabel: "CGPA", icon: <FaGraduationCap />, gradient: "from-blue-500 to-cyan-500" },
+              { label: "", value: "Knight", sublabel: "LeetCode Badge", icon: <SiLeetcode />, gradient: "from-yellow-500 to-orange-500" },
+              { label: "", value: projectCount, sublabel: "Projects Built", icon: <FaLaptopCode />, gradient: "from-purple-500 to-pink-500" },
             ].map((stat, idx) => (
               <motion.div
                 key={stat.sublabel}
@@ -194,8 +204,8 @@ const SkillsSection = () => {
                 {/* Gradient glow effect on hover */}
                 <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-gradient-to-br ${stat.gradient} blur-xl`} />
 
-                <div className="relative z-10 text-center">
-                  <div className="text-4xl sm:text-5xl mb-3 group-hover:scale-110 transition-transform duration-300">{stat.icon}</div>
+                <div className="relative z-10 text-center flex flex-col items-center">
+                  <div className="text-4xl sm:text-5xl mb-3 group-hover:scale-110 transition-transform duration-300 text-gray-300 group-hover:text-white flex justify-center">{stat.icon}</div>
                   <div className={`text-3xl sm:text-4xl font-black mb-1 text-transparent bg-clip-text bg-gradient-to-r ${stat.gradient}`}>
                     {stat.value}
                   </div>

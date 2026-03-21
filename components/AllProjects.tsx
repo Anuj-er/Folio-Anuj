@@ -25,6 +25,12 @@ export default function AllProjects({ initialProjects = [] }: { initialProjects?
   const [projects, setProjects] = useState<Project[]>(initialProjects);
   const [hasFetched, setHasFetched] = useState(initialProjects.length > 0);
 
+  // Mouse drag state
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeftValue = useRef(0);
+  const hasDragged = useRef(false);
+
   // Fetch projects on mount if not provided via props
   useEffect(() => {
     if (!hasFetched) {
@@ -53,12 +59,55 @@ export default function AllProjects({ initialProjects = [] }: { initialProjects?
     const scrollContainer = scrollContainerRef.current;
     if (scrollContainer) {
       scrollContainer.addEventListener('scroll', checkScrollPosition);
+      
       // Initial check
       checkScrollPosition();
 
-      return () => scrollContainer.removeEventListener('scroll', checkScrollPosition);
+      return () => {
+        scrollContainer.removeEventListener('scroll', checkScrollPosition);
+      };
     }
   }, [projects]); // Re-run when projects load
+
+  // Drag to scroll handlers
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollContainerRef.current) return;
+    isDragging.current = true;
+    hasDragged.current = false;
+    startX.current = e.pageX - scrollContainerRef.current.offsetLeft;
+    scrollLeftValue.current = scrollContainerRef.current.scrollLeft;
+  };
+
+  const handleMouseLeave = () => {
+    isDragging.current = false;
+  };
+
+  const handleMouseUp = () => {
+    isDragging.current = false;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging.current || !scrollContainerRef.current) return;
+    
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX.current) * 2; // Scroll speed multiplier
+    
+    if (Math.abs(walk) > 5) {
+      hasDragged.current = true;
+    }
+    
+    if (hasDragged.current) {
+      e.preventDefault(); // Prevent text selection or image dragging
+      scrollContainerRef.current.scrollLeft = scrollLeftValue.current - walk;
+    }
+  };
+
+  const handleClickCapture = (e: React.MouseEvent) => {
+    if (hasDragged.current) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  };
 
   // Scroll left or right
   const scroll = (direction: 'left' | 'right') => {
@@ -118,7 +167,12 @@ export default function AllProjects({ initialProjects = [] }: { initialProjects?
           {/* Projects wrapper */}
           <div
             ref={scrollContainerRef}
-            className="flex gap-4 sm:gap-6 md:gap-8 overflow-x-auto pb-6 sm:pb-8 px-2 sm:px-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            className="flex gap-4 sm:gap-6 md:gap-8 overflow-x-auto pb-6 sm:pb-8 px-2 sm:px-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] cursor-grab active:cursor-grabbing select-none"
+            onMouseDown={handleMouseDown}
+            onMouseLeave={handleMouseLeave}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
+            onClickCapture={handleClickCapture}
           >
             {projects.map((project, index) => (
               <div
@@ -143,11 +197,11 @@ export default function AllProjects({ initialProjects = [] }: { initialProjects?
                   {/* Content section */}
                   <div className="relative p-4 sm:p-6 md:p-8 h-[350px] sm:h-[380px] flex flex-col">
                     <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 transition-all duration-300
-                      bg-gradient-to-r from-[#60a5fa] to-[#a78bfa] bg-clip-text group-hover:text-transparent">
+                      bg-gradient-to-r from-[#60a5fa] to-[#a78bfa] bg-clip-text group-hover:text-transparent line-clamp-2 min-h-[3.5rem] sm:min-h-[4rem] shrink-0">
                       {project.title}
                     </h3>
 
-                    <div className="mb-4 sm:mb-6 h-[80px] overflow-y-auto pr-1 custom-scrollbar relative">
+                    <div className="mb-4 sm:mb-6 h-[80px] shrink-0 overflow-y-auto pr-1 custom-scrollbar relative">
                       <p className="text-sm sm:text-base text-white/70 group-hover:text-white/90 transition-colors duration-300">
                         {project.description}
                       </p>
@@ -157,7 +211,7 @@ export default function AllProjects({ initialProjects = [] }: { initialProjects?
                     </div>
 
                     {/* Tags */}
-                    <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
+                    <div className="flex flex-wrap content-start gap-1.5 sm:gap-2 mb-4 sm:mb-6 h-[60px] sm:h-[68px] shrink-0 overflow-y-auto custom-scrollbar pr-1">
                       {project.tags.map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
@@ -170,7 +224,7 @@ export default function AllProjects({ initialProjects = [] }: { initialProjects?
                     </div>
 
                     {/* Buttons */}
-                    <div className="mt-auto flex gap-2 sm:gap-4">
+                    <div className="mt-auto flex gap-2 sm:gap-4 shrink-0">
                       {project.githubLink && (
                         <Link
                           href={project.githubLink}
